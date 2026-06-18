@@ -1,16 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyLow Project Assistant</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f6f8fb;
+}
+
+header{
+background:#004990;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.hero{
+background:linear-gradient(135deg,#004990,#0072ce);
+color:white;
+padding:60px 30px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+padding:14px 20px;
+background:#004990;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.project{
+background:#eef6ff;
+padding:20px;
+border-radius:12px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>MyLow Project Assistant</h1>
+<header>
+
+<div class="logo">
+myLow Project Assistant
+</div>
+
+<div>
+Store: Columbia East
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>
+Build Your Project With Confidence
+</h1>
 
 <p>
-The website is working.
+Get paint recommendations, supplies,
+budget estimates and project guidance.
 </p>
+
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+Start Your Project
+</h2>
+
+<input
+placeholder="Example: Paint my bathroom"
+/>
+
+<button>
+Start Project
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>
+Project Types
+</h2>
+
+<div class="project-grid">
+
+<div class="project">🎨 Interior Paint</div>
+<div class="project">🏠 Exterior Paint</div>
+<div class="project">📦 Flooring</div>
+<div class="project">🪵 Deck Staining</div>
+<div class="project">🚧 Fence Repair</div>
+<div class="project">🏡 Landscaping</div>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
