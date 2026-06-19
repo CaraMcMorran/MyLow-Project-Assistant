@@ -441,3 +441,38 @@ updateReadiness();
 });
 
 updateReadiness();
+document
+.querySelectorAll(".why-btn")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+const whyContent =
+this.nextElementSibling;
+
+whyContent.classList.toggle(
+"hidden"
+);
+
+if(
+whyContent.classList.contains(
+"hidden"
+)
+){
+
+this.innerText =
+"Why We Recommend This Item";
+
+}
+else{
+
+this.innerText =
+"Hide Recommendation Details";
+
+}
+
+});
+
+});
