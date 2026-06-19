@@ -1,548 +1,878 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyLow Project Assistant</title>
 
-<link rel="stylesheet" href="styles.css">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+MyLow Project Assistant
+</title>
+
+<link rel="stylesheet"
+href="styles.css">
+
 </head>
 
 <body>
 
-<!-- DISCLAIMER -->
+<!-- ========================= -->
+<!-- PROTOTYPE DISCLAIMER -->
+<!-- ========================= -->
 
-<div class="disclaimer-banner">
-    ⚠️ PROTOTYPE DISCLAIMER:
-    This website is an independently created demonstration prototype and is not affiliated with,
-    endorsed by, or connected to Lowe's Companies, Inc. Product recommendations, pricing,
-    inventory, checkout flows, aisle locations, store maps, and associate workflows shown on
-    this site are visual representations only.
+<div class="prototype-banner">
+
+⚠️ Prototype Only
+
+This website is an independently created
+demonstration prototype and is not affiliated
+with or connected to Lowe's Companies, Inc.
+
+Product recommendations, pricing,
+weather guidance, inventory,
+checkout flows and associate workflows
+are visual representations only.
+
 </div>
 
+<!-- ========================= -->
 <!-- HEADER -->
+<!-- ========================= -->
 
 <header>
 
-    <div class="logo">
-        my<span>low</span> Project Assistant
-    </div>
+<div class="logo">
 
-    <div class="header-actions">
+my<span>low</span>
 
-        <div class="store-pill">
-            📍 Columbia East
-        </div>
+Project Assistant
 
-    </div>
+</div>
+
+<div class="store-location">
+
+📍 Columbia East
+
+</div>
 
 </header>
 
+<!-- ========================= -->
 <!-- HERO -->
+<!-- ========================= -->
 
 <section class="hero">
 
-    <h1>
-        Tell MyLow About Your Project
-    </h1>
+<h1>
 
-    <p>
-        Paint, stain, deck, fence, cabinet, trim and exterior projects.
-        MyLow will build a customized shopping list, recommend products,
-        estimate costs, and prepare your project plan.
-    </p>
+Tell MyLow About Your Project
+
+</h1>
+
+<p>
+
+Paint, stain, deck, fence,
+cabinet and exterior projects.
+
+MyLow will build your project plan,
+shopping list and recommendations.
+
+</p>
 
 </section>
 
+<!-- ========================= -->
 <!-- SEARCH -->
+<!-- ========================= -->
 
-<section class="search-section">
+<section class="search-wrapper">
 
-    <div class="search-card">
-
-        <h2>
-            What project are you working on?
-        </h2>
-
-        <div class="search-row">
-
-            <input
-                id="projectSearch"
-                type="text"
-                placeholder="Describe your project... Example: Paint my bathroom"
-            >
-
-            <button id="searchBtn">
-                Ask MyLow
-            </button>
-
-        </div>
-
-<div class="examples">
-
-    <strong>Try:</strong>
-
-    Paint my bathroom • Paint kitchen cabinets •
-    Stain my deck • Recoat my fence
-
-</div>
-
-    </div>
-
-</section>
-
-<!-- MAIN APP -->
-
-<section id="workspace" class="workspace hidden">
-
-<div class="project-summary">
-
-    <h2 id="projectTitle">
-        Bathroom Paint Project
-    </h2>
-
-    <div class="summary-stats">
-
-        <div class="summary-pill">
-
-            Project Ready
-
-            <strong id="completionPercent">
-                0%
-            </strong>
-
-        </div>
-
-        <div class="summary-pill">
-
-            Estimated Budget
-
-            <strong id="budgetTotal">
-                $112.97
-            </strong>
-
-        </div>
-
-        <button id="walkthroughBtn">
-
-            🎥 Watch Project Walkthrough
-
-        </button>
-
-    </div>
-
-</div>
-    <!-- LEFT COLUMN -->
-
-    <div class="panel">
+<div class="search-card">
 
 <h2>
-<button id="toggleDetailsBtn">
-    Project Details ▼
-</button>
+
+What project are you working on?
+
 </h2>
 
-<div id="projectDetailsContent">
-        
-        <div class="project-name-row">
+<div class="search-row">
 
-            <input
-                id="projectName"
-                value="Bathroom Paint Project"
-            >
+<input
 
-            <button id="saveProjectBtn">
-                💾 Save
-            </button>
+id="projectSearch"
 
-        </div>
+type="text"
 
-        <h3>Room Type</h3>
+placeholder="Paint my bathroom"
 
-        <div class="chip-group">
+>
 
-            <button class="chip active">Bathroom</button>
-            <button class="chip">Kitchen</button>
-            <button class="chip">Bedroom</button>
-            <button class="chip">Living Room</button>
+<button id="searchBtn">
 
-        </div>
+Ask MyLow
 
-        <h3>Surface Type</h3>
-
-        <div class="chip-group">
-
-            <button class="chip active">Smooth</button>
-            <button class="chip">Light Texture</button>
-            <button class="chip">Heavy Texture</button>
-            <button class="chip">Orange Peel</button>
-            <button class="chip">Knockdown</button>
-
-        </div>
-
-        <h3>Wall Condition</h3>
-
-        <div class="chip-group">
-
-            <button class="chip active">Excellent</button>
-            <button class="chip">Minor Repairs</button>
-            <button class="chip">Major Repairs</button>
-
-        </div>
-
-        <h3>Finish / Sheen</h3>
-
-        <div class="chip-group">
-
-            <button class="chip active">Satin</button>
-            <button class="chip">Eggshell</button>
-            <button class="chip">Flat</button>
-            <button class="chip">Semi-Gloss</button>
-
-        </div>
-
-        <h3>Color Family</h3>
-
-        <div class="chip-group">
-
-            <button class="chip">Whites</button>
-            <button class="chip active">Grays</button>
-            <button class="chip">Beiges</button>
-            <button class="chip">Blues</button>
-            <button class="chip">Greens</button>
-
-        </div>
-
-        <h3>Project Size</h3>
-
-        <div class="chip-group">
-
-            <button class="chip active">Small</button>
-            <button class="chip">Medium</button>
-            <button class="chip">Large</button>
-
-        </div>
-
-</div>
-
-    </div>
-
-    <!-- CENTER COLUMN -->
-
-    <div class="panel">
-<div class="ready-banner">
-
-    Project Ready:
-    <span id="completionPercent">
-        0%
-    </span>
-
-</div>
-        <h2>Best Paint System For Your Project</h2>
-
-<div class="recommendation-system">
-
-    <div class="system-product">
-
-        <div class="product-image">
-            🎨
-        </div>
-
-        <div>
-
-            <h3 id="selectedPaintName">
-    HGTV HOME Infinity
-</h3>
-
-            <p>
-                Recommended Paint
-            </p>
-
-            <strong id="selectedPaintPrice">
-    $68.98
-</strong>
-
-        </div>
-
-    </div>
-
-    <div class="system-plus">
-        +
-    </div>
-
-    <div class="system-product">
-
-        <div class="product-image">
-            🪣
-        </div>
-
-        <div>
-
-            <h3>
-                ProBlock Primer
-            </h3>
-
-            <p>
-                Recommended Primer
-            </p>
-
-            <strong>
-                $29.98
-            </strong>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="system-reasons">
-
-    Recommended because:
-
-    <ul>
-        <li>Bathroom project selected</li>
-        <li>Satin finish selected</li>
-        <li>Smooth walls selected</li>
-        <li>Designed for excellent finish quality</li>
-    </ul>
-
-</div>
-
-<div class="system-actions">
-
-    <button class="add-btn">
-        Add Paint System To Cart
-    </button>
-
-    <button
-class="why-btn"
-onclick="openPaintModal()">
-    Choose Different Product
 </button>
 
 </div>
 
-        <div
-id="paintModal"
-class="product-modal">
+<div class="search-examples">
 
-    <div class="product-modal-content">
+<strong>Try:</strong>
 
-        <h2>
-            Choose Paint
-        </h2>
-
-        <button
-        class="close-modal"
-        onclick="closePaintModal()">
-            ✕
-        </button>
-
-        <div class="product-option">
-
-            <h3>🏆 Best Match</h3>
-
-            <strong>
-                HGTV HOME Infinity
-            </strong>
-
-            <p>$68.98</p>
-
-            <button
-            onclick="selectPaint(
-            'HGTV HOME Infinity',
-            '$68.98'
-            )">
-                Select
-            </button>
-
-        </div>
-
-        <div class="product-option">
-
-            <h3>⭐ Better Match</h3>
-
-            <strong>
-                Valspar Signature
-            </strong>
-
-            <p>$49.98</p>
-
-            <button
-            onclick="selectPaint(
-            'Valspar Signature',
-            '$49.98'
-            )">
-                Select
-            </button>
-
-        </div>
-
-        <div class="product-option">
-
-            <h3>👍 Good Match</h3>
-
-            <strong>
-                Value Paint Option
-            </strong>
-
-            <p>$39.98</p>
-
-            <button
-            onclick="selectPaint(
-            'Value Paint Option',
-            '$39.98'
-            )">
-                Select
-            </button>
-
-        </div>
-
-    </div>
+Paint my bathroom •
+Paint kitchen cabinets •
+Stain my deck •
+Recoat my fence
 
 </div>
-        
-        <h2>Your Project Shopping List</h2>
 
-        <p class="subtext">
-            Add products to cart or mark items you already own.
-        </p>
-
-        <div id="checklist">
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Interior Paint</strong>
-                    <p>Recommended coating for selected project.</p>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Roller</strong>
-                    <p>Recommended nap based on surface texture.</p>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Brush</strong>
-                    <p>Recommended trim brush.</p>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Painter's Tape</strong>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Primer</strong>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Caulk</strong>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="checklist-item">
-
-                <div>
-                    <strong>Drop Cloth</strong>
-                </div>
-
-                <div class="checklist-actions">
-                    <button class="add-btn">Add</button>
-                    <label>
-                        <input type="checkbox">
-                        Already Have
-                    </label>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="checkout-row">
-
-            <button id="cartBtn">
-                Proceed To Cart
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
+
+<!-- ========================= -->
+<!-- MAIN WORKSPACE -->
+<!-- ========================= -->
+
+<section
+id="workspace"
+class="workspace hidden">
+
+<!-- ========================= -->
+<!-- PROJECT SUMMARY -->
+<!-- ========================= -->
+
+<div class="summary-card">
+
+<h2 id="projectTitle">
+
+Bathroom Paint Project
+
+</h2>
+
+<div class="summary-grid">
+
+<div class="summary-stat">
+
+<div class="summary-label">
+
+Project Ready
+
+</div>
+
+<div
+class="summary-value"
+id="readinessPercent">
+
+0%
+
+</div>
+
+</div>
+
+<div class="summary-stat">
+
+<div class="summary-label">
+
+Estimated Budget
+
+</div>
+
+<div
+class="summary-value"
+id="budgetTotal">
+
+$0.00
+
+</div>
+
+</div>
+
+<div class="summary-stat">
+
+<button
+id="walkthroughBtn">
+
+🎥 Watch Project Walkthrough
+
+</button>
+
+</div>
+
+</div>
+
+<div class="progress-container">
+
+<div
+id="readinessBar"
+class="progress-bar">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- WEATHER PLANNER -->
+<!-- HIDDEN FOR INTERIOR -->
+<!-- ========================= -->
+
+<div
+id="weatherPlanner"
+class="weather-card hidden">
+
+<h2>
+
+Next Recommended Weather Window
+
+</h2>
+
+<div class="weather-window">
+
+🌤 Tuesday
+
+72°F
+
+48% Humidity
+
+No rain expected
+for 72 hours
+
+⭐⭐⭐⭐⭐
+
+Recommended Project Day
+
+</div>
+
+<div class="weather-note">
+
+ⓘ Weather recommendations
+are estimates based on forecast data
+and may change.
+
+Always verify local conditions before
+starting your project.
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- RECOMMENDED PAINT -->
+<!-- ========================= -->
+
+<div class="recommendation-card">
+
+<h2>
+
+Recommended Paint
+
+</h2>
+
+<div class="product-row">
+
+<div class="product-image">
+
+🎨
+
+</div>
+
+<div class="product-details">
+
+<h3 id="selectedPaintName">
+
+HGTV HOME Infinity
+
+</h3>
+
+<div class="price">
+
+$68.98
+
+</div>
+
+<div
+class="recommendation-reasons">
+
+Bathroom project
+
+•
+Satin finish
+
+•
+Moisture resistant
+
+</div>
+
+</div>
+
+</div>
+
+<div class="product-actions">
+
+<button
+class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button
+class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button
+class="secondary-btn"
+id="changePaintBtn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- RECOMMENDED PRIMER -->
+<!-- ========================= -->
+
+<div class="recommendation-card">
+
+<h2>
+
+Recommended Primer
+
+</h2>
+
+<div class="product-row">
+
+<div class="product-image">
+
+🪣
+
+</div>
+
+<div class="product-details">
+
+<h3>
+
+ProBlock Primer
+
+</h3>
+
+<div class="price">
+
+$29.98
+
+</div>
+
+<div
+class="recommendation-reasons">
+
+Recommended companion primer
+
+•
+Improved adhesion
+
+•
+Better finish quality
+
+</div>
+
+</div>
+
+</div>
+
+<div class="product-actions">
+
+<button
+class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button
+class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button
+class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+    <!-- ========================= -->
+<!-- SHOPPING LIST -->
+<!-- ========================= -->
+
+<div class="shopping-card">
+
+<h2>
+
+Your Project Shopping List
+
+</h2>
+
+<p class="shopping-subtitle">
+
+Everything recommended to successfully
+complete your project.
+
+</p>
+
+<div id="shoppingList">
+
+<div class="shopping-item">
+
+<div class="item-info">
+
+<h3>
+
+HGTV HOME Infinity Paint
+
+</h3>
+
+<div class="item-price">
+
+$68.98
+
+</div>
+
+</div>
+
+<div class="item-buttons">
+
+<button class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button class="secondary-btn">
+
+Already Have
+
+</button>
+
+<button class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+<div class="shopping-item">
+
+<div class="item-info">
+
+<h3>
+
+ProBlock Primer
+
+</h3>
+
+<div class="item-price">
+
+$29.98
+
+</div>
+
+</div>
+
+<div class="item-buttons">
+
+<button class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button class="secondary-btn">
+
+Already Have
+
+</button>
+
+<button class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+<div class="shopping-item">
+
+<div class="item-info">
+
+<h3>
+
+Purdy White Dove Roller
+
+</h3>
+
+<div class="item-price">
+
+$16.98
+
+</div>
+
+</div>
+
+<div class="item-buttons">
+
+<button class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button class="secondary-btn">
+
+Already Have
+
+</button>
+
+<button class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+<div class="shopping-item">
+
+<div class="item-info">
+
+<h3>
+
+Purdy XL Glide Brush
+
+</h3>
+
+<div class="item-price">
+
+$12.98
+
+</div>
+
+</div>
+
+<div class="item-buttons">
+
+<button class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button class="secondary-btn">
+
+Already Have
+
+</button>
+
+<button class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+<div class="shopping-item">
+
+<div class="item-info">
+
+<h3>
+
+Painter's Tape
+
+</h3>
+
+<div class="item-price">
+
+$7.98
+
+</div>
+
+</div>
+
+<div class="item-buttons">
+
+<button class="primary-btn">
+
+Add To Cart
+
+</button>
+
+<button class="secondary-btn">
+
+Already Have
+
+</button>
+
+<button class="secondary-btn">
+
+Why We Recommend This Item
+
+</button>
+
+<button class="secondary-btn">
+
+Select A Different Product
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- STICKY CART -->
+<!-- ========================= -->
+
+<div class="cart-summary">
+
+<h2>
+
+Cart Summary
+
+</h2>
+
+<div class="cart-line">
+
+<span>Items</span>
+
+<strong id="cartCount">
+
+0
+
+</strong>
+
+</div>
+
+<div class="cart-line">
+
+<span>Total</span>
+
+<strong id="cartTotal">
+
+$0.00
+
+</strong>
+
+</div>
+
+<button
+id="checkoutBtn"
+class="checkout-btn">
+
+Proceed To Checkout
+
+</button>
+
+<button
+id="associateBtn"
+class="secondary-btn">
+
+Have Associate Prepare My Order
+
+</button>
+
+</div>
+
+<!-- ========================= -->
+<!-- PROJECT DETAILS -->
+<!-- ========================= -->
+
+<div class="details-card">
+
+<button
+id="toggleDetailsBtn"
+class="details-toggle">
+
+Project Details ▼
+
+</button>
+
+<div
+id="projectDetailsContent"
+class="hidden">
+
+<p>
+
+Room Type
+
+</p>
+
+<p>
+
+Surface Type
+
+</p>
+
+<p>
+
+Condition
+
+</p>
+
+<p>
+
+Sheen
+
+</p>
+
+<p>
+
+Color Family
+
+</p>
+
+<p>
+
+Project Size
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- WALKTHROUGH MODAL -->
+<!-- ========================= -->
+
+<div
+id="walkthroughModal"
+class="modal hidden">
+
+<div class="modal-content">
+
+<h2>
+
+Bathroom Paint Project Walkthrough
+
+</h2>
+
+<ol>
+
+<li>Prepare the room</li>
+
+<li>Patch imperfections</li>
+
+<li>Sand repairs smooth</li>
+
+<li>Prime repairs</li>
+
+<li>Cut in edges</li>
+
+<li>Roll walls</li>
+
+<li>Apply second coat</li>
+
+<li>Clean up</li>
+
+</ol>
+
+<button
+class="primary-btn">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- CHECKOUT PAGE -->
+<!-- ========================= -->
+
+<div
+id="checkoutPage"
+class="hidden">
+
+<h1>
+
+Checkout
+
+</h1>
+
+<p>
+
+Review your cart and enter information.
+
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
 
 <footer>
 
-    Prototype Only • Not Connected To Live Lowe's Systems
+Prototype Only • Not Connected To Live Lowe's Systems
 
 </footer>
 
