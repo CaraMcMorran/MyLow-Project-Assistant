@@ -295,3 +295,68 @@ function(event){
     }
 
 });
+function showWhy(){
+
+alert(
+`Recommended because:
+
+• Matches your project type
+
+• Available in store
+
+• Appropriate for selected surface
+
+• Strong customer value
+
+• Compatible with recommended applicators`
+);
+
+}
+document
+.querySelectorAll(".chip")
+.forEach(chip=>{
+
+chip.addEventListener(
+"click",
+function(){
+
+const text =
+this.innerText;
+
+const coachCards =
+document.querySelectorAll(".coach-card");
+
+if(coachCards.length < 5){
+return;
+}
+
+if(text==="Smooth"){
+
+coachCards[2].innerHTML = `
+<h3>Recommended Applicator</h3>
+<p>Purdy White Dove 3/8" Nap</p>
+`;
+
+}
+
+if(text==="Light Texture"){
+
+coachCards[2].innerHTML = `
+<h3>Recommended Applicator</h3>
+<p>Purdy White Dove 1/2" Nap</p>
+`;
+
+}
+
+if(text==="Heavy Texture"){
+
+coachCards[2].innerHTML = `
+<h3>Recommended Applicator</h3>
+<p>Purdy White Dove 3/4" Nap</p>
+`;
+
+}
+
+});
+
+});
