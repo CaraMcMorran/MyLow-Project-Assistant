@@ -397,3 +397,24 @@ font-size:50px;
 text-align:center;
 margin-bottom:10px;
 }
+.completed-item{
+
+    opacity:.45;
+
+    background:#f2f4f7;
+
+    transition:.3s ease;
+
+}
+
+.completed-item strong{
+
+    text-decoration:line-through;
+
+}
+
+.completed-item p{
+
+    text-decoration:line-through;
+
+}
