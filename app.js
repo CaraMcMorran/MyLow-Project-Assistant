@@ -308,3 +308,136 @@ this.innerText =
 });
 
 }
+// =========================
+// CART + READINESS SYSTEM
+// =========================
+
+let cartCount = 0;
+let cartTotal = 0;
+
+const cartCountDisplay =
+document.getElementById("cartCount");
+
+const cartTotalDisplay =
+document.getElementById("cartTotal");
+
+const readinessDisplay =
+document.getElementById("readinessPercent");
+
+const readinessBar =
+document.getElementById("readinessBar");
+
+function updateReadiness(){
+
+const totalItems =
+document.querySelectorAll(
+".shopping-item"
+).length;
+
+const completedItems =
+document.querySelectorAll(
+".completed-item"
+).length;
+
+const percent =
+Math.round(
+(completedItems / totalItems) * 100
+);
+
+readinessDisplay.innerText =
+percent + "%";
+
+if(readinessBar){
+
+readinessBar.style.width =
+percent + "%";
+
+}
+
+}
+
+document
+.querySelectorAll(".add-cart-btn")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+const item =
+this.closest(
+".shopping-item"
+);
+
+if(
+item.classList.contains(
+"completed-item"
+)
+){
+return;
+}
+
+const price =
+parseFloat(
+item.dataset.price
+);
+
+item.classList.add(
+"completed-item"
+);
+
+cartCount++;
+
+cartTotal += price;
+
+cartCountDisplay.innerText =
+cartCount;
+
+cartTotalDisplay.innerText =
+"$" +
+cartTotal.toFixed(2);
+
+this.innerText =
+"Added ✓";
+
+updateReadiness();
+
+});
+
+});
+
+document
+.querySelectorAll(".already-have-btn")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+const item =
+this.closest(
+".shopping-item"
+);
+
+if(
+item.classList.contains(
+"completed-item"
+)
+){
+return;
+}
+
+item.classList.add(
+"completed-item"
+);
+
+this.innerText =
+"Already Owned ✓";
+
+updateReadiness();
+
+});
+
+});
+
+updateReadiness();
