@@ -1,4 +1,3 @@
-alert("app.js loaded");
 // =========================
 // MYLOW V3.0
 // PROJECT DETECTION ENGINE
