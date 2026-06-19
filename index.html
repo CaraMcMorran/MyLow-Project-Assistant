@@ -250,17 +250,17 @@
 
         <div>
 
-            <h3>
-                HGTV HOME Infinity
-            </h3>
+            <h3 id="selectedPaintName">
+    HGTV HOME Infinity
+</h3>
 
             <p>
                 Recommended Paint
             </p>
 
-            <strong>
-                $68.98
-            </strong>
+            <strong id="selectedPaintPrice">
+    $68.98
+</strong>
 
         </div>
 
@@ -315,11 +315,94 @@
         Add Paint System To Cart
     </button>
 
-    <button class="why-btn">
-        Choose Different Product
-    </button>
+    <button
+class="why-btn"
+onclick="openPaintModal()">
+    Choose Different Product
+</button>
 
 </div>
+
+        <div
+id="paintModal"
+class="product-modal">
+
+    <div class="product-modal-content">
+
+        <h2>
+            Choose Paint
+        </h2>
+
+        <button
+        class="close-modal"
+        onclick="closePaintModal()">
+            ✕
+        </button>
+
+        <div class="product-option">
+
+            <h3>🏆 Best Match</h3>
+
+            <strong>
+                HGTV HOME Infinity
+            </strong>
+
+            <p>$68.98</p>
+
+            <button
+            onclick="selectPaint(
+            'HGTV HOME Infinity',
+            '$68.98'
+            )">
+                Select
+            </button>
+
+        </div>
+
+        <div class="product-option">
+
+            <h3>⭐ Better Match</h3>
+
+            <strong>
+                Valspar Signature
+            </strong>
+
+            <p>$49.98</p>
+
+            <button
+            onclick="selectPaint(
+            'Valspar Signature',
+            '$49.98'
+            )">
+                Select
+            </button>
+
+        </div>
+
+        <div class="product-option">
+
+            <h3>👍 Good Match</h3>
+
+            <strong>
+                Value Paint Option
+            </strong>
+
+            <p>$39.98</p>
+
+            <button
+            onclick="selectPaint(
+            'Value Paint Option',
+            '$39.98'
+            )">
+                Select
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+        
         <h2>Your Project Shopping List</h2>
 
         <p class="subtext">
