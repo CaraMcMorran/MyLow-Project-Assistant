@@ -531,3 +531,24 @@ transition:.3s ease;
 text-decoration:line-through;
 
 }
+.why-content{
+
+margin-top:12px;
+
+padding:12px;
+
+background:#eef6ff;
+
+border-radius:12px;
+
+line-height:1.8;
+
+color:#003366;
+
+}
+
+.why-content.hidden{
+
+display:none;
+
+}
