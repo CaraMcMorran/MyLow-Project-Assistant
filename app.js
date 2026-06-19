@@ -36,98 +36,123 @@ function startProject() {
     // Interior Paint
 
     if(
-        query.includes("paint")
-        &&
-        query.includes("bathroom")
-    ){
+    query.includes("paint")
+    &&
+    query.includes("bathroom")
+){
 
-        projectName.value =
-        "Bathroom Paint Project";
+    projectName.value =
+    "Bathroom Paint Project";
 
-        updateCoach(
-            "2 Gallons",
-            "$112.97",
-            "Purdy White Dove 3/8\" Nap"
-        );
+    document.getElementById(
+        "projectTitle"
+    ).innerText =
+    "Bathroom Paint Project";
 
-        return;
-    }
+    updateCoach(
+        "2 Gallons",
+        "$112.97",
+        "Purdy White Dove 3/8\" Nap"
+    );
+
+    return;
+}
 
     // Kitchen
 
     if(
-        query.includes("paint")
-        &&
-        query.includes("kitchen")
-    ){
+    query.includes("paint")
+    &&
+    query.includes("kitchen")
+){
 
-        projectName.value =
-        "Kitchen Paint Project";
+    projectName.value =
+    "Kitchen Paint Project";
 
-        updateCoach(
-            "2 Gallons",
-            "$118.97",
-            "Purdy White Dove 3/8\" Nap"
-        );
+    document.getElementById(
+        "projectTitle"
+    ).innerText =
+    "Kitchen Paint Project";
 
-        return;
-    }
+    updateCoach(
+        "2 Gallons",
+        "$118.97",
+        "Purdy White Dove 3/8\" Nap"
+    );
+
+    return;
+}
 
     // Deck
 
     if(
-        query.includes("deck")
-        ||
-        query.includes("stain")
-    ){
+    query.includes("deck")
+    ||
+    query.includes("stain")
+){
 
-        projectName.value =
-        "Deck Stain Project";
+    projectName.value =
+    "Deck Stain Project";
 
-        updateCoach(
-            "3 Gallons",
-            "$189.97",
-            "Deck Stain Pad"
-        );
+    document.getElementById(
+        "projectTitle"
+    ).innerText =
+    "Deck Stain Project";
 
-        return;
-    }
+    updateCoach(
+        "3 Gallons",
+        "$189.97",
+        "Deck Stain Pad"
+    );
+
+    return;
+}
 
     // Fence
 
     if(
-        query.includes("fence")
-    ){
+    query.includes("fence")
+){
 
-        projectName.value =
-        "Fence Stain Project";
+    projectName.value =
+    "Fence Stain Project";
 
-        updateCoach(
-            "2 Gallons",
-            "$154.97",
-            "Deck Stain Pad"
-        );
+    document.getElementById(
+        "projectTitle"
+    ).innerText =
+    "Fence Stain Project";
 
-        return;
-    }
+    updateCoach(
+        "2 Gallons",
+        "$154.97",
+        "Deck Stain Pad"
+    );
+
+    return;
+}
 
     // Cabinets
 
     if(
-        query.includes("cabinet")
-    ){
+    query.includes("cabinet")
+){
 
-        projectName.value =
-        "Cabinet Paint Project";
+    projectName.value =
+    "Cabinet Paint Project";
 
-        updateCoach(
-            "1 Gallon",
-            "$139.97",
-            "Purdy XL Glide Brush"
-        );
+    document.getElementById(
+        "projectTitle"
+    ).innerText =
+    "Cabinet Paint Project";
 
-        return;
-    }
+    updateCoach(
+        "1 Gallon",
+        "$139.97",
+        "Purdy XL Glide Brush"
+    );
+
+    return;
+}
 
     // Default
 
