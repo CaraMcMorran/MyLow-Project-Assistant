@@ -1,1 +1,334 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
 
+body{
+background:#f5f7fa;
+color:#17202a;
+}
+
+/* DISCLAIMER */
+
+.disclaimer-banner{
+background:#fff4ce;
+color:#7a4f01;
+padding:12px 20px;
+font-size:14px;
+line-height:1.5;
+border-bottom:1px solid #f0d98a;
+}
+
+/* HEADER */
+
+header{
+background:#004990;
+color:white;
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+}
+
+.logo span{
+color:#7fc4ff;
+}
+
+.header-actions{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.store-pill{
+background:white;
+color:#004990;
+padding:10px 14px;
+border-radius:999px;
+font-weight:700;
+}
+
+.header-btn{
+background:white;
+border:none;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(135deg,#004990,#0072ce);
+color:white;
+padding:60px 30px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:850px;
+margin:auto;
+font-size:18px;
+line-height:1.6;
+}
+
+/* SEARCH */
+
+.search-section{
+max-width:1400px;
+margin:-40px auto 20px;
+padding:0 20px;
+}
+
+.search-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+
+.search-card h2{
+margin-bottom:20px;
+color:#003366;
+}
+
+.search-row{
+display:flex;
+gap:12px;
+}
+
+.search-row input{
+flex:1;
+padding:16px;
+border-radius:12px;
+border:1px solid #d0d7de;
+font-size:16px;
+}
+
+.search-row button{
+background:#004990;
+color:white;
+border:none;
+padding:16px 22px;
+border-radius:12px;
+font-weight:800;
+cursor:pointer;
+}
+
+.examples{
+margin-top:20px;
+line-height:1.9;
+}
+
+/* WORKSPACE */
+
+.workspace{
+max-width:1400px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:320px 1fr 320px;
+gap:20px;
+}
+
+.panel{
+background:white;
+padding:22px;
+border-radius:18px;
+box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.panel h2{
+margin-bottom:20px;
+color:#003366;
+}
+
+.panel h3{
+margin:18px 0 10px;
+}
+
+/* PROJECT DETAILS */
+
+.project-name-row{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.project-name-row input{
+flex:1;
+padding:12px;
+border:1px solid #d0d7de;
+border-radius:10px;
+}
+
+#saveProjectBtn{
+background:#1f7a3f;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* CHIPS */
+
+.chip-group{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.chip{
+padding:10px 16px;
+border-radius:999px;
+border:1px solid #d0d7de;
+background:white;
+cursor:pointer;
+font-weight:700;
+}
+
+.chip.active{
+background:#004990;
+color:white;
+border-color:#004990;
+}
+
+/* CHECKLIST */
+
+.subtext{
+color:#667085;
+margin-bottom:15px;
+}
+
+.checklist-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
+border-bottom:1px solid #e4e7ec;
+}
+
+.checklist-item:last-child{
+border-bottom:none;
+}
+
+.checklist-item p{
+font-size:14px;
+color:#667085;
+margin-top:4px;
+}
+
+.checklist-actions{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.add-btn{
+background:#004990;
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+}
+
+.checkout-row{
+margin-top:25px;
+}
+
+#cartBtn{
+width:100%;
+background:#1f7a3f;
+color:white;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:800;
+cursor:pointer;
+}
+
+/* PROJECT COACH */
+
+.coach-card{
+background:#f8fbff;
+border:1px solid #dbe7f5;
+border-radius:14px;
+padding:16px;
+margin-bottom:15px;
+}
+
+.score{
+font-size:34px;
+font-weight:900;
+color:#004990;
+}
+
+.green{
+color:#1f7a3f;
+}
+
+.budget{
+font-size:32px;
+font-weight:900;
+color:#1f7a3f;
+}
+
+/* HIDDEN */
+
+.hidden{
+display:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:25px;
+color:#667085;
+font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+.workspace{
+grid-template-columns:1fr;
+}
+
+.search-row{
+flex-direction:column;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.header-actions{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+}
