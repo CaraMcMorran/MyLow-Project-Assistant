@@ -1,550 +1,310 @@
-// ======================
-// MYLOW PROJECT ASSISTANT
-// V2.1 FOUNDATION
-// ======================
-
-const workspace =
-document.getElementById("workspace");
-
-const searchInput =
-document.getElementById("projectSearch");
+// =========================
+// MYLOW V3.0
+// PROJECT DETECTION ENGINE
+// =========================
 
 const searchBtn =
 document.getElementById("searchBtn");
 
-const projectName =
-document.getElementById("projectName");
+const searchInput =
+document.getElementById("projectSearch");
 
-// ----------------------
-// PROJECT DETECTION
-// ----------------------
+const workspace =
+document.getElementById("workspace");
 
-function startProject() {
+const projectTitle =
+document.getElementById("projectTitle");
 
-    const query =
-    searchInput.value
-    .trim()
-    .toLowerCase();
+const weatherPlanner =
+document.getElementById("weatherPlanner");
 
-    if(query === ""){
-        alert("Please describe your project.");
-        return;
-    }
+const budgetTotal =
+document.getElementById("budgetTotal");
 
-    workspace.classList.remove("hidden");
+const readinessPercent =
+document.getElementById("readinessPercent");
 
-    // Interior Paint
+// =========================
+// PROJECT START
+// =========================
 
-    if(
-    query.includes("paint")
-    &&
-    query.includes("bathroom")
+function startProject(){
+
+const query =
+searchInput.value
+.trim()
+.toLowerCase();
+
+if(query===""){
+
+alert(
+"Please describe your project."
+);
+
+return;
+
+}
+
+// show workspace
+
+workspace.classList.remove(
+"hidden"
+);
+
+// =========================
+// BATHROOM
+// =========================
+
+if(
+query.includes("bathroom")
 ){
 
-    projectName.value =
-    "Bathroom Paint Project";
+projectTitle.innerText =
+"Bathroom Paint Project";
 
-    document.getElementById(
-        "projectTitle"
-    ).innerText =
-    "Bathroom Paint Project";
+budgetTotal.innerText =
+"$136.90";
 
-    updateCoach(
-        "2 Gallons",
-        "$112.97",
-        "Purdy White Dove 3/8\" Nap"
-    );
+readinessPercent.innerText =
+"0%";
 
-    return;
+weatherPlanner.classList.add(
+"hidden"
+);
+
+return;
+
 }
 
-    // Kitchen
+// =========================
+// KITCHEN
+// =========================
 
-    if(
-    query.includes("paint")
-    &&
-    query.includes("kitchen")
+if(
+query.includes("kitchen")
 ){
 
-    projectName.value =
-    "Kitchen Paint Project";
+projectTitle.innerText =
+"Kitchen Paint Project";
 
-    document.getElementById(
-        "projectTitle"
-    ).innerText =
-    "Kitchen Paint Project";
+budgetTotal.innerText =
+"$142.90";
 
-    updateCoach(
-        "2 Gallons",
-        "$118.97",
-        "Purdy White Dove 3/8\" Nap"
-    );
+readinessPercent.innerText =
+"0%";
 
-    return;
+weatherPlanner.classList.add(
+"hidden"
+);
+
+return;
+
 }
 
-    // Deck
+// =========================
+// DECK
+// =========================
 
-    if(
-    query.includes("deck")
-    ||
-    query.includes("stain")
+if(
+query.includes("deck")
+||
+query.includes("stain")
 ){
 
-    projectName.value =
-    "Deck Stain Project";
+projectTitle.innerText =
+"Deck Stain Project";
 
-    document.getElementById(
-        "projectTitle"
-    ).innerText =
-    "Deck Stain Project";
+budgetTotal.innerText =
+"$189.90";
 
-    updateCoach(
-        "3 Gallons",
-        "$189.97",
-        "Deck Stain Pad"
-    );
+readinessPercent.innerText =
+"0%";
 
-    return;
+weatherPlanner.classList.remove(
+"hidden"
+);
+
+return;
+
 }
 
-    // Fence
+// =========================
+// FENCE
+// =========================
 
-    if(
-    query.includes("fence")
+if(
+query.includes("fence")
 ){
 
-    projectName.value =
-    "Fence Stain Project";
+projectTitle.innerText =
+"Fence Stain Project";
 
-    document.getElementById(
-        "projectTitle"
-    ).innerText =
-    "Fence Stain Project";
+budgetTotal.innerText =
+"$159.90";
 
-    updateCoach(
-        "2 Gallons",
-        "$154.97",
-        "Deck Stain Pad"
-    );
+readinessPercent.innerText =
+"0%";
 
-    return;
+weatherPlanner.classList.remove(
+"hidden"
+);
+
+return;
+
 }
 
-    // Cabinets
+// =========================
+// CABINETS
+// =========================
 
-    if(
-    query.includes("cabinet")
+if(
+query.includes("cabinet")
 ){
 
-    projectName.value =
-    "Cabinet Paint Project";
+projectTitle.innerText =
+"Cabinet Paint Project";
 
-    document.getElementById(
-        "projectTitle"
-    ).innerText =
-    "Cabinet Paint Project";
+budgetTotal.innerText =
+"$149.90";
 
-    updateCoach(
-        "1 Gallon",
-        "$139.97",
-        "Purdy XL Glide Brush"
-    );
+readinessPercent.innerText =
+"0%";
 
-    return;
-}
+weatherPlanner.classList.add(
+"hidden"
+);
 
-    // Default
-
-    projectName.value =
-    "Custom Project";
+return;
 
 }
 
-// ----------------------
-// COACH UPDATES
-// ----------------------
+// =========================
+// DEFAULT
+// =========================
 
-function updateCoach(
-    gallons,
-    budget,
-    applicator
-){
+projectTitle.innerText =
+"Custom Project";
 
-    const coachCards =
-    document.querySelectorAll(".coach-card");
+budgetTotal.innerText =
+"$0.00";
 
-    if(coachCards.length < 5){
-        return;
-    }
+weatherPlanner.classList.add(
+"hidden"
+);
 
-    coachCards[2].innerHTML = `
-        <h3>Recommended Applicator</h3>
-        <p>${applicator}</p>
-    `;
-
-    coachCards[3].innerHTML = `
-        <h3>Estimated Product Needed</h3>
-        <p>${gallons}</p>
-    `;
-
-    coachCards[4].innerHTML = `
-        <h3>Estimated Budget</h3>
-        <div class="budget">${budget}</div>
-    `;
 }
 
-// ----------------------
-// FILTER CHIPS
-// ----------------------
-
-document.addEventListener(
-"click",
-function(event){
-
-    if(
-        event.target.classList.contains("chip")
-    ){
-
-        const parent =
-        event.target.parentElement;
-
-        const chips =
-        parent.querySelectorAll(".chip");
-
-        chips.forEach(chip=>{
-            chip.classList.remove("active");
-        });
-
-        event.target.classList.add("active");
-
-    }
-
-});
-
-// ----------------------
-// CHECKLIST
-// ----------------------
-
-document.querySelectorAll(".add-btn")
-.forEach(button=>{
-
-    button.addEventListener(
-    "click",
-    function(){
-
-        if(
-            this.innerText === "Add"
-        ){
-
-            this.innerText =
-            "Added ✓";
-
-            this.style.background =
-            "#1f7a3f";
-
-        }
-        else{
-
-            this.innerText =
-            "Add";
-
-            this.style.background =
-            "#004990";
-
-        }
-
-        updateCompletion();
-
-    });
-
-});
-document
-.querySelectorAll(
-"input[type='checkbox']"
-)
-.forEach(box=>{
-
-    box.addEventListener(
-    "change",
-    function(){
-
-        const item =
-        this.closest(
-            ".checklist-item"
-        );
-
-        if(this.checked){
-
-            item.classList.add(
-                "completed-item"
-            );
-
-        }
-        else{
-
-            item.classList.remove(
-                "completed-item"
-            );
-
-        }
-
-        updateCompletion();
-
-    });
-
-});
-// ----------------------
-// SAVE PROJECT
-// ----------------------
-
-document
-.getElementById("saveProjectBtn")
-.addEventListener(
-"click",
-function(){
-
-    alert(
-        projectName.value +
-        " saved successfully."
-    );
-
-});
-
-// ----------------------
-// SEARCH EVENTS
-// ----------------------
+// =========================
+// SEARCH BUTTON
+// =========================
 
 searchBtn.addEventListener(
 "click",
 startProject
 );
 
+// =========================
+// ENTER KEY
+// =========================
+
 searchInput.addEventListener(
 "keypress",
 function(event){
 
-    if(
-        event.key === "Enter"
-    ){
-        startProject();
-    }
-
-});
-function showWhy(){
-
-alert(
-`Recommended because:
-
-• Matches your project type
-
-• Available in store
-
-• Appropriate for selected surface
-
-• Strong customer value
-
-• Compatible with recommended applicators`
-);
-
-}
-document
-.querySelectorAll(".chip")
-.forEach(chip=>{
-
-chip.addEventListener(
-"click",
-function(){
-
-const text =
-this.innerText;
-
-const coachCards =
-document.querySelectorAll(".coach-card");
-
-if(coachCards.length < 5){
-return;
-}
-
-if(text==="Smooth"){
-
-coachCards[2].innerHTML = `
-<h3>Recommended Applicator</h3>
-<p>Purdy White Dove 3/8" Nap</p>
-`;
-
-}
-
-if(text==="Light Texture"){
-
-coachCards[2].innerHTML = `
-<h3>Recommended Applicator</h3>
-<p>Purdy White Dove 1/2" Nap</p>
-`;
-
-}
-
-if(text==="Heavy Texture"){
-
-coachCards[2].innerHTML = `
-<h3>Recommended Applicator</h3>
-<p>Purdy White Dove 3/4" Nap</p>
-`;
-
-}
-
-});
-
-});
-// ======================
-// PROJECT COMPLETION
-// ======================
-
-function updateCompletion(){
-
-    const totalItems =
-    document.querySelectorAll(
-        ".checklist-item"
-    ).length;
-
-    let completed = 0;
-
-    document
-    .querySelectorAll(
-        ".checklist-item"
-    )
-    .forEach(item=>{
-
-        const addButton =
-        item.querySelector(
-            ".add-btn"
-        );
-
-        const checkbox =
-        item.querySelector(
-            "input[type='checkbox']"
-        );
-
-        if(
-            addButton &&
-            addButton.innerText.includes("✓")
-        ){
-            completed++;
-        }
-
-        else if(
-            checkbox &&
-            checkbox.checked
-        ){
-            completed++;
-        }
-
-    });
-
-    const percent =
-    Math.round(
-        (completed/totalItems)*100
-    );
-
-    document
-    .getElementById(
-        "completionPercent"
-    )
-    .innerText =
-    percent + "%";
-
-    document
-    .getElementById(
-        "completionText"
-    )
-    .innerText =
-    `${completed} / ${totalItems} Items Complete`;
-
-    if(percent===100){
-
-        alert(
-        "🎉 Project Ready!\n\nYou now have everything needed to complete this project."
-        );
-
-    }
-
-}
-// COLLAPSE PROJECT DETAILS
-
-document
-.getElementById("toggleDetailsBtn")
-.addEventListener(
-"click",
-function(){
-
-    const content =
-    document.getElementById(
-        "projectDetailsContent"
-    );
-
-    if(
-        content.style.display === "none"
-    ){
-
-        content.style.display =
-        "block";
-
-        this.innerText =
-        "Project Details ▼";
-
-    }
-    else{
-
-        content.style.display =
-        "none";
-
-        this.innerText =
-        "Project Details ►";
-
-    }
-
-});
-function openPaintModal(){
-
-document
-.getElementById(
-"paintModal"
-)
-.style.display =
-"flex";
-
-}
-
-function closePaintModal(){
-
-document
-.getElementById(
-"paintModal"
-)
-.style.display =
-"none";
-
-}
-
-function selectPaint(
-paintName,
-price
+if(
+event.key==="Enter"
 ){
 
-document
-.getElementById(
-"selectedPaintName"
-)
-.innerText =
-paintName;
+startProject();
 
-document
-.getElementById(
-"selectedPaintPrice"
-)
-.innerText =
-price;
+}
 
-closePaintModal();
+});
+
+// =========================
+// WALKTHROUGH BUTTON
+// =========================
+
+const walkthroughBtn =
+document.getElementById(
+"walkthroughBtn"
+);
+
+if(walkthroughBtn){
+
+walkthroughBtn.addEventListener(
+"click",
+function(){
+
+alert(
+`Project Walkthrough
+
+1. Prepare the room
+
+2. Patch imperfections
+
+3. Sand repairs
+
+4. Prime repairs
+
+5. Cut in edges
+
+6. Roll walls
+
+7. Apply second coat
+
+8. Cleanup`
+);
+
+});
+
+}
+
+// =========================
+// COLLAPSE DETAILS
+// =========================
+
+const detailsBtn =
+document.getElementById(
+"toggleDetailsBtn"
+);
+
+if(detailsBtn){
+
+detailsBtn.addEventListener(
+"click",
+function(){
+
+const details =
+document.getElementById(
+"projectDetailsContent"
+);
+
+if(
+details.classList.contains(
+"hidden"
+)
+){
+
+details.classList.remove(
+"hidden"
+);
+
+this.innerText =
+"Project Details ▼";
+
+}
+else{
+
+details.classList.add(
+"hidden"
+);
+
+this.innerText =
+"Project Details ►";
+
+}
+
+});
 
 }
