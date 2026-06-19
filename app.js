@@ -504,3 +504,47 @@ function(){
     }
 
 });
+function openPaintModal(){
+
+document
+.getElementById(
+"paintModal"
+)
+.style.display =
+"flex";
+
+}
+
+function closePaintModal(){
+
+document
+.getElementById(
+"paintModal"
+)
+.style.display =
+"none";
+
+}
+
+function selectPaint(
+paintName,
+price
+){
+
+document
+.getElementById(
+"selectedPaintName"
+)
+.innerText =
+paintName;
+
+document
+.getElementById(
+"selectedPaintPrice"
+)
+.innerText =
+price;
+
+closePaintModal();
+
+}
