@@ -254,10 +254,46 @@ document.querySelectorAll(".add-btn")
 
         }
 
+        updateCompletion();
+
     });
 
 });
+document
+.querySelectorAll(
+"input[type='checkbox']"
+)
+.forEach(box=>{
 
+    box.addEventListener(
+    "change",
+    function(){
+
+        const item =
+        this.closest(
+            ".checklist-item"
+        );
+
+        if(this.checked){
+
+            item.classList.add(
+                "completed-item"
+            );
+
+        }
+        else{
+
+            item.classList.remove(
+                "completed-item"
+            );
+
+        }
+
+        updateCompletion();
+
+    });
+
+});
 // ----------------------
 // SAVE PROJECT
 // ----------------------
@@ -360,3 +396,76 @@ coachCards[2].innerHTML = `
 });
 
 });
+// ======================
+// PROJECT COMPLETION
+// ======================
+
+function updateCompletion(){
+
+    const totalItems =
+    document.querySelectorAll(
+        ".checklist-item"
+    ).length;
+
+    let completed = 0;
+
+    document
+    .querySelectorAll(
+        ".checklist-item"
+    )
+    .forEach(item=>{
+
+        const addButton =
+        item.querySelector(
+            ".add-btn"
+        );
+
+        const checkbox =
+        item.querySelector(
+            "input[type='checkbox']"
+        );
+
+        if(
+            addButton &&
+            addButton.innerText.includes("✓")
+        ){
+            completed++;
+        }
+
+        else if(
+            checkbox &&
+            checkbox.checked
+        ){
+            completed++;
+        }
+
+    });
+
+    const percent =
+    Math.round(
+        (completed/totalItems)*100
+    );
+
+    document
+    .getElementById(
+        "completionPercent"
+    )
+    .innerText =
+    percent + "%";
+
+    document
+    .getElementById(
+        "completionText"
+    )
+    .innerText =
+    `${completed} / ${totalItems} Items Complete`;
+
+    if(percent===100){
+
+        alert(
+        "🎉 Project Ready!\n\nYou now have everything needed to complete this project."
+        );
+
+    }
+
+}
