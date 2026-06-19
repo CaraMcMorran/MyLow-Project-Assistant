@@ -309,8 +309,3 @@ this.innerText =
 });
 
 }
-searchBtn.onclick = function(){
-
-alert("Search button clicked");
-
-};
