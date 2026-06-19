@@ -4,34 +4,412 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyLow Project Assistant</title>
-<style>
-body{
-font-family:Arial,sans-serif;
-background:#f6f8fb;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
-}
-.card{
-background:white;
-padding:40px;
-border-radius:16px;
-box-shadow:0 8px 24px rgba(0,0,0,.1);
-text-align:center;
-max-width:600px;
-}
-h1{
-color:#004990;
-}
-</style>
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div class="card">
-<h1>MyLow Project Assistant</h1>
-<p>Version 2.1 is currently being deployed.</p>
-<p>Please return shortly.</p>
+
+<!-- DISCLAIMER -->
+
+<div class="disclaimer-banner">
+    ⚠️ PROTOTYPE DISCLAIMER:
+    This website is an independently created demonstration prototype and is not affiliated with,
+    endorsed by, or connected to Lowe's Companies, Inc. Product recommendations, pricing,
+    inventory, checkout flows, aisle locations, store maps, and associate workflows shown on
+    this site are visual representations only.
 </div>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        my<span>low</span> Project Assistant
+    </div>
+
+    <div class="header-actions">
+
+        <div class="store-pill">
+            📍 Columbia East
+        </div>
+
+        <button class="header-btn">
+            Saved Projects
+        </button>
+
+        <button class="header-btn">
+            Account
+        </button>
+
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        Tell MyLow About Your Project
+    </h1>
+
+    <p>
+        Paint, stain, deck, fence, cabinet, trim and exterior projects.
+        MyLow will build a customized shopping list, recommend products,
+        estimate costs, and prepare your project plan.
+    </p>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+    <div class="search-card">
+
+        <h2>
+            What project are you working on?
+        </h2>
+
+        <div class="search-row">
+
+            <input
+                id="projectSearch"
+                type="text"
+                placeholder="Examples: Paint my bathroom, stain my deck, paint kitchen cabinets..."
+            >
+
+            <button id="searchBtn">
+                Ask MyLow
+            </button>
+
+        </div>
+
+        <div class="examples">
+
+            <strong>Examples:</strong>
+
+            <ul>
+                <li>Paint my bathroom</li>
+                <li>Paint my living room</li>
+                <li>Paint kitchen cabinets</li>
+                <li>Stain my deck</li>
+                <li>Recoat my fence</li>
+                <li>Stain my pergola</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAIN APP -->
+
+<section id="workspace" class="workspace hidden">
+
+    <!-- LEFT COLUMN -->
+
+    <div class="panel">
+
+        <h2>Project Details</h2>
+
+        <div class="project-name-row">
+
+            <input
+                id="projectName"
+                value="Bathroom Paint Project"
+            >
+
+            <button id="saveProjectBtn">
+                💾 Save
+            </button>
+
+        </div>
+
+        <h3>Room Type</h3>
+
+        <div class="chip-group">
+
+            <button class="chip active">Bathroom</button>
+            <button class="chip">Kitchen</button>
+            <button class="chip">Bedroom</button>
+            <button class="chip">Living Room</button>
+
+        </div>
+
+        <h3>Surface Type</h3>
+
+        <div class="chip-group">
+
+            <button class="chip active">Smooth</button>
+            <button class="chip">Light Texture</button>
+            <button class="chip">Heavy Texture</button>
+            <button class="chip">Orange Peel</button>
+            <button class="chip">Knockdown</button>
+
+        </div>
+
+        <h3>Wall Condition</h3>
+
+        <div class="chip-group">
+
+            <button class="chip active">Excellent</button>
+            <button class="chip">Minor Repairs</button>
+            <button class="chip">Major Repairs</button>
+
+        </div>
+
+        <h3>Finish / Sheen</h3>
+
+        <div class="chip-group">
+
+            <button class="chip active">Satin</button>
+            <button class="chip">Eggshell</button>
+            <button class="chip">Flat</button>
+            <button class="chip">Semi-Gloss</button>
+
+        </div>
+
+        <h3>Color Family</h3>
+
+        <div class="chip-group">
+
+            <button class="chip">Whites</button>
+            <button class="chip active">Grays</button>
+            <button class="chip">Beiges</button>
+            <button class="chip">Blues</button>
+            <button class="chip">Greens</button>
+
+        </div>
+
+        <h3>Project Size</h3>
+
+        <div class="chip-group">
+
+            <button class="chip active">Small</button>
+            <button class="chip">Medium</button>
+            <button class="chip">Large</button>
+
+        </div>
+
+    </div>
+
+    <!-- CENTER COLUMN -->
+
+    <div class="panel">
+
+        <h2>Interactive Project Checklist</h2>
+
+        <p class="subtext">
+            Add products to cart or mark items you already own.
+        </p>
+
+        <div id="checklist">
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Interior Paint</strong>
+                    <p>Recommended coating for selected project.</p>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Roller</strong>
+                    <p>Recommended nap based on surface texture.</p>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Brush</strong>
+                    <p>Recommended trim brush.</p>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Painter's Tape</strong>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Primer</strong>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Caulk</strong>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="checklist-item">
+
+                <div>
+                    <strong>Drop Cloth</strong>
+                </div>
+
+                <div class="checklist-actions">
+                    <button class="add-btn">Add</button>
+                    <label>
+                        <input type="checkbox">
+                        Already Have
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="checkout-row">
+
+            <button id="cartBtn">
+                Proceed To Cart
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+
+    <div class="panel">
+
+        <h2>MyLow Project Coach</h2>
+
+        <div class="coach-card">
+
+            <h3>Project Confidence</h3>
+
+            <div class="score">
+                92%
+            </div>
+
+            <p>
+                Recommendations are highly tailored to your selections.
+            </p>
+
+        </div>
+
+        <div class="coach-card">
+
+            <h3>Project Readiness</h3>
+
+            <div class="score green">
+                87%
+            </div>
+
+            <p>
+                Missing:
+                Painter's Tape
+            </p>
+
+        </div>
+
+        <div class="coach-card">
+
+            <h3>Recommended Roller</h3>
+
+            <p>
+                Purdy White Dove 3/8" Nap
+            </p>
+
+        </div>
+
+        <div class="coach-card">
+
+            <h3>Estimated Paint Needed</h3>
+
+            <p>
+                2 Gallons
+            </p>
+
+        </div>
+
+        <div class="coach-card">
+
+            <h3>Estimated Budget</h3>
+
+            <div class="budget">
+                $112.97
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    Prototype Only • Not Connected To Live Lowe's Systems
+
+</footer>
+
+<script src="app.js"></script>
+
 </body>
 </html>
