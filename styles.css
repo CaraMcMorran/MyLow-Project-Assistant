@@ -418,3 +418,6 @@ margin-bottom:10px;
     text-decoration:line-through;
 
 }
+#projectDetailsContent{
+display:none;
+}
