@@ -516,3 +516,18 @@ justify-content:flex-start;
 }
 
 }
+.completed-item{
+
+opacity:.5;
+
+background:#f4f6f8;
+
+transition:.3s ease;
+
+}
+
+.completed-item h3{
+
+text-decoration:line-through;
+
+}
