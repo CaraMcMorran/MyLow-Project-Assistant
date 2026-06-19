@@ -469,3 +469,38 @@ function updateCompletion(){
     }
 
 }
+// COLLAPSE PROJECT DETAILS
+
+document
+.getElementById("toggleDetailsBtn")
+.addEventListener(
+"click",
+function(){
+
+    const content =
+    document.getElementById(
+        "projectDetailsContent"
+    );
+
+    if(
+        content.style.display === "none"
+    ){
+
+        content.style.display =
+        "block";
+
+        this.innerText =
+        "Project Details ▼";
+
+    }
+    else{
+
+        content.style.display =
+        "none";
+
+        this.innerText =
+        "Project Details ►";
+
+    }
+
+});
