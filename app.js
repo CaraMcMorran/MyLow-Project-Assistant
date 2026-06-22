@@ -757,8 +757,6 @@ if(calculateDimensionsBtn){
 calculateDimensionsBtn.addEventListener(
 "click",
 function(){
-
-alert("Dimensions Calculator Running");
   
 const width =
 parseFloat(
