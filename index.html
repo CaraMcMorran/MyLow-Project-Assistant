@@ -193,6 +193,32 @@ $0.00
 
 <div class="summary-stat">
 
+<div class="summary-stat">
+
+<div class="summary-label">
+
+Estimated Paint Needed
+
+</div>
+
+<div
+class="summary-value"
+id="paintQuantity">
+
+2 Gallons
+
+</div>
+
+<button
+id="estimateBtn"
+class="secondary-btn">
+
+Personalize Estimate
+
+</button>
+
+</div>
+    
 <button
 id="walkthroughBtn">
 
@@ -1042,6 +1068,63 @@ Close
 </div>
 
 </div>
+
+<div
+id="estimateModal"
+class="modal hidden">
+
+<div class="modal-content">
+
+<h2>
+
+Paint Coverage Calculator
+
+</h2>
+
+<h3>
+
+Quick Estimate
+
+</h3>
+
+<select id="roomSize">
+
+<option value="2">
+Small Bathroom (2 Gallons)
+</option>
+
+<option value="3">
+Medium Bathroom (3 Gallons)
+</option>
+
+<option value="4">
+Large Bathroom (4 Gallons)
+</option>
+
+</select>
+
+<br><br>
+
+<button
+id="useEstimateBtn"
+class="primary-btn">
+
+Use This Estimate
+
+</button>
+
+<button
+id="closeEstimateBtn"
+class="secondary-btn">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+    
 </footer>
 
 <script src="app.js"></script>
