@@ -402,6 +402,8 @@ this.innerText =
 
 updateReadiness();
 
+updateBudget();
+
 });
 
 });
@@ -409,6 +411,7 @@ updateReadiness();
 document
 .querySelectorAll(".already-have-btn")
 .forEach(button=>{
+updateBudget();
 
 button.addEventListener(
 "click",
@@ -563,3 +566,38 @@ productModal.classList.add(
 });
 
 });
+function updateBudget(){
+
+let total = 0;
+
+document
+.querySelectorAll(
+".shopping-item"
+)
+.forEach(item=>{
+
+if(
+item.classList.contains(
+"completed-item"
+)
+){
+
+const price =
+parseFloat(
+item.dataset.price
+);
+
+total += price;
+
+}
+
+});
+
+document
+.getElementById(
+"budgetTotal"
+)
+.innerText =
+"$" + total.toFixed(2);
+
+}
