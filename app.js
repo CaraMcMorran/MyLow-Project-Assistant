@@ -52,132 +52,154 @@ workspace.classList.remove(
 );
 
 // =========================
-// BATHROOM
+// PROJECT TEMPLATES
 // =========================
 
-if(
-query.includes("bathroom")
-){
+const projectTemplates = {
 
-projectTitle.innerText =
-"Bathroom Paint Project";
+bathroom:{
+title:"Bathroom Paint Project",
+budget:"$136.90",
+weather:false,
+paint:"HGTV HOME Infinity Paint",
+primer:"ProBlock Primer"
+},
 
-budgetTotal.innerText =
-"$136.90";
+kitchen:{
+title:"Kitchen Paint Project",
+budget:"$142.90",
+weather:false,
+paint:"HGTV HOME Infinity Paint",
+primer:"ProBlock Primer"
+},
 
-readinessPercent.innerText =
-"0%";
+cabinet:{
+title:"Cabinet Paint Project",
+budget:"$149.90",
+weather:false,
+paint:"Cabinet Paint",
+primer:"Bonding Primer"
+},
 
-weatherPlanner.classList.add(
-"hidden"
-);
+deck:{
+title:"Deck Stain Project",
+budget:"$189.90",
+weather:true,
+paint:"Deck Stain",
+primer:"Deck Cleaner"
+},
 
-return;
-
+fence:{
+title:"Fence Stain Project",
+budget:"$159.90",
+weather:true,
+paint:"Fence Stain",
+primer:"Wood Cleaner"
 }
 
+};
+
 // =========================
-// KITCHEN
+// PROJECT TYPE DETECTION
 // =========================
 
-if(
-query.includes("kitchen")
-){
+let project = null;
 
-projectTitle.innerText =
-"Kitchen Paint Project";
-
-budgetTotal.innerText =
-"$142.90";
-
-readinessPercent.innerText =
-"0%";
-
-weatherPlanner.classList.add(
-"hidden"
-);
-
-return;
-
+if(query.includes("bathroom")){
+project = projectTemplates.bathroom;
 }
 
-// =========================
-// DECK
-// =========================
+else if(query.includes("kitchen")){
+project = projectTemplates.kitchen;
+}
 
-if(
-query.includes("deck")
-||
-query.includes("stain")
-){
+else if(query.includes("cabinet")){
+project = projectTemplates.cabinet;
+}
+
+else if(query.includes("deck")){
+project = projectTemplates.deck;
+}
+
+else if(query.includes("fence")){
+project = projectTemplates.fence;
+}
+
+if(project){
 
 projectTitle.innerText =
-"Deck Stain Project";
+project.title;
 
 budgetTotal.innerText =
-"$189.90";
+project.budget;
 
 readinessPercent.innerText =
 "0%";
+
+// Weather
+
+if(project.weather){
 
 weatherPlanner.classList.remove(
 "hidden"
 );
 
-return;
-
 }
-
-// =========================
-// FENCE
-// =========================
-
-if(
-query.includes("fence")
-){
-
-projectTitle.innerText =
-"Fence Stain Project";
-
-budgetTotal.innerText =
-"$159.90";
-
-readinessPercent.innerText =
-"0%";
-
-weatherPlanner.classList.remove(
-"hidden"
-);
-
-return;
-
-}
-
-// =========================
-// CABINETS
-// =========================
-
-if(
-query.includes("cabinet")
-){
-
-projectTitle.innerText =
-"Cabinet Paint Project";
-
-budgetTotal.innerText =
-"$149.90";
-
-readinessPercent.innerText =
-"0%";
+else{
 
 weatherPlanner.classList.add(
 "hidden"
 );
 
-return;
+}
+
+// Paint Recommendation
+
+document
+.getElementById(
+"selectedPaintName"
+)
+.innerText =
+project.paint;
+
+// Primer Recommendation
+
+const primerTitle =
+document.querySelectorAll(
+".recommendation-card h3"
+);
+
+if(primerTitle.length > 1){
+
+primerTitle[1].innerText =
+project.primer;
 
 }
 
+// Shopping List
+
+const shoppingItems =
+document.querySelectorAll(
+".shopping-item h3"
+);
+
+if(shoppingItems.length > 0){
+
+shoppingItems[0].innerText =
+project.paint;
+
+}
+
+if(shoppingItems.length > 1){
+
+shoppingItems[1].innerText =
+project.primer;
+
+}
+
+return;
+
+}
 // =========================
 // DEFAULT
 // =========================
