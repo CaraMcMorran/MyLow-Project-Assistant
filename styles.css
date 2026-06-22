@@ -563,3 +563,27 @@ border-radius:12px;
 margin-bottom:15px;
 
 }
+#estimateModal input,
+#estimateModal select{
+
+width:100%;
+
+padding:12px;
+
+border:1px solid #d9e2ec;
+
+border-radius:10px;
+
+}
+
+#estimateResults{
+
+background:#eef6ff;
+
+padding:15px;
+
+border-radius:12px;
+
+font-weight:700;
+
+}
