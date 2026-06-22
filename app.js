@@ -476,3 +476,90 @@ this.innerText =
 });
 
 });
+// =========================
+// PRODUCT MODAL
+// =========================
+
+const changeButtons =
+document.querySelectorAll(
+".change-product-btn"
+);
+
+const productModal =
+document.getElementById(
+"productModal"
+);
+
+changeButtons.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+productModal.classList.remove(
+"hidden"
+);
+
+});
+
+});
+
+document
+.getElementById(
+"closeModalBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+productModal.classList.add(
+"hidden"
+);
+
+});
+document
+.querySelectorAll(
+"#productModal .primary-btn"
+)
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+const product =
+this.dataset.product;
+
+const price =
+this.dataset.price;
+
+const paintItem =
+document.querySelector(
+".shopping-item h3"
+);
+
+const paintPrice =
+document.querySelector(
+".shopping-item .item-price"
+);
+
+paintItem.innerText =
+product;
+
+paintPrice.innerText =
+"$" + price;
+
+document
+.getElementById(
+"selectedPaintName"
+)
+.innerText =
+product;
+
+productModal.classList.add(
+"hidden"
+);
+
+});
+
+});
