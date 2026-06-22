@@ -690,6 +690,8 @@ document.getElementById(
 "roomSize"
 ).value
 );
+
+updatePaintQuantity();
   
 document.getElementById(
 "paintQuantity"
@@ -834,3 +836,85 @@ estimatedGallons +
 });
 
 }
+// =========================
+// QUANTITY CONTROLS
+// =========================
+
+const paintQtyDisplay =
+document.getElementById(
+"paintQty"
+);
+
+const paintPriceDisplay =
+document.getElementById(
+"paintTotalPrice"
+);
+
+const paintPlus =
+document.getElementById(
+"paintPlus"
+);
+
+const paintMinus =
+document.getElementById(
+"paintMinus"
+);
+
+const paintUnitPrice =
+68.98;
+
+function updatePaintQuantity(){
+
+if(!paintQtyDisplay){
+return;
+}
+
+paintQtyDisplay.innerText =
+paintGallons;
+
+paintPriceDisplay.innerText =
+"$" +
+(
+paintGallons *
+paintUnitPrice
+).toFixed(2);
+
+}
+
+if(paintPlus){
+
+paintPlus.addEventListener(
+"click",
+function(){
+
+paintGallons++;
+
+updatePaintQuantity();
+
+updateBudget();
+
+});
+
+}
+
+if(paintMinus){
+
+paintMinus.addEventListener(
+"click",
+function(){
+
+if(paintGallons > 1){
+
+paintGallons--;
+
+updatePaintQuantity();
+
+updateBudget();
+
+}
+
+});
+
+}
+
+updatePaintQuantity();
