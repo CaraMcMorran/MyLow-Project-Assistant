@@ -705,3 +705,31 @@ estimateModal.classList.add(
 });
 
 }
+function updatePaintEstimate(){
+
+const paintItem =
+document.querySelector(
+".shopping-item h3"
+);
+
+const paintPrice =
+68.98;
+
+const totalPaintPrice =
+paintPrice *
+paintGallons;
+
+const firstPrice =
+document.querySelector(
+".shopping-item .item-price"
+);
+
+if(firstPrice){
+
+firstPrice.innerText =
+"$" +
+totalPaintPrice.toFixed(2);
+
+}
+
+}
