@@ -623,3 +623,85 @@ document
 "$" + total.toFixed(2);
 
 }
+// =========================
+// COVERAGE CALCULATOR
+// =========================
+
+let paintGallons = 2;
+
+const estimateBtn =
+document.getElementById(
+"estimateBtn"
+);
+
+const estimateModal =
+document.getElementById(
+"estimateModal"
+);
+
+const useEstimateBtn =
+document.getElementById(
+"useEstimateBtn"
+);
+
+const closeEstimateBtn =
+document.getElementById(
+"closeEstimateBtn"
+);
+
+if(estimateBtn){
+
+estimateBtn.addEventListener(
+"click",
+function(){
+
+estimateModal.classList.remove(
+"hidden"
+);
+
+});
+
+}
+
+if(closeEstimateBtn){
+
+closeEstimateBtn.addEventListener(
+"click",
+function(){
+
+estimateModal.classList.add(
+"hidden"
+);
+
+});
+
+}
+
+if(useEstimateBtn){
+
+useEstimateBtn.addEventListener(
+"click",
+function(){
+
+paintGallons =
+parseInt(
+document.getElementById(
+"roomSize"
+).value
+);
+
+document.getElementById(
+"paintQuantity"
+).innerText =
+paintGallons +
+" Gallons";
+
+updatePaintEstimate();
+
+estimateModal.classList.add(
+"hidden"
+);
+
+});
+
+}
