@@ -503,12 +503,12 @@ Why We Recommend This Item
 
 </div>
 
-<button class="secondary-btn">
+<button
+class="secondary-btn change-product-btn">
 
 Select A Different Product
 
 </button>
-
 </div>
 
 </div>
@@ -926,7 +926,122 @@ Review your cart and enter information.
 <footer>
 
 Prototype Only • Not Connected To Live Lowe's Systems
+<div
+id="productModal"
+class="modal hidden">
 
+<div class="modal-content">
+
+<h2>
+
+Select A Different Paint
+
+</h2>
+
+<div class="product-choice">
+
+<h3>
+
+🏆 Best Match
+
+</h3>
+
+<p>
+
+HGTV HOME Infinity
+
+</p>
+
+<p>
+
+$68.98
+
+</p>
+
+<button
+class="primary-btn"
+data-product="HGTV HOME Infinity"
+data-price="68.98">
+
+Select
+
+</button>
+
+</div>
+
+<div class="product-choice">
+
+<h3>
+
+⭐ Better Match
+
+</h3>
+
+<p>
+
+Valspar Signature
+
+</p>
+
+<p>
+
+$49.98
+
+</p>
+
+<button
+class="primary-btn"
+data-product="Valspar Signature"
+data-price="49.98">
+
+Select
+
+</button>
+
+</div>
+
+<div class="product-choice">
+
+<h3>
+
+👍 Good Match
+
+</h3>
+
+<p>
+
+Project Source Paint
+
+</p>
+
+<p>
+
+$34.98
+
+</p>
+
+<button
+class="primary-btn"
+data-product="Project Source Paint"
+data-price="34.98">
+
+Select
+
+</button>
+
+</div>
+
+<button
+id="closeModalBtn"
+class="secondary-btn">
+
+Close
+
+</button>
+
+</div>
+
+</div>
 </footer>
 
 <script src="app.js"></script>
