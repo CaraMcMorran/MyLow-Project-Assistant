@@ -684,12 +684,13 @@ useEstimateBtn.addEventListener(
 function(){
 
 paintGallons =
+estimatedGallons ||
 parseInt(
 document.getElementById(
 "roomSize"
 ).value
 );
-
+  
 document.getElementById(
 "paintQuantity"
 ).innerText =
@@ -731,5 +732,103 @@ firstPrice.innerText =
 totalPaintPrice.toFixed(2);
 
 }
+
+}
+// =========================
+// COVERAGE CALCULATOR V2
+// =========================
+
+let estimatedGallons = 2;
+
+const calculateDimensionsBtn =
+document.getElementById(
+"calculateDimensionsBtn"
+);
+
+const calculateSqFtBtn =
+document.getElementById(
+"calculateSqFtBtn"
+);
+
+if(calculateDimensionsBtn){
+
+calculateDimensionsBtn.addEventListener(
+"click",
+function(){
+
+const width =
+parseFloat(
+document.getElementById(
+"roomWidth"
+).value
+) || 0;
+
+const length =
+parseFloat(
+document.getElementById(
+"roomLength"
+).value
+) || 0;
+
+const height =
+parseFloat(
+document.getElementById(
+"roomHeight"
+).value
+) || 8;
+
+const wallArea =
+(
+(width * height * 2)
++
+(length * height * 2)
+);
+
+estimatedGallons =
+Math.max(
+1,
+Math.ceil(
+wallArea / 350
+)
+);
+
+document.getElementById(
+"estimateGallons"
+).innerText =
+estimatedGallons +
+" Gallons";
+
+});
+
+}
+
+if(calculateSqFtBtn){
+
+calculateSqFtBtn.addEventListener(
+"click",
+function(){
+
+const sqft =
+parseFloat(
+document.getElementById(
+"squareFeetInput"
+).value
+) || 0;
+
+estimatedGallons =
+Math.max(
+1,
+Math.ceil(
+sqft / 350
+)
+);
+
+document.getElementById(
+"estimateGallons"
+).innerText =
+estimatedGallons +
+" Gallons";
+
+});
 
 }
