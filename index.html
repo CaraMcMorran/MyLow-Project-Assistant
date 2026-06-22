@@ -5,14 +5,18 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>
-MyLow Project Assistant V3.4.1
+
+MyLow Project Assistant
+
 </title>
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="styles.css">
 
 </head>
@@ -36,9 +40,8 @@ pricing,
 weather guidance,
 store maps,
 inventory,
-checkout flows,
-pickup preparation workflows
-and AI recommendations
+checkout workflows
+and project preparation services
 are visual representations only.
 
 </div>
@@ -83,9 +86,11 @@ My Account
 <!-- STORE SELECTION -->
 <!-- ========================================= -->
 
-<section class="store-selector-section">
+<section class="store-selection-section">
 
-<div class="store-selector-card">
+<div class="store-selection-card">
+
+<div class="store-selection-left">
 
 <h2>
 
@@ -95,13 +100,15 @@ Select Your Store
 
 <p>
 
-Enter your ZIP Code and choose the store
-you would like MyLow to use for pricing,
-maps, weather planning and pickup options.
+Enter your ZIP code to find nearby stores.
+Store selection powers:
+
+Store Maps • Aisle/Bay Locations •
+Pickup Preparation • Weather Planning
 
 </p>
 
-<div class="zip-row">
+<div class="zip-search-row">
 
 <input
 type="text"
@@ -118,52 +125,22 @@ Find Stores
 
 </div>
 
+</div>
+
 <div
-id="storeResults"
-class="store-results hidden">
+id="storeSearchResults"
+class="store-search-results hidden">
 
-<div class="store-option">
+<h3>
 
-<input
-type="radio"
-name="storeChoice"
-id="store1">
+Choose A Store
 
-<label for="store1">
+</h3>
 
-Store Option 1
+<div
+id="storeOptionsContainer">
 
-</label>
-
-</div>
-
-<div class="store-option">
-
-<input
-type="radio"
-name="storeChoice"
-id="store2">
-
-<label for="store2">
-
-Store Option 2
-
-</label>
-
-</div>
-
-<div class="store-option">
-
-<input
-type="radio"
-name="storeChoice"
-id="store3">
-
-<label for="store3">
-
-Store Option 3
-
-</label>
+<!-- Dynamic Store Results -->
 
 </div>
 
@@ -182,98 +159,31 @@ Use Selected Store
 </section>
 
 <!-- ========================================= -->
-<!-- STORE INFORMATION -->
+<!-- ACTIVE STORE CARD -->
 <!-- ========================================= -->
 
 <section
-id="storeCard"
-class="store-card hidden">
+id="activeStoreCard"
+class="active-store-card hidden">
 
 <div class="store-card-header">
 
-<h2>
+<div>
 
-Selected Store
+<div class="store-card-label">
+
+SELECTED STORE
+
+</div>
+
+<h2
+id="selectedStoreName">
+
+Mooresville Lowe's
 
 </h2>
 
-<div
-id="selectedStoreBadge"
-class="store-badge">
-
-Store Connected
-
 </div>
-
-</div>
-
-<div class="store-grid">
-
-<div class="store-detail">
-
-<label>Store Name</label>
-
-<div id="storeName">
-
-Store Not Selected
-
-</div>
-
-</div>
-
-<div class="store-detail">
-
-<label>Store Number</label>
-
-<div id="storeNumber">
-
----</div>
-
-</div>
-
-<div class="store-detail">
-
-<label>Phone</label>
-
-<div id="storePhone">
-
----</div>
-
-</div>
-
-<div class="store-detail">
-
-<label>Hours</label>
-
-<div id="storeHours">
-
----</div>
-
-</div>
-
-<div class="store-detail full-width">
-
-<label>Address</label>
-
-<div id="storeAddress">
-
-Please select a store.
-
-</div>
-
-</div>
-
-</div>
-
-<div class="store-actions">
-
-<button
-id="launchStoreMapBtn"
-class="secondary-btn">
-
-View Store Map
-
-</button>
 
 <button
 id="changeStoreBtn"
@@ -285,13 +195,99 @@ Change Store
 
 </div>
 
+<div class="store-card-grid">
+
+<div class="store-detail">
+
+<label>
+
+Store Number
+
+</label>
+
+<div
+id="selectedStoreNumber">
+
+0000
+
+</div>
+
+</div>
+
+<div class="store-detail">
+
+<label>
+
+Phone
+
+</label>
+
+<div
+id="selectedStorePhone">
+
+(000) 000-0000
+
+</div>
+
+</div>
+
+<div class="store-detail">
+
+<label>
+
+Hours
+
+</label>
+
+<div
+id="selectedStoreHours">
+
+Store Hours
+
+</div>
+
+</div>
+
+<div class="store-detail full-width">
+
+<label>
+
+Address
+
+</label>
+
+<div
+id="selectedStoreAddress">
+
+Store Address
+
+</div>
+
+</div>
+
+</div>
+
+<div class="store-card-actions">
+
+<button
+id="viewStoreMapBtn"
+class="secondary-btn">
+
+View Store Map
+
+</button>
+
+</div>
+
 </section>
 
 <!-- ========================================= -->
-<!-- HERO -->
+<!-- PROJECT SEARCH -->
 <!-- ========================================= -->
 
-<section class="hero">
+<section class="project-search-section">
+
+<div class="project-search-card">
 
 <h1>
 
@@ -306,39 +302,19 @@ Describe your project naturally.
 MyLow will identify the project,
 recommend products,
 estimate quantities,
-build a shopping list,
-calculate budget estimates
-and prepare a complete project plan.
+build a project checklist,
+calculate your budget,
+and help prepare everything needed
+to complete the project.
 
 </p>
 
-</section>
-
-<!-- ========================================= -->
-<!-- PROJECT SEARCH -->
-<!-- ========================================= -->
-
-<section class="search-wrapper">
-
-<div class="search-card">
-
-<h2>
-
-What project are you working on?
-
-</h2>
-
-<div class="search-row">
+<div class="project-search-row">
 
 <input
-
 id="projectSearch"
-
 type="text"
-
-placeholder="Examples: Paint my bathroom, stain my deck, repaint my fence"
-
->
+placeholder="Examples: Paint my bathroom, stain my deck, paint my kitchen cabinets">
 
 <button
 id="searchBtn"
@@ -350,7 +326,7 @@ Ask MyLow
 
 </div>
 
-<div class="search-examples">
+<div class="project-search-examples">
 
 <strong>Try:</strong>
 
@@ -367,118 +343,147 @@ Paint my living room
 </section>
 
 <!-- ========================================= -->
-<!-- PROJECT DETAILS -->
+<!-- PROJECT CONTROL BAR -->
 <!-- ========================================= -->
 
 <section
-id="projectDetailsCard"
-class="project-details-card hidden">
+id="projectControlBar"
+class="project-control-bar hidden">
 
-<div class="card-header">
+<div class="project-control-top">
 
-<h2>
+<div>
 
-Project Details
+<div
+id="detectedProjectBadge"
+class="project-badge">
+
+PROJECT DETECTED
+
+</div>
+
+<h2
+id="projectTitle">
+
+Bathroom Paint Project
 
 </h2>
 
-<div
-id="projectDetectedType"
-class="project-type-badge">
+</div>
 
-Project Not Detected
+<button
+id="projectWalkthroughBtn"
+class="secondary-btn">
+
+🎥 Project Walkthrough
+
+</button>
 
 </div>
 
-</div>
+<div class="project-control-grid">
 
-<div class="details-grid">
-
-<div class="detail-field">
+<div class="project-control-field">
 
 <label>
 
-Room / Area Type
+Room / Area
 
 </label>
 
 <select id="roomType">
 
 <option>
-Select
-</option>
 
-<option>
 Bathroom
+
 </option>
 
 <option>
+
 Kitchen
+
 </option>
 
 <option>
+
 Bedroom
+
 </option>
 
 <option>
+
 Living Room
+
 </option>
 
 <option>
+
 Deck
+
 </option>
 
 <option>
+
 Fence
+
 </option>
 
 <option>
+
 Exterior
+
 </option>
 
 </select>
 
 </div>
 
-<div class="detail-field">
+<div class="project-control-field">
 
 <label>
 
-Surface Type
+Surface
 
 </label>
 
 <select id="surfaceType">
 
 <option>
-Select
-</option>
 
-<option>
 Drywall
+
 </option>
 
 <option>
-Previously Painted
-</option>
 
-<option>
 Wood
+
 </option>
 
 <option>
+
+Previously Painted
+
+</option>
+
+<option>
+
 Composite
+
 </option>
 
 <option>
+
 Concrete
+
 </option>
 
 </select>
 
 </div>
 
-<div class="detail-field">
+<div class="project-control-field">
 
 <label>
 
@@ -489,110 +494,72 @@ Condition
 <select id="surfaceCondition">
 
 <option>
-Select
-</option>
 
-<option>
-Excellent
-</option>
-
-<option>
 Good
+
 </option>
 
 <option>
+
+Excellent
+
+</option>
+
+<option>
+
 Needs Repair
+
 </option>
 
 </select>
 
 </div>
 
-<div class="detail-field">
+<div class="project-control-field">
 
 <label>
 
-Finish / Sheen
+Finish
 
 </label>
 
 <select id="finishType">
 
 <option>
-Select
-</option>
 
-<option>
-Flat
-</option>
-
-<option>
-Eggshell
-</option>
-
-<option>
 Satin
+
 </option>
 
 <option>
+
+Eggshell
+
+</option>
+
+<option>
+
+Flat
+
+</option>
+
+<option>
+
 Semi-Gloss
+
 </option>
 
 <option>
+
 Gloss
+
 </option>
 
 </select>
 
 </div>
 
-<div class="detail-field">
-
-<label>
-
-Color Family
-
-</label>
-
-<select id="colorFamily">
-
-<option>
-Select
-</option>
-
-<option>
-White
-</option>
-
-<option>
-Gray
-</option>
-
-<option>
-Blue
-</option>
-
-<option>
-Green
-</option>
-
-<option>
-Beige
-</option>
-
-<option>
-Brown
-</option>
-
-<option>
-Black
-</option>
-
-</select>
-
-</div>
-
-<div class="detail-field">
+<div class="project-control-field">
 
 <label>
 
@@ -603,23 +570,27 @@ Project Size
 <select id="projectSize">
 
 <option>
-Select
-</option>
 
-<option>
 Small
+
 </option>
 
 <option>
+
 Medium
+
 </option>
 
 <option>
+
 Large
+
 </option>
 
 <option>
+
 Extra Large
+
 </option>
 
 </select>
@@ -628,65 +599,25 @@ Extra Large
 
 </div>
 
-<div class="dimension-section">
-
-<h3>
-
-Project Dimensions
-
-</h3>
-
-<div class="dimension-grid">
-
-<div class="detail-field">
-
-<label>
-
-Width (ft)
-
-</label>
+<div class="project-dimensions-row">
 
 <input
 type="number"
 id="projectWidth"
-placeholder="12">
-
-</div>
-
-<div class="detail-field">
-
-<label>
-
-Length (ft)
-
-</label>
+placeholder="Width (ft)">
 
 <input
 type="number"
 id="projectLength"
-placeholder="12">
-
-</div>
-
-<div class="detail-field">
-
-<label>
-
-Height (ft)
-
-</label>
+placeholder="Length (ft)">
 
 <input
 type="number"
 id="projectHeight"
-placeholder="8">
-
-</div>
-
-</div>
+placeholder="Height (ft)">
 
 <button
-id="updateProjectDetailsBtn"
+id="updateProjectBtn"
 class="primary-btn">
 
 Update Recommendations
@@ -698,7 +629,7 @@ Update Recommendations
 </section>
 
 <!-- ========================================= -->
-<!-- WORKSPACE -->
+<!-- MAIN WORKSPACE -->
 <!-- ========================================= -->
 
 <section
@@ -708,18 +639,18 @@ class="workspace hidden">
 <div class="workspace-layout">
 
 <!-- ========================================= -->
-<!-- STICKY SIDEBAR -->
+<!-- STICKY PROJECT READY -->
 <!-- ========================================= -->
 
-<aside class="sticky-sidebar">
+<div
+id="stickyReadiness"
+class="sticky-readiness">
 
-<div class="readiness-card">
+<div class="readiness-label">
 
-<h2>
+PROJECT READY
 
-Project Ready
-
-</h2>
+</div>
 
 <div
 id="readinessPercent">
@@ -728,148 +659,62 @@ id="readinessPercent">
 
 </div>
 
-<div class="progress-container">
+<div class="readiness-progress">
 
 <div
 id="readinessBar"
-class="progress-bar">
+class="readiness-progress-bar">
 
 </div>
 
 </div>
 
-<p class="readiness-text">
-
-Your readiness score updates
-automatically as recommended
-products are added to your cart.
-
-</p>
-
 </div>
-
-<div class="budget-card">
-
-<h2>
-
-Estimated Budget
-
-</h2>
-
-<div
-id="budgetTotal"
-class="budget-value">
-
-$0.00
-
-</div>
-
-<div
-id="budgetBreakdown"
-class="budget-breakdown">
-
-Project estimate will appear here.
-
-</div>
-
-</div>
-
-<div
-id="weatherPlanner"
-class="weather-card hidden">
-
-<h2>
-
-Recommended Weather Window
-
-</h2>
-
-<div
-id="weatherWindow"
-class="weather-window">
-
-Waiting for location...
-
-</div>
-
-<div class="weather-note">
-
-Weather recommendations
-are estimates and may change.
-Always verify local conditions
-before beginning your project.
-
-</div>
-
-</div>
-
-</aside>
 
 <!-- ========================================= -->
-<!-- MAIN CONTENT -->
+<!-- LEFT COLUMN -->
 <!-- ========================================= -->
 
-<div class="workspace-main">
+<div class="workspace-left">
 
 <!-- ========================================= -->
-<!-- PROJECT SUMMARY -->
+<!-- RECOMMENDED PROJECT SYSTEM -->
 <!-- ========================================= -->
 
-<div class="summary-card">
+<div class="project-system-card">
 
-<div class="summary-header">
+<div class="project-system-header">
 
 <div>
 
-<h1
-id="projectTitle">
+<div class="section-label">
 
-Project Not Started
+RECOMMENDED PROJECT SYSTEM
 
-</h1>
+</div>
 
-<p
-id="projectDescription">
+<h2>
 
-Describe your project to begin.
+Everything You Need To Start This Project
+
+</h2>
+
+<p>
+
+MyLow selected products designed to work
+together based on your project.
 
 </p>
 
 </div>
 
-<button
-id="walkthroughBtn"
-class="secondary-btn">
-
-🎥 Watch Project Walkthrough
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- PROJECT SYSTEM RECOMMENDATION -->
-<!-- ========================================= -->
-
-<div class="system-card">
-
-<div class="system-header">
-
-<h2>
-
-Recommended Project System
-
-</h2>
-
-<div class="recommendation-toggle">
+<div class="recommendation-tier-selector">
 
 <button
 class="tier-btn active"
 data-tier="best">
 
-Best
+BEST
 
 </button>
 
@@ -877,7 +722,7 @@ Best
 class="tier-btn"
 data-tier="better">
 
-Better
+BETTER
 
 </button>
 
@@ -885,7 +730,7 @@ Better
 class="tier-btn"
 data-tier="good">
 
-Good
+GOOD
 
 </button>
 
@@ -893,20 +738,17 @@ Good
 
 </div>
 
-<p class="system-subtitle">
+<!-- ========================================= -->
+<!-- PROJECT SYSTEM CONTENT -->
+<!-- ========================================= -->
 
-Products selected to work together
-for your specific project.
-
-</p>
-
-<div class="system-products">
+<div class="project-system-body">
 
 <!-- PRIMARY PRODUCT -->
 
-<div class="system-product-card">
+<div class="system-product">
 
-<div class="product-image-container">
+<div class="system-product-image">
 
 <img
 id="primaryProductImage"
@@ -916,11 +758,11 @@ alt="Primary Product">
 
 </div>
 
-<div class="product-content">
+<div class="system-product-content">
 
 <div
 id="primaryProductLabel"
-class="product-label">
+class="product-category-label">
 
 Recommended Product
 
@@ -929,7 +771,7 @@ Recommended Product
 <h3
 id="primaryProductName">
 
-Product Name
+HGTV HOME Infinity Paint
 
 </h3>
 
@@ -937,24 +779,33 @@ Product Name
 id="primaryProductPrice"
 class="product-price">
 
-$0.00
+$68.98
 
 </div>
 
 <div
-id="primaryRecommendationReasons"
-class="recommendation-reasons">
+id="primaryProductLocation"
+class="product-location">
 
-Recommendation reasons
-appear here.
+📍 Aisle 12 • Bay 04
+
+</div>
+
+<button
+class="map-link-btn"
+data-map-item="primary">
+
+View On Store Map
+
+</button>
 
 </div>
 
 </div>
 
-</div>
+<!-- PLUS ICON -->
 
-<div class="system-plus">
+<div class="project-system-plus">
 
 +
 
@@ -962,9 +813,9 @@ appear here.
 
 <!-- COMPANION PRODUCT -->
 
-<div class="system-product-card">
+<div class="system-product">
 
-<div class="product-image-container">
+<div class="system-product-image">
 
 <img
 id="companionProductImage"
@@ -974,11 +825,11 @@ alt="Companion Product">
 
 </div>
 
-<div class="product-content">
+<div class="system-product-content">
 
 <div
 id="companionProductLabel"
-class="product-label">
+class="product-category-label">
 
 Companion Product
 
@@ -987,7 +838,7 @@ Companion Product
 <h3
 id="companionProductName">
 
-Companion Product Name
+ProBlock Primer
 
 </h3>
 
@@ -995,16 +846,142 @@ Companion Product Name
 id="companionProductPrice"
 class="product-price">
 
-$0.00
+$29.98
 
 </div>
 
 <div
-id="companionRecommendationReasons"
-class="recommendation-reasons">
+id="companionProductLocation"
+class="product-location">
 
-Companion recommendation
-details appear here.
+📍 Aisle 12 • Bay 06
+
+</div>
+
+<button
+class="map-link-btn"
+data-map-item="companion">
+
+View On Store Map
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- WHY THIS SYSTEM -->
+<!-- ========================================= -->
+
+<div class="system-explanation-card">
+
+<h3>
+
+Why We Recommend This System
+
+</h3>
+
+<div
+id="systemExplanation">
+
+This project system was selected because:
+
+• Satin finishes perform well in bathrooms
+
+• Primer improves adhesion and durability
+
+• Products are designed to work together
+
+• Recommended for DIY customers
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- SYSTEM BUDGET -->
+<!-- ========================================= -->
+
+<div class="system-budget-card">
+
+<div class="budget-left">
+
+<div class="section-label">
+
+PROJECT BUDGET
+
+</div>
+
+<div
+id="systemBudgetTotal"
+class="system-budget-total">
+
+$286.00
+
+</div>
+
+<div
+id="budgetDescription"
+class="budget-description">
+
+Estimated cost based on project size,
+recommended products and quantities.
+
+</div>
+
+</div>
+
+<div class="budget-right">
+
+<div class="budget-stat">
+
+<label>
+
+Paint Needed
+
+</label>
+
+<div
+id="estimatedPaintQty">
+
+2 Gallons
+
+</div>
+
+</div>
+
+<div class="budget-stat">
+
+<label>
+
+Coverage
+
+</label>
+
+<div
+id="coverageEstimate">
+
+700 Sq Ft
+
+</div>
+
+</div>
+
+<div class="budget-stat">
+
+<label>
+
+Project Difficulty
+
+</label>
+
+<div
+id="projectDifficulty">
+
+Beginner Friendly
 
 </div>
 
@@ -1014,7 +991,11 @@ details appear here.
 
 </div>
 
-<div class="system-actions">
+<!-- ========================================= -->
+<!-- SYSTEM ACTIONS -->
+<!-- ========================================= -->
+
+<div class="project-system-actions">
 
 <button
 id="addPrimaryProductBtn"
@@ -1036,151 +1017,194 @@ Add Companion Product
 id="changeSystemBtn"
 class="secondary-btn">
 
-Select Different Products
+Choose Different Products
+
+</button>
+
+<button
+id="coverageCalculatorBtn"
+class="secondary-btn">
+
+Coverage Calculator
 
 </button>
 
 </div>
 
+<!-- ========================================= -->
+<!-- WEATHER WINDOW -->
+<!-- OUTDOOR PROJECTS ONLY -->
+<!-- ========================================= -->
+
 <div
-id="systemExplanation"
-class="system-explanation">
+id="weatherRecommendationCard"
+class="weather-recommendation-card hidden">
 
-These products are recommended
-to work together as a complete
-project solution.
+<div class="weather-header">
+
+<div class="section-label">
+
+RECOMMENDED WEATHER WINDOW
+
+</div>
+
+<h3>
+
+Best Time To Start This Project
+
+</h3>
+
+</div>
+
+<div
+id="weatherWindowContent">
+
+Weather recommendation
+will appear here.
 
 </div>
 
 </div>
 
+</div>
+
+<!-- END LEFT COLUMN -->
+
+</div>
+
 <!-- ========================================= -->
-<!-- PROJECT SHOPPING LIST -->
+<!-- RIGHT COLUMN -->
+<!-- PROJECT CHECKLIST -->
 <!-- ========================================= -->
 
-<div class="shopping-card">
+<div class="workspace-right">
 
-<div class="shopping-header">
+<div class="project-checklist-card">
+
+<div class="checklist-header">
 
 <div>
 
+<div class="section-label">
+
+PROJECT CHECKLIST
+
+</div>
+
 <h2>
 
-Your Project Shopping List
+Everything Needed To Complete This Project
 
 </h2>
 
-<p class="shopping-subtitle">
+<p>
 
-Everything recommended to successfully
-complete your project.
-
-Quantities, budget and readiness
-update automatically.
+Use this checklist to make sure
+nothing is missed.
 
 </p>
 
 </div>
 
-<div class="shopping-actions">
+<div
+id="checklistCompletionCount"
+class="checklist-counter">
 
-<button
-id="expandAllRecommendationsBtn"
-class="secondary-btn">
-
-Expand All Details
-
-</button>
-
-<button
-id="collapseAllRecommendationsBtn"
-class="secondary-btn">
-
-Collapse All Details
-
-</button>
+0 / 0
 
 </div>
 
 </div>
 
 <div
-id="shoppingList"
-class="shopping-list">
+id="projectChecklistItems">
 
-<!-- DYNAMIC SHOPPING ITEMS INSERT HERE -->
+<!-- Dynamic Checklist Items Render Here -->
 
-<div
-class="shopping-item"
-data-item-id="sample">
+</div>
 
-<div class="shopping-item-left">
+<!-- ========================================= -->
+<!-- CHECKLIST ITEM TEMPLATE AREA -->
+<!-- ========================================= -->
 
-<div class="shopping-image-container">
+<div class="checklist-items-container">
+
+<!-- CHECKLIST ITEMS GENERATED BY JAVASCRIPT -->
+
+<div class="checklist-item">
+
+<div class="checklist-item-left">
+
+<div class="checklist-product-image">
 
 <img
-class="shopping-product-image"
+class="checklist-image"
 src=""
-alt="Product Image">
+alt="Product">
 
 </div>
 
-<div class="shopping-product-details">
+<div class="checklist-product-info">
+
+<div class="checklist-category">
+
+PROJECT ITEM
+
+</div>
 
 <h3>
 
-Recommended Product
+HGTV HOME Infinity Paint
 
 </h3>
 
-<div class="shopping-price">
+<div class="checklist-price">
 
-$0.00
+$68.98
 
 </div>
 
-<div class="location-row">
+<div class="checklist-location-row">
 
 <button
-class="aisle-bay-btn">
+class="location-btn">
 
-📍 Aisle 12 Bay 04
+📍 Aisle 12 • Bay 04
+
+</button>
+
+<button
+class="map-btn">
+
+View Map
 
 </button>
 
 </div>
 
-<div
-class="why-recommended">
-
-Recommended because of
-project requirements.
-
 </div>
 
 </div>
 
-</div>
+<div class="checklist-item-right">
 
-<div class="shopping-item-right">
-
-<div class="quantity-control-group">
+<div class="quantity-controls">
 
 <button
-class="qty-btn decrease-qty">
+class="qty-btn decrease-btn">
 
 −
 
 </button>
 
-<div class="qty-display">
+<div class="qty-value">
 
-1
+2
 
 </div>
 
 <button
-class="qty-btn increase-qty">
+class="qty-btn increase-btn">
 
 +
 
@@ -1188,28 +1212,86 @@ class="qty-btn increase-qty">
 
 </div>
 
-<div class="shopping-button-group">
+<div class="checklist-actions">
 
 <button
-class="primary-btn add-cart-btn">
+class="primary-btn">
 
 Add To Cart
 
 </button>
 
 <button
-class="secondary-btn remove-cart-btn">
+class="secondary-btn">
 
 Remove
 
 </button>
 
-<button
-class="secondary-btn change-product-btn">
+</div>
 
-Select Different Product
+</div>
 
-</button>
+</div>
+
+</div>
+
+<!-- END CHECKLIST ITEMS -->
+
+</div>
+
+<!-- ========================================= -->
+<!-- CHECKLIST FOOTER -->
+<!-- ========================================= -->
+
+<div class="checklist-footer">
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Checklist Completion
+
+</label>
+
+<div
+id="checklistCompletionPercent">
+
+0%
+
+</div>
+
+</div>
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Items Added
+
+</label>
+
+<div
+id="itemsAddedCount">
+
+0
+
+</div>
+
+</div>
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Estimated Total
+
+</label>
+
+<div
+id="checklistEstimatedTotal">
+
+$0.00
 
 </div>
 
@@ -1219,15 +1301,33 @@ Select Different Product
 
 </div>
 
+<!-- END PROJECT CHECKLIST CARD -->
+
 </div>
+
+<!-- END WORKSPACE RIGHT -->
+
+</div>
+
+<!-- END WORKSPACE LAYOUT -->
+
+</section>
 
 <!-- ========================================= -->
 <!-- ADDITIONAL SHOPPING -->
 <!-- ========================================= -->
 
+<section
+id="additionalShoppingSection"
+class="additional-shopping-section">
+
 <div class="additional-shopping-card">
 
-<div class="section-header">
+<div class="section-label">
+
+ADDITIONAL SHOPPING
+
+</div>
 
 <h2>
 
@@ -1237,19 +1337,17 @@ Is There Anything Else You Need Today?
 
 <p>
 
-Search for additional products
-without losing your current project.
+Search for additional products without
+losing your current project plan.
 
 </p>
 
-</div>
-
-<div class="additional-search-row">
+<div class="additional-shopping-search">
 
 <input
 type="text"
 id="additionalShoppingSearch"
-placeholder="Light bulbs, air filters, mulch, storage bins...">
+placeholder="Light bulbs, air filters, storage bins, mulch...">
 
 <button
 id="additionalShoppingBtn"
@@ -1265,21 +1363,37 @@ Search
 id="additionalShoppingResults"
 class="additional-shopping-results hidden">
 
-<!-- SEARCH RESULTS INSERT HERE -->
+<!-- Dynamic Results -->
 
 </div>
 
 </div>
 
+</section>
+
 <!-- ========================================= -->
-<!-- PERSONAL SHOPPER EXPERIENCE -->
+<!-- PROJECT PREPARATION EXPERIENCE -->
 <!-- ========================================= -->
 
-<div class="pickup-preparation-card">
+<section
+id="projectPreparationSection"
+class="project-preparation-section">
 
-<div class="pickup-icon">
+<div class="project-preparation-card">
+
+<div class="preparation-header">
+
+<div class="preparation-icon">
 
 🛒
+
+</div>
+
+<div>
+
+<div class="section-label">
+
+PROJECT PICKUP SERVICE
 
 </div>
 
@@ -1289,46 +1403,81 @@ Have My Project Prepared For Pickup
 
 </h2>
 
-<p class="pickup-description">
+</div>
+
+</div>
+
+<p class="preparation-description">
 
 Let us gather your recommended products,
-verify quantities,
-and prepare your project order
-for pickup.
+verify quantities and prepare your project
+order for pickup.
 
 </p>
 
-<div class="pickup-benefits">
+<div class="preparation-benefits">
 
-<div class="pickup-benefit">
+<div class="benefit-card">
 
-✓ Products Gathered
+<div class="benefit-title">
 
-</div>
-
-<div class="pickup-benefit">
-
-✓ Quantities Verified
+Products Gathered
 
 </div>
 
-<div class="pickup-benefit">
+<div class="benefit-text">
 
-✓ Faster Pickup Experience
+Everything selected and organized.
 
 </div>
 
 </div>
 
-<div class="pickup-service-status">
+<div class="benefit-card">
+
+<div class="benefit-title">
+
+Quantities Verified
+
+</div>
+
+<div class="benefit-text">
+
+Review recommendations before pickup.
+
+</div>
+
+</div>
+
+<div class="benefit-card">
+
+<div class="benefit-title">
+
+Faster Store Experience
+
+</div>
+
+<div class="benefit-text">
+
+Less time shopping in-store.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="preparation-status">
 
 Currently Included In Prototype
 
 </div>
 
+<div class="preparation-actions">
+
 <button
-id="prepareProjectOrderBtn"
-class="prepare-order-btn">
+id="prepareProjectBtn"
+class="primary-btn large-btn">
 
 Prepare My Project Order
 
@@ -1336,25 +1485,43 @@ Prepare My Project Order
 
 </div>
 
+</div>
+
+</section>
+
 <!-- ========================================= -->
 <!-- CART SUMMARY -->
 <!-- ========================================= -->
+
+<section
+id="cartSummarySection"
+class="cart-summary-section">
 
 <div class="cart-summary-card">
 
 <div class="cart-summary-header">
 
+<div>
+
+<div class="section-label">
+
+PROJECT CART
+
+</div>
+
 <h2>
 
-Project Cart Summary
+Ready To Checkout
 
 </h2>
+
+</div>
 
 <div
 id="cartStatusBadge"
 class="cart-status-badge">
 
-Ready To Build
+BUILDING PROJECT
 
 </div>
 
@@ -1362,7 +1529,7 @@ Ready To Build
 
 <div class="cart-summary-grid">
 
-<div class="cart-stat">
+<div class="cart-summary-stat">
 
 <label>
 
@@ -1379,7 +1546,7 @@ id="cartCount">
 
 </div>
 
-<div class="cart-stat">
+<div class="cart-summary-stat">
 
 <label>
 
@@ -1396,7 +1563,7 @@ $0.00
 
 </div>
 
-<div class="cart-stat">
+<div class="cart-summary-stat">
 
 <label>
 
@@ -1407,7 +1574,24 @@ Store
 <div
 id="cartStoreName">
 
-Not Selected
+No Store Selected
+
+</div>
+
+</div>
+
+<div class="cart-summary-stat">
+
+<label>
+
+Project Type
+
+</label>
+
+<div
+id="cartProjectType">
+
+Not Detected
 
 </div>
 
@@ -1415,7 +1599,7 @@ Not Selected
 
 </div>
 
-<div class="cart-actions">
+<div class="cart-summary-actions">
 
 <button
 id="saveProjectBtn"
@@ -1426,8 +1610,8 @@ Save Project
 </button>
 
 <button
-id="startCheckoutBtn"
-class="checkout-btn">
+id="checkoutBtn"
+class="primary-btn checkout-btn">
 
 Proceed To Checkout
 
@@ -1436,14 +1620,6 @@ Proceed To Checkout
 </div>
 
 </div>
-
-</div>
-
-<!-- END WORKSPACE MAIN -->
-
-</div>
-
-<!-- END WORKSPACE LAYOUT -->
 
 </section>
 
@@ -1455,15 +1631,25 @@ Proceed To Checkout
 id="storeMapModal"
 class="modal hidden">
 
-<div class="modal-content map-modal">
+<div class="modal-content store-map-modal">
 
 <div class="modal-header">
 
+<div>
+
+<div class="section-label">
+
+STORE NAVIGATION
+
+</div>
+
 <h2>
 
-Store Navigation
+Find This Product In Store
 
 </h2>
+
+</div>
 
 <button
 class="close-modal-btn"
@@ -1475,14 +1661,14 @@ data-close="storeMapModal">
 
 </div>
 
-<div class="map-info-bar">
+<div class="store-map-info">
 
 <div>
 
-Selected Store:
+Store:
 <strong id="mapStoreName">
 
-Store Name
+Mooresville Lowe's
 
 </strong>
 
@@ -1493,7 +1679,7 @@ Store Name
 Destination:
 <strong id="mapDestination">
 
-Aisle 12 Bay 04
+Aisle 12 • Bay 04
 
 </strong>
 
@@ -1501,17 +1687,21 @@ Aisle 12 Bay 04
 
 </div>
 
-<div class="interactive-map-container">
+<div class="interactive-store-map">
 
 <div class="map-placeholder">
 
-STORE MAP FRAMEWORK
+STORE MAP
+
+Future Interactive Navigation
+
+You Are Here → Product Location
 
 </div>
 
 </div>
 
-<div class="map-directions">
+<div class="store-map-directions">
 
 <h3>
 
@@ -1519,23 +1709,29 @@ Directions
 
 </h3>
 
-<ol id="mapDirectionsList">
+<ol id="storeMapDirections">
 
 <li>
 
-Enter Store
+Enter through main entrance
 
 </li>
 
 <li>
 
-Proceed To Assigned Aisle
+Proceed to assigned aisle
 
 </li>
 
 <li>
 
-Locate Bay Number
+Locate bay number
+
+</li>
+
+<li>
+
+Retrieve product
 
 </li>
 
@@ -1548,26 +1744,36 @@ Locate Bay Number
 </div>
 
 <!-- ========================================= -->
-<!-- PRODUCT SELECTION MODAL -->
+<!-- PRODUCT SYSTEM MODAL -->
 <!-- ========================================= -->
 
 <div
-id="productSelectionModal"
+id="productSystemModal"
 class="modal hidden">
 
-<div class="modal-content product-modal">
+<div class="modal-content product-system-modal">
 
 <div class="modal-header">
 
+<div>
+
+<div class="section-label">
+
+PRODUCT OPTIONS
+
+</div>
+
 <h2>
 
-Select A Different Product System
+Choose Your Project System
 
 </h2>
 
+</div>
+
 <button
 class="close-modal-btn"
-data-close="productSelectionModal">
+data-close="productSystemModal">
 
 ✕
 
@@ -1575,16 +1781,9 @@ data-close="productSelectionModal">
 
 </div>
 
-<p class="modal-subtitle">
+<div class="system-option-grid">
 
-Choose the recommendation tier that best
-fits your budget and project goals.
-
-</p>
-
-<div class="product-tier-grid">
-
-<div class="product-tier-card best-tier">
+<div class="system-option-card">
 
 <div class="tier-badge">
 
@@ -1594,43 +1793,27 @@ BEST
 
 <h3>
 
-Premium Project System
+Premium System
 
 </h3>
 
-<div class="tier-products">
+<div
+id="bestSystemProducts">
 
-<div id="bestPrimaryProduct">
-
-Primary Product
-
-</div>
-
-<div class="tier-plus">
-
-+
-
-</div>
-
-<div id="bestCompanionProduct">
-
-Companion Product
-
-</div>
+Products Load Here
 
 </div>
 
 <div
-id="bestTierPrice"
-class="tier-price">
+id="bestSystemPrice">
 
 $0.00
 
 </div>
 
 <button
-class="primary-btn tier-select-btn"
-data-tier-select="best">
+class="primary-btn system-select-btn"
+data-system="best">
 
 Select Best
 
@@ -1638,7 +1821,7 @@ Select Best
 
 </div>
 
-<div class="product-tier-card better-tier">
+<div class="system-option-card">
 
 <div class="tier-badge">
 
@@ -1648,43 +1831,27 @@ BETTER
 
 <h3>
 
-Balanced Project System
+Balanced System
 
 </h3>
 
-<div class="tier-products">
+<div
+id="betterSystemProducts">
 
-<div id="betterPrimaryProduct">
-
-Primary Product
-
-</div>
-
-<div class="tier-plus">
-
-+
-
-</div>
-
-<div id="betterCompanionProduct">
-
-Companion Product
-
-</div>
+Products Load Here
 
 </div>
 
 <div
-id="betterTierPrice"
-class="tier-price">
+id="betterSystemPrice">
 
 $0.00
 
 </div>
 
 <button
-class="primary-btn tier-select-btn"
-data-tier-select="better">
+class="primary-btn system-select-btn"
+data-system="better">
 
 Select Better
 
@@ -1692,7 +1859,7 @@ Select Better
 
 </div>
 
-<div class="product-tier-card good-tier">
+<div class="system-option-card">
 
 <div class="tier-badge">
 
@@ -1702,43 +1869,27 @@ GOOD
 
 <h3>
 
-Budget Project System
+Budget System
 
 </h3>
 
-<div class="tier-products">
+<div
+id="goodSystemProducts">
 
-<div id="goodPrimaryProduct">
-
-Primary Product
-
-</div>
-
-<div class="tier-plus">
-
-+
-
-</div>
-
-<div id="goodCompanionProduct">
-
-Companion Product
-
-</div>
+Products Load Here
 
 </div>
 
 <div
-id="goodTierPrice"
-class="tier-price">
+id="goodSystemPrice">
 
 $0.00
 
 </div>
 
 <button
-class="primary-btn tier-select-btn"
-data-tier-select="good">
+class="primary-btn system-select-btn"
+data-system="good">
 
 Select Good
 
@@ -1782,52 +1933,6 @@ data-close="coverageCalculatorModal">
 
 <div class="calculator-grid">
 
-<div class="calculator-section">
-
-<h3>
-
-Quick Estimate
-
-</h3>
-
-<select id="quickEstimateSize">
-
-<option>
-
-Small Project
-
-</option>
-
-<option>
-
-Medium Project
-
-</option>
-
-<option>
-
-Large Project
-
-</option>
-
-<option>
-
-Extra Large Project
-
-</option>
-
-</select>
-
-</div>
-
-<div class="calculator-section">
-
-<h3>
-
-Room / Area Dimensions
-
-</h3>
-
 <input
 type="number"
 id="calculatorWidth"
@@ -1844,8 +1949,8 @@ id="calculatorHeight"
 placeholder="Height (ft)">
 
 <button
-id="calculateDimensionsBtn"
-class="secondary-btn">
+id="calculateCoverageBtn"
+class="primary-btn">
 
 Calculate
 
@@ -1853,48 +1958,10 @@ Calculate
 
 </div>
 
-<div class="calculator-section">
-
-<h3>
-
-Total Square Footage
-
-</h3>
-
-<input
-type="number"
-id="calculatorSqFt"
-placeholder="Square Feet">
-
-<button
-id="calculateSqFtBtn"
-class="secondary-btn">
-
-Calculate From Square Footage
-
-</button>
-
-</div>
-
-</div>
-
 <div
-id="coverageResults"
-class="coverage-results">
+id="coverageResults">
 
-Estimated quantities will appear here.
-
-</div>
-
-<div class="modal-actions">
-
-<button
-id="useCoverageResultsBtn"
-class="primary-btn">
-
-Use Estimate
-
-</button>
+Estimated quantities appear here.
 
 </div>
 
@@ -1907,14 +1974,14 @@ Use Estimate
 <!-- ========================================= -->
 
 <div
-id="walkthroughModal"
+id="projectWalkthroughModal"
 class="modal hidden">
 
-<div class="modal-content walkthrough-modal">
+<div class="modal-content">
 
 <div class="modal-header">
 
-<h2 id="walkthroughTitle">
+<h2>
 
 Project Walkthrough
 
@@ -1922,7 +1989,7 @@ Project Walkthrough
 
 <button
 class="close-modal-btn"
-data-close="walkthroughModal">
+data-close="projectWalkthroughModal">
 
 ✕
 
@@ -1931,17 +1998,10 @@ data-close="walkthroughModal">
 </div>
 
 <div
-id="walkthroughSteps">
+id="walkthroughContent">
 
-<ol>
-
-<li>
-
-Project steps load dynamically.
-
-</li>
-
-</ol>
+Project walkthrough steps
+load dynamically.
 
 </div>
 
@@ -1967,8 +2027,8 @@ Save Project
 
 <input
 type="text"
-id="projectSaveName"
-placeholder="My Bathroom Remodel">
+id="saveProjectName"
+placeholder="My Bathroom Project">
 
 <div class="modal-actions">
 
@@ -1995,99 +2055,6 @@ Cancel
 </div>
 
 <!-- ========================================= -->
-<!-- PREPARE PROJECT ORDER MODAL -->
-<!-- ========================================= -->
-
-<div
-id="prepareProjectModal"
-class="modal hidden">
-
-<div class="modal-content prepare-order-modal">
-
-<h2>
-
-Have My Project Prepared For Pickup
-
-</h2>
-
-<p>
-
-MyLow will generate a pickup-ready
-project packet containing:
-
-</p>
-
-<ul class="prepare-order-list">
-
-<li>
-
-Recommended products
-
-</li>
-
-<li>
-
-Companion products
-
-</li>
-
-<li>
-
-Quantities
-
-</li>
-
-<li>
-
-Budget estimate
-
-</li>
-
-<li>
-
-Store location information
-
-</li>
-
-<li>
-
-Aisle and bay references
-
-</li>
-
-</ul>
-
-<div class="service-status">
-
-Currently Included In Prototype
-
-</div>
-
-<div class="modal-actions">
-
-<button
-id="confirmPrepareOrderBtn"
-class="primary-btn">
-
-Prepare My Order
-
-</button>
-
-<button
-class="secondary-btn close-modal-btn"
-data-close="prepareProjectModal">
-
-Cancel
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
 <!-- CHECKOUT EXPERIENCE -->
 <!-- ========================================= -->
 
@@ -2101,19 +2068,19 @@ class="checkout-page hidden">
 
 <div class="checkout-step active">
 
-1. Cart Review
+1. Review
 
 </div>
 
 <div class="checkout-step">
 
-2. Pickup Options
+2. Pickup
 
 </div>
 
 <div class="checkout-step">
 
-3. Project Preparation
+3. Project Prep
 
 </div>
 
@@ -2125,7 +2092,7 @@ class="checkout-page hidden">
 
 <div class="checkout-step">
 
-5. Confirmation
+5. Complete
 
 </div>
 
@@ -2135,7 +2102,7 @@ class="checkout-page hidden">
 id="checkoutContent"
 class="checkout-content">
 
-Checkout content loads here.
+<!-- Dynamic Checkout Content -->
 
 </div>
 
@@ -2149,8 +2116,6 @@ Checkout content loads here.
 
 <footer class="main-footer">
 
-<div class="footer-content">
-
 <div class="footer-logo">
 
 my<span>low</span>
@@ -2161,34 +2126,20 @@ Project Assistant
 
 <p>
 
-Prototype Only • Not Connected To Live Lowe's Systems
+Project planning, product recommendations,
+store navigation and project preparation
+in one experience.
 
 </p>
 
 <p>
 
-Store maps, inventory, pricing,
-weather recommendations,
-checkout workflows and project guidance
-are demonstration functionality only.
+Prototype Only • Not Connected To Live
+Lowe's Systems
 
 </p>
 
-</div>
-
 </footer>
-
-<!-- ========================================= -->
-<!-- SCRIPT REFERENCES -->
-<!-- ========================================= -->
-
-<script src="storeData.js"></script>
-<script src="projectEngine.js"></script>
-<script src="weatherEngine.js"></script>
-<script src="app.js"></script>
-
-</body>
-</html>
 
 <!-- ========================================= -->
 <!-- GLOBAL TOAST SYSTEM -->
@@ -2202,9 +2153,10 @@ class="toast-container">
 id="globalToast"
 class="toast hidden">
 
-<span id="toastMessage">
+<span
+id="toastMessage">
 
-Message
+Notification Message
 
 </span>
 
@@ -2234,7 +2186,7 @@ MyLow Is Building Your Project Plan
 
 <p>
 
-Analyzing project details...
+Analyzing project requirements...
 
 </p>
 
@@ -2243,14 +2195,14 @@ Analyzing project details...
 </div>
 
 <!-- ========================================= -->
-<!-- AI ASSISTANT PANEL -->
+<!-- MYLOW ASSISTANT PANEL -->
 <!-- ========================================= -->
 
 <div
 id="assistantPanel"
 class="assistant-panel hidden">
 
-<div class="assistant-header">
+<div class="assistant-panel-header">
 
 <div class="assistant-avatar">
 
@@ -2268,7 +2220,7 @@ MyLow Assistant
 
 <p>
 
-Project Guidance
+Project Guidance & Recommendations
 
 </p>
 
@@ -2277,13 +2229,20 @@ Project Guidance
 </div>
 
 <div
-id="assistantResponses"
-class="assistant-responses">
+id="assistantMessages"
+class="assistant-messages">
 
 <div class="assistant-message">
 
-Ask a question about your project
-to receive recommendations.
+Ask a question about your project.
+
+Examples:
+
+How much paint do I need?
+
+How do I prep the walls?
+
+What sheen should I use?
 
 </div>
 
@@ -2293,11 +2252,11 @@ to receive recommendations.
 
 <input
 type="text"
-id="assistantInput"
-placeholder="Ask about preparation, application, cleanup, product selection...">
+id="assistantQuestion"
+placeholder="Ask a project question...">
 
 <button
-id="assistantSendBtn"
+id="assistantAskBtn"
 class="primary-btn">
 
 Ask
@@ -2335,8 +2294,7 @@ data-close-drawer="savedProjectsDrawer">
 </div>
 
 <div
-id="savedProjectsList"
-class="saved-projects-list">
+id="savedProjectsList">
 
 <div class="empty-state">
 
@@ -2349,50 +2307,11 @@ No saved projects yet.
 </div>
 
 <!-- ========================================= -->
-<!-- PROJECT HISTORY DRAWER -->
+<!-- ACCOUNT DRAWER -->
 <!-- ========================================= -->
 
 <div
-id="projectHistoryDrawer"
-class="drawer hidden">
-
-<div class="drawer-header">
-
-<h2>
-
-Recent Activity
-
-</h2>
-
-<button
-class="close-drawer-btn"
-data-close-drawer="projectHistoryDrawer">
-
-✕
-
-</button>
-
-</div>
-
-<div
-id="projectHistoryList">
-
-<div class="empty-state">
-
-Project activity will appear here.
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- ACCOUNT PANEL -->
-<!-- ========================================= -->
-
-<div
-id="accountPanel"
+id="accountDrawer"
 class="drawer hidden">
 
 <div class="drawer-header">
@@ -2405,7 +2324,7 @@ My Account
 
 <button
 class="close-drawer-btn"
-data-close-drawer="accountPanel">
+data-close-drawer="accountDrawer">
 
 ✕
 
@@ -2413,17 +2332,18 @@ data-close-drawer="accountPanel">
 
 </div>
 
-<div class="account-content">
+<div class="account-drawer-content">
 
 <div class="account-card">
 
-<h3>
+<label>
 
 Preferred Store
 
-</h3>
+</label>
 
-<div id="accountPreferredStore">
+<div
+id="accountStore">
 
 Not Selected
 
@@ -2433,13 +2353,14 @@ Not Selected
 
 <div class="account-card">
 
-<h3>
+<label>
 
 Saved Projects
 
-</h3>
+</label>
 
-<div id="accountProjectCount">
+<div
+id="accountSavedProjects">
 
 0
 
@@ -2449,13 +2370,14 @@ Saved Projects
 
 <div class="account-card">
 
-<h3>
+<label>
 
 Prepared Orders
 
-</h3>
+</label>
 
-<div id="accountPreparedOrders">
+<div
+id="accountPreparedOrders">
 
 0
 
@@ -2468,43 +2390,31 @@ Prepared Orders
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE INVENTORY FRAMEWORK -->
+<!-- FUTURE STORE DATA -->
 <!-- ========================================= -->
 
 <div
-id="inventoryDataContainer"
+id="storeDataCache"
 class="hidden">
 
-<div id="inventoryStoreId"></div>
+<div id="storeId"></div>
 
-<div id="inventoryStoreName"></div>
+<div id="storeNameCache"></div>
 
-<div id="inventoryStatus"></div>
+<div id="storeAddressCache"></div>
+
+<div id="storePhoneCache"></div>
+
+<div id="storeHoursCache"></div>
 
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE WEATHER FRAMEWORK -->
+<!-- FUTURE MAP DATA -->
 <!-- ========================================= -->
 
 <div
-id="weatherDataContainer"
-class="hidden">
-
-<div id="weatherZip"></div>
-
-<div id="weatherForecast"></div>
-
-<div id="weatherRecommendation"></div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- FUTURE MAP FRAMEWORK -->
-<!-- ========================================= -->
-
-<div
-id="mapDataContainer"
+id="mapDataCache"
 class="hidden">
 
 <div id="selectedAisle"></div>
@@ -2513,14 +2423,54 @@ class="hidden">
 
 <div id="selectedDepartment"></div>
 
+<div id="selectedProduct"></div>
+
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE PERSONAL SHOPPER FRAMEWORK -->
+<!-- FUTURE WEATHER DATA -->
 <!-- ========================================= -->
 
 <div
-id="pickupPreparationData"
+id="weatherDataCache"
+class="hidden">
+
+<div id="weatherZip"></div>
+
+<div id="weatherProjectType"></div>
+
+<div id="weatherForecast"></div>
+
+<div id="weatherRecommendation"></div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- FUTURE PRODUCT CACHE -->
+<!-- ========================================= -->
+
+<div
+id="productDataCache"
+class="hidden">
+
+<div id="activeProject"></div>
+
+<div id="activeTier"></div>
+
+<div id="activePrimaryProduct"></div>
+
+<div id="activeCompanionProduct"></div>
+
+<div id="activeChecklist"></div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- FUTURE PREPARED ORDER CACHE -->
+<!-- ========================================= -->
+
+<div
+id="preparedOrderCache"
 class="hidden">
 
 <div id="preparedOrderId"></div>
@@ -2529,22 +2479,18 @@ class="hidden">
 
 <div id="preparedOrderStore"></div>
 
+<div id="preparedOrderTotal"></div>
+
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE PRODUCT DATA CACHE -->
+<!-- SCRIPT REFERENCES -->
 <!-- ========================================= -->
 
-<div
-id="productCacheContainer"
-class="hidden">
+<script src="storeData.js"></script>
+<script src="projectEngine.js"></script>
+<script src="weatherEngine.js"></script>
+<script src="app.js"></script>
 
-<div id="activeProjectType"></div>
-
-<div id="activeRecommendationTier"></div>
-
-<div id="activePrimaryProduct"></div>
-
-<div id="activeCompanionProduct"></div>
-
-</div>
+</body>
+</html>
