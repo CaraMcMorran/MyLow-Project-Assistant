@@ -1,6 +1,6 @@
 /* =====================================================
-   MYLOW V4.0
-   APPLICATION FOUNDATION
+   MYLOW V4.1
+   PROJECT-FIRST EXPERIENCE
 ===================================================== */
 
 /* =====================================================
@@ -27,6 +27,8 @@ checklist: [],
 
 cart: [],
 
+ownedItems: [],
+
 budget: 0,
 
 readiness: 0,
@@ -38,12 +40,12 @@ preparedOrder: null
 };
 
 /* =====================================================
-   PROJECT TEMPLATES
+   PROJECT INTELLIGENCE ENGINE
 ===================================================== */
 
 const ProjectTemplates = {
 
-bathroom: {
+bathroomPaint: {
 
 title:
 "Bathroom Paint Project",
@@ -55,11 +57,27 @@ difficulty:
 "Beginner Friendly",
 
 weatherRequired:
-false
+false,
+
+defaults: {
+
+roomType:
+"Bathroom",
+
+surfaceType:
+"Drywall",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Satin"
+
+}
 
 },
 
-kitchen: {
+kitchenPaint: {
 
 title:
 "Kitchen Paint Project",
@@ -71,11 +89,27 @@ difficulty:
 "Beginner Friendly",
 
 weatherRequired:
-false
+false,
+
+defaults: {
+
+roomType:
+"Kitchen",
+
+surfaceType:
+"Drywall",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Satin"
+
+}
 
 },
 
-cabinet: {
+cabinetPaint: {
 
 title:
 "Cabinet Paint Project",
@@ -87,11 +121,27 @@ difficulty:
 "Intermediate",
 
 weatherRequired:
-false
+false,
+
+defaults: {
+
+roomType:
+"Kitchen",
+
+surfaceType:
+"Wood",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Satin"
+
+}
 
 },
 
-deck: {
+deckStain: {
 
 title:
 "Deck Stain Project",
@@ -103,46 +153,94 @@ difficulty:
 "Intermediate",
 
 weatherRequired:
-true
+true,
+
+defaults: {
+
+roomType:
+"Deck",
+
+surfaceType:
+"Wood",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Stain"
+
+}
 
 },
 
-fence: {
+fenceStain: {
 
 title:
 "Fence Stain Project",
 
 description:
-"Exterior fence staining",
+"Fence restoration",
 
 difficulty:
 "Beginner Friendly",
 
 weatherRequired:
-true
+true,
+
+defaults: {
+
+roomType:
+"Fence",
+
+surfaceType:
+"Wood",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Stain"
+
+}
 
 },
 
-livingroom: {
+livingRoomPaint: {
 
 title:
 "Living Room Paint Project",
 
 description:
-"Interior living room painting",
+"Interior wall painting",
 
 difficulty:
 "Beginner Friendly",
 
 weatherRequired:
-false
+false,
+
+defaults: {
+
+roomType:
+"Living Room",
+
+surfaceType:
+"Drywall",
+
+surfaceCondition:
+"Good",
+
+finishType:
+"Eggshell"
+
+}
 
 }
 
 };
 
 /* =====================================================
-   PROJECT DETECTION ENGINE
+   PROJECT DETECTION ENGINE 2.0
 ===================================================== */
 
 function detectProjectType(query) {
@@ -150,46 +248,73 @@ function detectProjectType(query) {
 const text =
 query.toLowerCase();
 
-if (
-text.includes("bathroom")
-) {
-return "bathroom";
-}
-
-if (
-text.includes("kitchen")
-&& !text.includes("cabinet")
-) {
-return "kitchen";
-}
+/* CABINETS */
 
 if (
 text.includes("cabinet")
+||
+text.includes("cabinets")
 ) {
-return "cabinet";
+
+return "cabinetPaint";
+
 }
+
+/* DECK */
 
 if (
 text.includes("deck")
 ) {
-return "deck";
+
+return "deckStain";
+
 }
+
+/* FENCE */
 
 if (
 text.includes("fence")
 ) {
-return "fence";
+
+return "fenceStain";
+
 }
+
+/* KITCHEN */
+
+if (
+text.includes("kitchen")
+) {
+
+return "kitchenPaint";
+
+}
+
+/* BATHROOM */
+
+if (
+text.includes("bathroom")
+) {
+
+return "bathroomPaint";
+
+}
+
+/* LIVING ROOM */
 
 if (
 text.includes("living room")
 ||
 text.includes("livingroom")
 ) {
-return "livingroom";
+
+return "livingRoomPaint";
+
 }
 
-return null;
+/* FALLBACK */
+
+return "bathroomPaint";
 
 }
 
@@ -212,9 +337,9 @@ document.getElementById(
 "workspace"
 );
 
-const projectControlBar =
+const projectSummaryBar =
 document.getElementById(
-"projectControlBar"
+"projectSummaryBar"
 );
 
 const projectTitle =
@@ -222,24 +347,9 @@ document.getElementById(
 "projectTitle"
 );
 
-const readinessPercent =
+const weatherSection =
 document.getElementById(
-"readinessPercent"
-);
-
-const readinessBar =
-document.getElementById(
-"readinessBar"
-);
-
-const systemBudgetTotal =
-document.getElementById(
-"systemBudgetTotal"
-);
-
-const weatherCard =
-document.getElementById(
-"weatherRecommendationCard"
+"weatherSection"
 );
 
 const loadingOverlay =
@@ -258,16 +368,20 @@ document.getElementById(
 "globalToast"
 );
 
-const text =
+const toastMessage =
 document.getElementById(
 "toastMessage"
 );
 
-if (!toast || !text) {
+if (
+!toast
+||
+!toastMessage
+) {
 return;
 }
 
-text.textContent =
+toastMessage.textContent =
 message;
 
 toast.classList.remove(
@@ -285,14 +399,14 @@ toast.classList.add(
 }
 
 /* =====================================================
-   LOADING SYSTEM
+   LOADING
 ===================================================== */
 
 function showLoading() {
 
-if (!loadingOverlay) {
-return;
-}
+if (
+loadingOverlay
+) {
 
 loadingOverlay.classList.remove(
 "hidden"
@@ -300,11 +414,13 @@ loadingOverlay.classList.remove(
 
 }
 
+}
+
 function hideLoading() {
 
-if (!loadingOverlay) {
-return;
-}
+if (
+loadingOverlay
+) {
 
 loadingOverlay.classList.add(
 "hidden"
@@ -312,8 +428,137 @@ loadingOverlay.classList.add(
 
 }
 
+}
+
 /* =====================================================
-   PROJECT START
+   APPLY PROJECT DEFAULTS
+===================================================== */
+
+function applyProjectDefaults(project) {
+
+if (
+!project
+||
+!project.defaults
+) {
+return;
+}
+
+const defaults =
+project.defaults;
+
+const roomType =
+document.getElementById(
+"roomType"
+);
+
+const surfaceType =
+document.getElementById(
+"surfaceType"
+);
+
+const surfaceCondition =
+document.getElementById(
+"surfaceCondition"
+);
+
+const finishType =
+document.getElementById(
+"finishType"
+);
+
+if (roomType) {
+roomType.value =
+defaults.roomType;
+}
+
+if (surfaceType) {
+surfaceType.value =
+defaults.surfaceType;
+}
+
+if (surfaceCondition) {
+surfaceCondition.value =
+defaults.surfaceCondition;
+}
+
+if (finishType) {
+finishType.value =
+defaults.finishType;
+}
+
+}
+
+/* =====================================================
+   LOAD PROJECT
+===================================================== */
+
+function loadProject(projectType) {
+
+const project =
+ProjectTemplates[
+projectType
+];
+
+if (!project) {
+return;
+}
+
+MyLowState.projectType =
+projectType;
+
+MyLowState.project =
+project;
+
+workspace.classList.remove(
+"hidden"
+);
+
+projectSummaryBar.classList.remove(
+"hidden"
+);
+
+projectTitle.textContent =
+project.title;
+
+applyProjectDefaults(
+project
+);
+
+/* WEATHER */
+
+if (
+project.weatherRequired
+) {
+
+weatherSection.classList.remove(
+"hidden"
+);
+
+}
+else {
+
+weatherSection.classList.add(
+"hidden"
+);
+
+}
+
+showToast(
+project.title +
+" loaded."
+);
+
+/* NEXT ENGINES */
+
+renderWeatherWindow();
+
+renderProjectSystem();
+
+}
+
+/* =====================================================
+   START PROJECT
 ===================================================== */
 
 function startProject() {
@@ -324,7 +569,7 @@ projectSearch.value.trim();
 if (!query) {
 
 showToast(
-"Please describe your project."
+"Describe your project first."
 );
 
 return;
@@ -336,93 +581,22 @@ showLoading();
 setTimeout(() => {
 
 const projectType =
-detectProjectType(query);
-
-if (!projectType) {
-
-hideLoading();
-
-showToast(
-"MyLow could not identify the project."
+detectProjectType(
+query
 );
 
-return;
-
-}
-
-loadProject(projectType);
-
-hideLoading();
-
-}, 800);
-
-}
-
-/* =====================================================
-   LOAD PROJECT
-===================================================== */
-
-function loadProject(projectType) {
-
-const template =
-ProjectTemplates[
+loadProject(
 projectType
-];
-
-if (!template) {
-return;
-}
-
-MyLowState.projectType =
-projectType;
-
-MyLowState.project =
-template;
-
-workspace.classList.remove(
-"hidden"
 );
 
-projectControlBar.classList.remove(
-"hidden"
-);
+hideLoading();
 
-projectTitle.textContent =
-template.title;
-
-document.getElementById(
-"detectedProjectBadge"
-).textContent =
-template.title;
-
-if (
-template.weatherRequired
-) {
-
-weatherCard.classList.remove(
-"hidden"
-);
-
-}
-else {
-
-weatherCard.classList.add(
-"hidden"
-);
-
-}
-
-showToast(
-template.title +
-" loaded."
-);
-
-renderProjectSystem();
+}, 700);
 
 }
 
 /* =====================================================
-   EVENT LISTENERS
+   EVENTS
 ===================================================== */
 
 if (searchBtn) {
@@ -454,17 +628,17 @@ startProject();
 }
 
 /* =====================================================
-   PRODUCT RECOMMENDATION DATABASE
+   PROJECT SYSTEM DATABASE
 ===================================================== */
 
-const ProductSystems = {
+const ProjectSystems = {
 
-bathroom: {
+bathroomPaint: {
 
 best: {
 
 primary: {
-name: "HGTV HOME Infinity Paint",
+name: "HGTV HOME Infinity Interior Paint",
 price: 68.98,
 aisle: "12",
 bay: "04",
@@ -472,7 +646,7 @@ image: ""
 },
 
 companion: {
-name: "ProBlock Primer",
+name: "KILZ Mold & Mildew Primer",
 price: 29.98,
 aisle: "12",
 bay: "06",
@@ -486,7 +660,7 @@ budget: 286
 better: {
 
 primary: {
-name: "Valspar Signature Paint",
+name: "Valspar Signature Interior Paint",
 price: 49.98,
 aisle: "12",
 bay: "05",
@@ -517,7 +691,7 @@ image: ""
 
 companion: {
 name: "Project Source Primer",
-price: 19.98,
+price: 18.98,
 aisle: "12",
 bay: "09",
 image: ""
@@ -529,12 +703,12 @@ budget: 165
 
 },
 
-kitchen: {
+kitchenPaint: {
 
 best: {
 
 primary: {
-name: "HGTV HOME Infinity Paint",
+name: "HGTV HOME Infinity Interior Paint",
 price: 68.98,
 aisle: "12",
 bay: "04",
@@ -542,8 +716,8 @@ image: ""
 },
 
 companion: {
-name: "ProBlock Primer",
-price: 29.98,
+name: "KILZ Kitchen & Bath Primer",
+price: 31.98,
 aisle: "12",
 bay: "06",
 image: ""
@@ -556,7 +730,7 @@ budget: 295
 better: {
 
 primary: {
-name: "Valspar Signature Paint",
+name: "Valspar Signature Interior Paint",
 price: 49.98,
 aisle: "12",
 bay: "05",
@@ -564,7 +738,7 @@ image: ""
 },
 
 companion: {
-name: "Valspar Primer",
+name: "Valspar Multi-Purpose Primer",
 price: 24.98,
 aisle: "12",
 bay: "06",
@@ -578,7 +752,7 @@ budget: 225
 good: {
 
 primary: {
-name: "Project Source Paint",
+name: "Project Source Interior Paint",
 price: 34.98,
 aisle: "12",
 bay: "08",
@@ -587,19 +761,19 @@ image: ""
 
 companion: {
 name: "Project Source Primer",
-price: 19.98,
+price: 18.98,
 aisle: "12",
 bay: "09",
 image: ""
 },
 
-budget: 170
+budget: 175
 
 }
 
 },
 
-cabinet: {
+cabinetPaint: {
 
 best: {
 
@@ -621,16 +795,60 @@ image: ""
 
 budget: 325
 
+},
+
+better: {
+
+primary: {
+name: "Cabinet Enamel",
+price: 59.98,
+aisle: "14",
+bay: "04",
+image: ""
+},
+
+companion: {
+name: "Multi-Surface Primer",
+price: 26.98,
+aisle: "14",
+bay: "05",
+image: ""
+},
+
+budget: 260
+
+},
+
+good: {
+
+primary: {
+name: "Cabinet Paint",
+price: 44.98,
+aisle: "14",
+bay: "04",
+image: ""
+},
+
+companion: {
+name: "Basic Bonding Primer",
+price: 19.98,
+aisle: "14",
+bay: "05",
+image: ""
+},
+
+budget: 210
+
 }
 
 },
 
-deck: {
+deckStain: {
 
 best: {
 
 primary: {
-name: "Premium Deck Stain",
+name: "Cabot Deck Stain",
 price: 59.98,
 aisle: "18",
 bay: "02",
@@ -638,7 +856,7 @@ image: ""
 },
 
 companion: {
-name: "Deck Cleaner",
+name: "Cabot Deck Cleaner",
 price: 22.98,
 aisle: "18",
 bay: "03",
@@ -647,17 +865,61 @@ image: ""
 
 budget: 345
 
+},
+
+better: {
+
+primary: {
+name: "Olympic Elite Stain",
+price: 49.98,
+aisle: "18",
+bay: "02",
+image: ""
+},
+
+companion: {
+name: "Deck Cleaner",
+price: 19.98,
+aisle: "18",
+bay: "03",
+image: ""
+},
+
+budget: 285
+
+},
+
+good: {
+
+primary: {
+name: "Deck Stain",
+price: 39.98,
+aisle: "18",
+bay: "02",
+image: ""
+},
+
+companion: {
+name: "Deck Wash",
+price: 15.98,
+aisle: "18",
+bay: "03",
+image: ""
+},
+
+budget: 225
+
 }
 
 },
 
-fence: {
+fenceStain: {
 
 best: {
 
 primary: {
-name: "Fence Stain",
-price: 49.98,
+name: "Premium Fence Stain",
+price: 54.98,
 aisle: "18",
 bay: "06",
 image: ""
@@ -671,7 +933,51 @@ bay: "07",
 image: ""
 },
 
-budget: 245
+budget: 265
+
+},
+
+better: {
+
+primary: {
+name: "Fence Stain",
+price: 44.98,
+aisle: "18",
+bay: "06",
+image: ""
+},
+
+companion: {
+name: "Wood Cleaner",
+price: 16.98,
+aisle: "18",
+bay: "07",
+image: ""
+},
+
+budget: 225
+
+},
+
+good: {
+
+primary: {
+name: "Basic Fence Stain",
+price: 34.98,
+aisle: "18",
+bay: "06",
+image: ""
+},
+
+companion: {
+name: "Fence Wash",
+price: 12.98,
+aisle: "18",
+bay: "07",
+image: ""
+},
+
+budget: 185
 
 }
 
@@ -680,7 +986,7 @@ budget: 245
 };
 
 /* =====================================================
-   RENDER PROJECT SYSTEM
+   PROJECT SYSTEM RENDERING
 ===================================================== */
 
 function renderProjectSystem() {
@@ -691,17 +997,17 @@ MyLowState.projectType;
 const tier =
 MyLowState.recommendationTier;
 
-const projectSystem =
-ProductSystems[
+const system =
+ProjectSystems[
 projectType
 ];
 
-if (!projectSystem) {
+if (!system) {
 return;
 }
 
 const selectedSystem =
-projectSystem[tier];
+system[tier];
 
 if (!selectedSystem) {
 return;
@@ -716,7 +1022,7 @@ selectedSystem.companion;
 MyLowState.budget =
 selectedSystem.budget;
 
-/* PRIMARY PRODUCT */
+/* PRIMARY */
 
 document.getElementById(
 "primaryProductName"
@@ -737,7 +1043,7 @@ selectedSystem.primary.aisle +
 " • Bay " +
 selectedSystem.primary.bay;
 
-/* COMPANION PRODUCT */
+/* COMPANION */
 
 document.getElementById(
 "companionProductName"
@@ -766,82 +1072,21 @@ document.getElementById(
 "$" +
 selectedSystem.budget.toFixed(2);
 
-/* PROJECT DIFFICULTY */
+/* DIFFICULTY */
 
 document.getElementById(
 "projectDifficulty"
 ).textContent =
 MyLowState.project.difficulty;
 
-/* EXPLANATION */
-
-updateSystemExplanation();
+/* PROJECT CHECKLIST */
 
 renderChecklist();
 
 }
 
 /* =====================================================
-   SYSTEM EXPLANATION
-===================================================== */
-
-function updateSystemExplanation() {
-
-const explanation =
-document.getElementById(
-"systemExplanation"
-);
-
-if (!explanation) {
-return;
-}
-
-const project =
-MyLowState.projectType;
-
-if (
-project === "bathroom"
-) {
-
-explanation.innerHTML = `
-• Moisture resistant finish<br>
-• Recommended for bathroom environments<br>
-• Primer improves durability<br>
-• Designed for DIY customers
-`;
-
-}
-
-else if (
-project === "deck"
-) {
-
-explanation.innerHTML = `
-• Exterior weather protection<br>
-• Cleaner improves stain adhesion<br>
-• Recommended for outdoor projects<br>
-• Better long-term durability
-`;
-
-}
-
-else if (
-project === "cabinet"
-) {
-
-explanation.innerHTML = `
-• Smooth cabinet finish<br>
-• Bonding primer improves adhesion<br>
-• Durable for high-use surfaces<br>
-• Designed for refinishing projects
-`;
-
-}
-
-}
-
-/* =====================================================
-   GOOD / BETTER / BEST
+   GOOD BETTER BEST
 ===================================================== */
 
 document
@@ -886,7 +1131,7 @@ this.dataset.tier.toUpperCase() +
 });
 
 /* =====================================================
-   WEATHER FRAMEWORK
+   WEATHER
 ===================================================== */
 
 function renderWeatherWindow() {
@@ -899,51 +1144,30 @@ if (
 return;
 }
 
-const weatherContent =
+const weather =
 document.getElementById(
 "weatherWindowContent"
 );
 
-if (!weatherContent) {
+if (!weather) {
 return;
 }
 
-weatherContent.innerHTML = `
-Best Weather Window
+weather.innerHTML = `
 
 Thursday
-72°
-10% Rain Chance
+72°F
 
-Friday
-75°
 5% Rain Chance
 
-Recommended Start Date:
-Thursday
+⭐⭐⭐⭐⭐ Recommended Start Day
+
 `;
 
 }
 
 /* =====================================================
-   BUDGET UPDATE
-===================================================== */
-
-function updateBudget() {
-
-const total =
-MyLowState.budget;
-
-document.getElementById(
-"systemBudgetTotal"
-).textContent =
-"$" +
-total.toFixed(2);
-
-}
-
-/* =====================================================
-   PROJECT DETAIL CHANGES
+   PROJECT UPDATE
 ===================================================== */
 
 const updateProjectBtn =
@@ -960,7 +1184,7 @@ function() {
 renderProjectSystem();
 
 showToast(
-"Project recommendations updated."
+"Recommendations updated."
 );
 
 }
@@ -969,153 +1193,160 @@ showToast(
 }
 
 /* =====================================================
-   CHECKLIST DATABASE
+   TOOLTIPS
+===================================================== */
+
+document.addEventListener(
+"click",
+function(event) {
+
+if (
+event.target.classList.contains(
+"tooltip-trigger"
+)
+) {
+
+const tooltipId =
+event.target.dataset.tooltip;
+
+const tooltip =
+document.getElementById(
+tooltipId
+);
+
+if (!tooltip) {
+return;
+}
+
+tooltip.classList.toggle(
+"hidden"
+);
+
+}
+
+}
+);
+
+/* =====================================================
+   EXPANDED PROJECT CHECKLISTS
 ===================================================== */
 
 const ChecklistTemplates = {
 
-bathroom: [
+bathroomPaint: [
 
 {
 id:"paint",
-name:"Interior Paint",
+name:"HGTV HOME Infinity Paint",
 price:68.98,
 qty:2,
 aisle:"12",
 bay:"04",
-image:""
+reason:"Primary finish coat",
+status:"missing"
 },
 
 {
 id:"primer",
-name:"Primer",
+name:"KILZ Mold & Mildew Primer",
 price:29.98,
 qty:1,
 aisle:"12",
 bay:"06",
-image:""
+reason:"Improves adhesion",
+status:"missing"
 },
 
 {
 id:"roller",
-name:"Roller Kit",
+name:"Purdy White Dove Roller",
 price:16.98,
 qty:1,
 aisle:"13",
 bay:"02",
-image:""
+reason:"Recommended application tool",
+status:"missing"
 },
 
 {
 id:"brush",
-name:"Angled Brush",
+name:"Purdy XL Glide Brush",
 price:12.98,
 qty:1,
 aisle:"13",
 bay:"03",
-image:""
+reason:"Cut in corners and trim",
+status:"missing"
 },
 
 {
 id:"tape",
-name:"Painter's Tape",
+name:"ScotchBlue Painter's Tape",
 price:7.98,
 qty:2,
 aisle:"13",
 bay:"05",
-image:""
-}
-
-],
-
-kitchen: [
-
-{
-id:"paint",
-name:"Interior Paint",
-price:68.98,
-qty:2,
-aisle:"12",
-bay:"04",
-image:""
+reason:"Protects trim",
+status:"missing"
 },
 
 {
-id:"primer",
-name:"Primer",
-price:29.98,
-qty:1,
-aisle:"12",
-bay:"06",
-image:""
-},
-
-{
-id:"roller",
-name:"Roller Kit",
-price:16.98,
-qty:1,
-aisle:"13",
-bay:"02",
-image:""
-},
-
-{
-id:"brush",
-name:"Angled Brush",
-price:12.98,
-qty:1,
-aisle:"13",
-bay:"03",
-image:""
-}
-
-],
-
-cabinet: [
-
-{
-id:"cabinetpaint",
-name:"Cabinet Paint",
-price:74.98,
-qty:1,
-aisle:"14",
-bay:"04",
-image:""
-},
-
-{
-id:"bondingprimer",
-name:"Bonding Primer",
-price:32.98,
-qty:1,
-aisle:"14",
-bay:"05",
-image:""
-},
-
-{
-id:"foamroller",
-name:"Foam Roller",
+id:"dropcloth",
+name:"Canvas Drop Cloth",
 price:14.98,
 qty:1,
 aisle:"14",
-bay:"07",
-image:""
+bay:"01",
+reason:"Protects floors",
+status:"missing"
+},
+
+{
+id:"spackle",
+name:"DAP Spackling Paste",
+price:6.98,
+qty:1,
+aisle:"15",
+bay:"08",
+reason:"Repairs holes",
+status:"missing"
+},
+
+{
+id:"sponge",
+name:"3M Sanding Sponge",
+price:4.98,
+qty:1,
+aisle:"15",
+bay:"09",
+reason:"Smooth repairs",
+status:"missing"
+},
+
+{
+id:"caulk",
+name:"Kitchen & Bath Caulk",
+price:8.98,
+qty:1,
+aisle:"16",
+bay:"03",
+reason:"Seal gaps before painting",
+status:"missing"
 }
 
 ],
 
-deck: [
+deckStain: [
 
 {
 id:"stain",
-name:"Deck Stain",
+name:"Cabot Deck Stain",
 price:59.98,
 qty:2,
 aisle:"18",
 bay:"02",
-image:""
+reason:"Primary coating",
+status:"missing"
 },
 
 {
@@ -1125,7 +1356,8 @@ price:22.98,
 qty:1,
 aisle:"18",
 bay:"03",
-image:""
+reason:"Surface prep",
+status:"missing"
 },
 
 {
@@ -1135,41 +1367,19 @@ price:18.98,
 qty:1,
 aisle:"18",
 bay:"04",
-image:""
-}
-
-],
-
-fence: [
-
-{
-id:"stain",
-name:"Fence Stain",
-price:49.98,
-qty:2,
-aisle:"18",
-bay:"06",
-image:""
+reason:"Apply stain evenly",
+status:"missing"
 },
 
 {
-id:"cleaner",
-name:"Wood Cleaner",
-price:18.98,
+id:"sprayer",
+name:"Pump Sprayer",
+price:24.98,
 qty:1,
 aisle:"18",
-bay:"07",
-image:""
-},
-
-{
-id:"brush",
-name:"Stain Brush",
-price:14.98,
-qty:1,
-aisle:"18",
-bay:"08",
-image:""
+bay:"05",
+reason:"Cleaner application",
+status:"missing"
 }
 
 ]
@@ -1196,27 +1406,30 @@ container.innerHTML = "";
 const projectType =
 MyLowState.projectType;
 
-const items =
+const sourceItems =
 ChecklistTemplates[
 projectType
 ];
 
-if (!items) {
+if (!sourceItems) {
 return;
 }
 
 MyLowState.checklist =
 JSON.parse(
-JSON.stringify(items)
+JSON.stringify(sourceItems)
 );
 
-items.forEach(item => {
+MyLowState.cart = [];
+MyLowState.ownedItems = [];
+
+sourceItems.forEach(item => {
 
 const row =
 document.createElement("div");
 
 row.className =
-"checklist-item";
+"checklist-item state-missing";
 
 row.dataset.itemId =
 item.id;
@@ -1229,24 +1442,38 @@ row.innerHTML = `
 
 <img
 class="checklist-image"
-src="${item.image}"
+src=""
 alt="${item.name}">
 
 </div>
 
 <div class="checklist-product-info">
 
-<div class="checklist-category">
-
-PROJECT ITEM
-
-</div>
+<div class="checklist-item-top">
 
 <h3>
 
 ${item.name}
 
 </h3>
+
+<div
+class="tooltip-trigger"
+data-tooltip="tip-${item.id}">
+
+?
+
+</div>
+
+</div>
+
+<div
+id="tip-${item.id}"
+class="tooltip-content hidden">
+
+${item.reason}
+
+</div>
 
 <div class="checklist-price">
 
@@ -1319,10 +1546,18 @@ Add To Cart
 </button>
 
 <button
-class="secondary-btn remove-item-btn"
+class="secondary-btn already-have-btn"
 data-id="${item.id}">
 
-Remove
+Already Have
+
+</button>
+
+<button
+class="secondary-btn change-item-btn"
+data-id="${item.id}">
+
+Change
 
 </button>
 
@@ -1342,96 +1577,12 @@ attachChecklistEvents();
 
 updateChecklistStats();
 
-}
-
-/* =====================================================
-   CHECKLIST EVENTS
-===================================================== */
-
-function attachChecklistEvents() {
-
-document
-.querySelectorAll(
-".increase-btn"
-)
-.forEach(button => {
-
-button.addEventListener(
-"click",
-function() {
-
-updateItemQuantity(
-this.dataset.id,
-1
-);
-
-}
-);
-
-});
-
-document
-.querySelectorAll(
-".decrease-btn"
-)
-.forEach(button => {
-
-button.addEventListener(
-"click",
-function() {
-
-updateItemQuantity(
-this.dataset.id,
--1
-);
-
-}
-);
-
-});
-
-document
-.querySelectorAll(
-".add-item-btn"
-)
-.forEach(button => {
-
-button.addEventListener(
-"click",
-function() {
-
-addItemToCart(
-this.dataset.id
-);
-
-}
-);
-
-});
-
-document
-.querySelectorAll(
-".remove-item-btn"
-)
-.forEach(button => {
-
-button.addEventListener(
-"click",
-function() {
-
-removeItemFromCart(
-this.dataset.id
-);
-
-}
-);
-
-});
+generateShoppingRoute();
 
 }
 
 /* =====================================================
-   QUANTITY CONTROL
+   QUANTITY CONTROLS
 ===================================================== */
 
 function updateItemQuantity(
@@ -1450,18 +1601,20 @@ return;
 
 item.qty += change;
 
-if (item.qty < 1) {
+if (
+item.qty < 1
+) {
 item.qty = 1;
 }
 
-const qtyDisplay =
+const qty =
 document.getElementById(
 "qty-" + itemId
 );
 
-if (qtyDisplay) {
+if (qty) {
 
-qtyDisplay.textContent =
+qty.textContent =
 item.qty;
 
 }
@@ -1471,7 +1624,7 @@ updateChecklistStats();
 }
 
 /* =====================================================
-   CART
+   ADD TO CART
 ===================================================== */
 
 function addItemToCart(
@@ -1487,18 +1640,44 @@ if (!item) {
 return;
 }
 
-const existing =
-MyLowState.cart.find(
-i => i.id === itemId
+item.status = "cart";
+
+const row =
+document.querySelector(
+`[data-item-id="${itemId}"]`
 );
 
-if (!existing) {
+if (row) {
 
-MyLowState.cart.push(
-{
-...item
+row.classList.remove(
+"state-missing",
+"state-owned"
+);
+
+row.classList.add(
+"state-cart"
+);
+
 }
+
+if (
+!MyLowState.cart.find(
+i => i.id === item.id
+)
+) {
+
+MyLowState.cart.push(item);
+
+}
+
+MyLowState.ownedItems =
+MyLowState.ownedItems.filter(
+i => i.id !== item.id
 );
+
+updateCart();
+
+updateReadiness();
 
 showToast(
 item.name +
@@ -1506,32 +1685,205 @@ item.name +
 );
 
 }
-else {
 
-existing.qty =
-item.qty;
+/* =====================================================
+   ALREADY HAVE
+===================================================== */
 
-}
-
-updateCart();
-
-}
-
-function removeItemFromCart(
+function markItemOwned(
 itemId
 ) {
 
+const item =
+MyLowState.checklist.find(
+i => i.id === itemId
+);
+
+if (!item) {
+return;
+}
+
+item.status = "owned";
+
+const row =
+document.querySelector(
+`[data-item-id="${itemId}"]`
+);
+
+if (row) {
+
+row.classList.remove(
+"state-missing",
+"state-cart"
+);
+
+row.classList.add(
+"state-owned"
+);
+
+}
+
 MyLowState.cart =
 MyLowState.cart.filter(
-item =>
-item.id !== itemId
+i => i.id !== item.id
 );
+
+if (
+!MyLowState.ownedItems.find(
+i => i.id === item.id
+)
+) {
+
+MyLowState.ownedItems.push(
+item
+);
+
+}
 
 updateCart();
 
+updateReadiness();
+
 showToast(
-"Item removed."
+item.name +
+" marked as already owned."
 );
+
+}
+
+/* =====================================================
+   CHECKLIST EVENTS
+===================================================== */
+
+function attachChecklistEvents() {
+
+document
+.querySelectorAll(
+".increase-btn"
+)
+.forEach(btn => {
+
+btn.addEventListener(
+"click",
+function() {
+
+updateItemQuantity(
+this.dataset.id,
+1
+);
+
+}
+);
+
+});
+
+document
+.querySelectorAll(
+".decrease-btn"
+)
+.forEach(btn => {
+
+btn.addEventListener(
+"click",
+function() {
+
+updateItemQuantity(
+this.dataset.id,
+-1
+);
+
+}
+);
+
+});
+
+document
+.querySelectorAll(
+".add-item-btn"
+)
+.forEach(btn => {
+
+btn.addEventListener(
+"click",
+function() {
+
+addItemToCart(
+this.dataset.id
+);
+
+}
+);
+
+});
+
+document
+.querySelectorAll(
+".already-have-btn"
+)
+.forEach(btn => {
+
+btn.addEventListener(
+"click",
+function() {
+
+markItemOwned(
+this.dataset.id
+);
+
+}
+);
+
+});
+
+}
+
+/* =====================================================
+   READINESS ENGINE
+===================================================== */
+
+function updateReadiness() {
+
+const total =
+MyLowState.checklist.length;
+
+const complete =
+MyLowState.cart.length +
+MyLowState.ownedItems.length;
+
+const percent =
+Math.round(
+(complete / total) * 100
+);
+
+MyLowState.readiness =
+percent;
+
+document.getElementById(
+"stickyReadinessPercent"
+).textContent =
+percent + "%";
+
+document.getElementById(
+"readinessBar"
+).style.width =
+percent + "%";
+
+document.getElementById(
+"checklistCompletionPercent"
+).textContent =
+percent + "%";
+
+document.getElementById(
+"itemsAddedCount"
+).textContent =
+complete;
+
+document.getElementById(
+"checklistCompletionCount"
+).textContent =
+complete +
+" / " +
+total;
 
 }
 
@@ -1562,27 +1914,30 @@ document.getElementById(
 count;
 
 document.getElementById(
+"alreadyOwnedCount"
+).textContent =
+MyLowState.ownedItems.length;
+
+document.getElementById(
 "cartTotal"
 ).textContent =
 "$" +
 total.toFixed(2);
 
-updateReadiness();
-
 }
 
 /* =====================================================
-   CHECKLIST SUMMARY
+   CHECKLIST TOTALS
 ===================================================== */
 
 function updateChecklistStats() {
 
-let estimatedTotal = 0;
+let total = 0;
 
 MyLowState.checklist.forEach(
 item => {
 
-estimatedTotal +=
+total +=
 item.price *
 item.qty;
 
@@ -1593,71 +1948,62 @@ document.getElementById(
 "checklistEstimatedTotal"
 ).textContent =
 "$" +
-estimatedTotal.toFixed(2);
+total.toFixed(2);
 
 }
 
 /* =====================================================
-   READINESS ENGINE
+   SHOPPING ROUTE
 ===================================================== */
 
-function updateReadiness() {
+function generateShoppingRoute() {
 
-const totalItems =
-MyLowState.checklist.length;
-
-const completedItems =
-MyLowState.cart.length;
-
-const percent =
-Math.round(
-(
-completedItems /
-totalItems
-) * 100
+const route =
+document.getElementById(
+"shoppingRouteList"
 );
 
-MyLowState.readiness =
-percent;
+if (!route) {
+return;
+}
 
-document.getElementById(
-"readinessPercent"
-).textContent =
-percent + "%";
+const groupedAisles =
+[...new Set(
+MyLowState.checklist.map(
+item => item.aisle
+)
+)];
 
-document.getElementById(
-"readinessBar"
-).style.width =
-percent + "%";
+route.innerHTML = "";
 
-document.getElementById(
-"checklistCompletionPercent"
-).textContent =
-percent + "%";
+groupedAisles.forEach(
+(aisle,index) => {
 
-document.getElementById(
-"itemsAddedCount"
-).textContent =
-completedItems;
+const stop =
+document.createElement(
+"div"
+);
 
-document.getElementById(
-"checklistCompletionCount"
-).textContent =
-completedItems +
-" / " +
-totalItems;
+stop.className =
+"route-stop";
+
+stop.textContent =
+(index + 1) +
+". Aisle " +
+aisle;
+
+route.appendChild(
+stop
+);
+
+}
+);
 
 }
 
 /* =====================================================
-   INITIALIZATION
-===================================================== */
-
-updateReadiness();
-
-/* =====================================================
-   STORE DATABASE (PLACEHOLDER)
-   WILL BE REPLACED BY storeData.js
+   DEMO STORE DATA
+   FUTURE: storeData.js
 ===================================================== */
 
 const DemoStores = [
@@ -1692,12 +2038,22 @@ address:"Huntersville, NC"
 ];
 
 /* =====================================================
-   STORE SEARCH
+   STORE BAR
 ===================================================== */
 
-const zipCodeInput =
+const storeSelectorPanel =
 document.getElementById(
-"zipCodeInput"
+"storeSelectorPanel"
+);
+
+const selectStoreBtn =
+document.getElementById(
+"selectStoreBtn"
+);
+
+const changeStoreBtn =
+document.getElementById(
+"changeStoreBtn"
 );
 
 const findStoresBtn =
@@ -1705,20 +2061,48 @@ document.getElementById(
 "findStoresBtn"
 );
 
-const storeResults =
+const zipCodeInput =
 document.getElementById(
-"storeOptionsContainer"
+"zipCodeInput"
 );
 
-const storeSearchResults =
-document.getElementById(
-"storeSearchResults"
+/* OPEN STORE SELECTOR */
+
+if (selectStoreBtn) {
+
+selectStoreBtn.addEventListener(
+"click",
+function() {
+
+storeSelectorPanel.classList.remove(
+"hidden"
 );
 
-const selectStoreBtn =
-document.getElementById(
-"selectStoreBtn"
+}
 );
+
+}
+
+/* CHANGE STORE */
+
+if (changeStoreBtn) {
+
+changeStoreBtn.addEventListener(
+"click",
+function() {
+
+storeSelectorPanel.classList.remove(
+"hidden"
+);
+
+}
+);
+
+}
+
+/* =====================================================
+   FIND STORES
+===================================================== */
 
 function findStores() {
 
@@ -1728,23 +2112,35 @@ zipCodeInput.value.trim();
 if (!zip) {
 
 showToast(
-"Please enter a ZIP code."
+"Enter a ZIP code."
 );
 
 return;
 
 }
 
-storeSearchResults.classList.remove(
+const results =
+document.getElementById(
+"storeOptionsContainer"
+);
+
+const resultPanel =
+document.getElementById(
+"storeSearchResults"
+);
+
+resultPanel.classList.remove(
 "hidden"
 );
 
-storeResults.innerHTML = "";
+results.innerHTML = "";
 
 DemoStores.forEach(store => {
 
 const row =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 row.className =
 "store-option";
@@ -1768,7 +2164,7 @@ ${store.address}
 
 `;
 
-storeResults.appendChild(
+results.appendChild(
 row
 );
 
@@ -1803,7 +2199,7 @@ document.querySelector(
 if (!selected) {
 
 showToast(
-"Please select a store."
+"Select a store."
 );
 
 return;
@@ -1823,40 +2219,31 @@ MyLowState.store =
 store;
 
 document.getElementById(
-"activeStoreCard"
-).classList.remove(
-"hidden"
-);
-
-document.getElementById(
-"selectedStoreName"
+"selectedStoreDisplay"
 ).textContent =
 store.name;
-
-document.getElementById(
-"selectedStoreNumber"
-).textContent =
-store.id;
-
-document.getElementById(
-"selectedStorePhone"
-).textContent =
-store.phone;
-
-document.getElementById(
-"selectedStoreHours"
-).textContent =
-store.hours;
-
-document.getElementById(
-"selectedStoreAddress"
-).textContent =
-store.address;
 
 document.getElementById(
 "cartStoreName"
 ).textContent =
 store.name;
+
+document.getElementById(
+"accountStore"
+).textContent =
+store.name;
+
+storeSelectorPanel.classList.add(
+"hidden"
+);
+
+changeStoreBtn.classList.remove(
+"hidden"
+);
+
+selectStoreBtn.classList.add(
+"hidden"
+);
 
 showToast(
 store.name +
@@ -1865,48 +2252,104 @@ store.name +
 
 }
 
-if (selectStoreBtn) {
+/* STORE SELECT BUTTON INSIDE PANEL */
 
-selectStoreBtn.addEventListener(
-"click",
-selectStore
-);
+document.addEventListener(
+"change",
+function(event) {
+
+if (
+event.target.name ===
+"storeSelection"
+) {
+
+selectStore();
 
 }
 
-/* =====================================================
-   CHANGE STORE
-===================================================== */
-
-const changeStoreBtn =
-document.getElementById(
-"changeStoreBtn"
+}
 );
 
-if (changeStoreBtn) {
+/* =====================================================
+   COLLAPSIBLE PANELS
+===================================================== */
 
-changeStoreBtn.addEventListener(
+function setupCollapse(
+buttonId,
+contentId
+) {
+
+const button =
+document.getElementById(
+buttonId
+);
+
+const content =
+document.getElementById(
+contentId
+);
+
+if (
+!button
+||
+!content
+) {
+return;
+}
+
+button.addEventListener(
 "click",
 function() {
 
-document
-.getElementById(
-"activeStoreCard"
-)
-.classList.add(
+content.classList.toggle(
 "hidden"
 );
 
-showToast(
-"Choose a different store."
+if (
+content.classList.contains(
+"hidden"
+)
+) {
+
+this.textContent =
+this.textContent.replace(
+"▲",
+"▼"
 );
 
-});
+}
+else {
+
+this.textContent =
+this.textContent.replace(
+"▼",
+"▲"
+);
 
 }
 
+}
+);
+
+}
+
+setupCollapse(
+"projectDetailsToggle",
+"projectDetailsContent"
+);
+
+setupCollapse(
+"shoppingRouteToggle",
+"shoppingRouteContent"
+);
+
+setupCollapse(
+"additionalShoppingToggle",
+"additionalShoppingContent"
+);
+
 /* =====================================================
-   STORE MAP MODAL
+   STORE MAP
 ===================================================== */
 
 const storeMapModal =
@@ -1944,6 +2387,8 @@ storeMapModal.classList.remove(
 
 }
 
+/* MAP BUTTONS */
+
 document.addEventListener(
 "click",
 function(event) {
@@ -1965,7 +2410,7 @@ event.target.dataset.bay
 );
 
 /* =====================================================
-   CLOSE MODALS
+   MODAL CLOSES
 ===================================================== */
 
 document
@@ -1997,29 +2442,152 @@ modal.classList.add(
 });
 
 /* =====================================================
-   VIEW STORE MAP
+   ITEM REPLACEMENT
 ===================================================== */
 
-const viewStoreMapBtn =
+const itemReplacementModal =
 document.getElementById(
-"viewStoreMapBtn"
+"itemReplacementModal"
 );
 
-if (viewStoreMapBtn) {
+document.addEventListener(
+"click",
+function(event) {
 
-viewStoreMapBtn.addEventListener(
+if (
+event.target.classList.contains(
+"change-item-btn"
+)
+) {
+
+itemReplacementModal.classList.remove(
+"hidden"
+);
+
+document.getElementById(
+"itemReplacementContent"
+).innerHTML = `
+
+<h3>
+
+Replacement Options
+
+</h3>
+
+<p>
+
+Best Option
+
+</p>
+
+<button
+class="primary-btn replacement-option">
+
+Select
+
+</button>
+
+<br><br>
+
+<p>
+
+Better Option
+
+</p>
+
+<button
+class="primary-btn replacement-option">
+
+Select
+
+</button>
+
+<br><br>
+
+<p>
+
+Budget Option
+
+</p>
+
+<button
+class="primary-btn replacement-option">
+
+Select
+
+</button>
+
+`;
+
+}
+
+}
+);
+
+/* =====================================================
+   SYSTEM REPLACEMENT
+===================================================== */
+
+const changeSystemBtn =
+document.getElementById(
+"changeSystemBtn"
+);
+
+const productSystemModal =
+document.getElementById(
+"productSystemModal"
+);
+
+if (
+changeSystemBtn
+&&
+productSystemModal
+) {
+
+changeSystemBtn.addEventListener(
 "click",
 function() {
 
-openStoreMap(
-"12",
-"04"
+productSystemModal.classList.remove(
+"hidden"
 );
 
 }
 );
 
 }
+
+/* =====================================================
+   SYSTEM MODAL SELECTION
+===================================================== */
+
+document
+.querySelectorAll(
+".system-select-btn"
+)
+.forEach(button => {
+
+button.addEventListener(
+"click",
+function() {
+
+MyLowState.recommendationTier =
+this.dataset.system;
+
+renderProjectSystem();
+
+productSystemModal.classList.add(
+"hidden"
+);
+
+showToast(
+"Project system updated."
+);
+
+}
+);
+
+});
 
 /* =====================================================
    ADDITIONAL SHOPPING
@@ -2058,26 +2626,22 @@ results.classList.remove(
 
 results.innerHTML = `
 
-<div class="shopping-result">
-
-<h3>
+<div class="route-stop">
 
 ${query}
 
-</h3>
+<br>
 
-<p>
-
-Future product catalog integration.
-
-</p>
+Prototype search result.
+Future catalog integration will
+display real products.
 
 </div>
 
 `;
 
 showToast(
-"Additional shopping search complete."
+"Search complete."
 );
 
 }
@@ -2104,10 +2668,12 @@ function prepareProjectOrder() {
 
 if (
 MyLowState.cart.length === 0
+&&
+MyLowState.ownedItems.length === 0
 ) {
 
 showToast(
-"Add project items before preparing an order."
+"Complete part of your checklist first."
 );
 
 return;
@@ -2117,19 +2683,15 @@ return;
 MyLowState.preparedOrder = {
 
 id:
-"PO-" +
-Date.now(),
+"PO-" + Date.now(),
 
 status:
 "Prepared",
 
-items:
-MyLowState.cart.length,
-
 store:
 MyLowState.store
 ? MyLowState.store.name
-: "Not Selected"
+: "No Store Selected"
 
 };
 
@@ -2143,6 +2705,11 @@ document.getElementById(
 ).textContent =
 "Prepared";
 
+document.getElementById(
+"accountPreparedOrders"
+).textContent =
+"1";
+
 showToast(
 "Project order prepared."
 );
@@ -2155,215 +2722,6 @@ prepareProjectBtn.addEventListener(
 "click",
 prepareProjectOrder
 );
-
-}
-
-/* =====================================================
-   SAVE PROJECT
-===================================================== */
-
-const saveProjectBtn =
-document.getElementById(
-"saveProjectBtn"
-);
-
-if (saveProjectBtn) {
-
-saveProjectBtn.addEventListener(
-"click",
-function() {
-
-document
-.getElementById(
-"saveProjectModal"
-)
-.classList.remove(
-"hidden"
-);
-
-});
-
-}
-
-const confirmSaveProjectBtn =
-document.getElementById(
-"confirmSaveProjectBtn"
-);
-
-if (confirmSaveProjectBtn) {
-
-confirmSaveProjectBtn.addEventListener(
-"click",
-function() {
-
-const name =
-document.getElementById(
-"saveProjectName"
-).value.trim();
-
-if (!name) {
-
-showToast(
-"Enter a project name."
-);
-
-return;
-
-}
-
-showToast(
-"Project saved: " +
-name
-);
-
-document
-.getElementById(
-"saveProjectModal"
-)
-.classList.add(
-"hidden"
-);
-
-});
-
-}
-
-/* =====================================================
-   UPDATE CART PROJECT TYPE
-===================================================== */
-
-function updateProjectMetadata() {
-
-const projectType =
-MyLowState.project
-? MyLowState.project.title
-: "Not Detected";
-
-document.getElementById(
-"cartProjectType"
-).textContent =
-projectType;
-
-}
-
-const originalLoadProject =
-loadProject;
-
-loadProject = function(projectType) {
-
-originalLoadProject(
-projectType
-);
-
-updateProjectMetadata();
-
-renderWeatherWindow();
-
-};
-
-/* =====================================================
-   CHECKOUT FLOW
-===================================================== */
-
-const checkoutBtn =
-document.getElementById(
-"checkoutBtn"
-);
-
-const checkoutPage =
-document.getElementById(
-"checkoutPage"
-);
-
-if (checkoutBtn) {
-
-checkoutBtn.addEventListener(
-"click",
-function() {
-
-if (
-MyLowState.cart.length === 0
-) {
-
-showToast(
-"Add project items before checkout."
-);
-
-return;
-
-}
-
-checkoutPage.classList.remove(
-"hidden"
-);
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-renderCheckout();
-
-}
-);
-
-}
-
-function renderCheckout() {
-
-const checkoutContent =
-document.getElementById(
-"checkoutContent"
-);
-
-if (!checkoutContent) {
-return;
-}
-
-checkoutContent.innerHTML = `
-
-<h2>
-
-Review Your Project Order
-
-</h2>
-
-<p>
-
-Store:
-${MyLowState.store
-? MyLowState.store.name
-: "No Store Selected"}
-
-</p>
-
-<p>
-
-Items:
-${MyLowState.cart.length}
-
-</p>
-
-<p>
-
-Estimated Total:
-${document.getElementById(
-"cartTotal"
-).textContent}
-
-</p>
-
-<br>
-
-<button
-id="checkoutContinueBtn"
-class="primary-btn">
-
-Continue
-
-</button>
-
-`;
 
 }
 
@@ -2433,11 +2791,9 @@ document.getElementById(
 ) || 8;
 
 const wallArea =
-(
 (width * height * 2)
 +
-(length * height * 2)
-);
+(length * height * 2);
 
 const gallons =
 Math.max(
@@ -2453,26 +2809,26 @@ document.getElementById(
 
 Estimated Paint Needed
 
+<br><br>
+
 <strong>
-
 ${gallons} Gallons
-
 </strong>
 
 <br><br>
 
 Coverage Area
 
+<br>
+
 <strong>
-
 ${Math.round(wallArea)} sq ft
-
 </strong>
 
 `;
 
 showToast(
-"Coverage estimate updated."
+"Coverage updated."
 );
 
 }
@@ -2484,23 +2840,27 @@ showToast(
    PROJECT WALKTHROUGH
 ===================================================== */
 
-const walkthroughBtn =
+const projectWalkthroughBtn =
 document.getElementById(
 "projectWalkthroughBtn"
 );
 
-if (walkthroughBtn) {
-
-walkthroughBtn.addEventListener(
-"click",
-function() {
-
-const modal =
+const projectWalkthroughModal =
 document.getElementById(
 "projectWalkthroughModal"
 );
 
-modal.classList.remove(
+if (
+projectWalkthroughBtn
+&&
+projectWalkthroughModal
+) {
+
+projectWalkthroughBtn.addEventListener(
+"click",
+function() {
+
+projectWalkthroughModal.classList.remove(
 "hidden"
 );
 
@@ -2513,17 +2873,17 @@ content.innerHTML = `
 
 <ol>
 
-<li>Prepare work area</li>
-
 <li>Gather project materials</li>
+
+<li>Prepare work area</li>
 
 <li>Repair damaged surfaces</li>
 
 <li>Apply recommended products</li>
 
-<li>Inspect finished project</li>
+<li>Inspect completed work</li>
 
-<li>Clean up workspace</li>
+<li>Clean work area</li>
 
 </ol>
 
@@ -2535,27 +2895,259 @@ content.innerHTML = `
 }
 
 /* =====================================================
-   SAVED PROJECTS DRAWER
+   SAVE PROJECT
 ===================================================== */
 
-const savedProjectsBtn =
+let savedProjectCount = 0;
+
+const saveProjectBtn =
 document.getElementById(
-"savedProjectsBtn"
+"saveProjectBtn"
 );
 
-if (savedProjectsBtn) {
+const saveProjectModal =
+document.getElementById(
+"saveProjectModal"
+);
 
-savedProjectsBtn.addEventListener(
+if (
+saveProjectBtn
+&&
+saveProjectModal
+) {
+
+saveProjectBtn.addEventListener(
 "click",
 function() {
 
-document
-.getElementById(
-"savedProjectsDrawer"
-)
-.classList.remove(
+saveProjectModal.classList.remove(
 "hidden"
 );
+
+}
+);
+
+}
+
+const confirmSaveProjectBtn =
+document.getElementById(
+"confirmSaveProjectBtn"
+);
+
+if (confirmSaveProjectBtn) {
+
+confirmSaveProjectBtn.addEventListener(
+"click",
+function() {
+
+const projectName =
+document.getElementById(
+"saveProjectName"
+).value.trim();
+
+if (!projectName) {
+
+showToast(
+"Enter a project name."
+);
+
+return;
+
+}
+
+savedProjectCount++;
+
+document.getElementById(
+"accountSavedProjects"
+).textContent =
+savedProjectCount;
+
+showToast(
+"Project saved."
+);
+
+saveProjectModal.classList.add(
+"hidden"
+);
+
+}
+);
+
+}
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+const checkoutBtn =
+document.getElementById(
+"checkoutBtn"
+);
+
+const checkoutPage =
+document.getElementById(
+"checkoutPage"
+);
+
+if (
+checkoutBtn
+&&
+checkoutPage
+) {
+
+checkoutBtn.addEventListener(
+"click",
+function() {
+
+if (
+MyLowState.cart.length === 0
+) {
+
+showToast(
+"Add items to cart before checkout."
+);
+
+return;
+
+}
+
+checkoutPage.classList.remove(
+"hidden"
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+renderCheckout();
+
+}
+);
+
+}
+
+function renderCheckout() {
+
+const checkoutContent =
+document.getElementById(
+"checkoutContent"
+);
+
+if (!checkoutContent) {
+return;
+}
+
+checkoutContent.innerHTML = `
+
+<h2>
+Review Your Project Order
+</h2>
+
+<br>
+
+<p>
+
+Store:
+${MyLowState.store
+? MyLowState.store.name
+: "No Store Selected"}
+
+</p>
+
+<br>
+
+<p>
+
+Cart Items:
+${MyLowState.cart.length}
+
+</p>
+
+<br>
+
+<p>
+
+Estimated Total:
+${document.getElementById(
+"cartTotal"
+).textContent}
+
+</p>
+
+<br><br>
+
+<button
+class="primary-btn">
+
+Continue
+
+</button>
+
+`;
+
+}
+
+/* =====================================================
+   ASSISTANT PANEL
+===================================================== */
+
+const assistantAskBtn =
+document.getElementById(
+"assistantAskBtn"
+);
+
+if (assistantAskBtn) {
+
+assistantAskBtn.addEventListener(
+"click",
+function() {
+
+const input =
+document.getElementById(
+"assistantQuestion"
+);
+
+const question =
+input.value.trim();
+
+if (!question) {
+return;
+}
+
+const messages =
+document.getElementById(
+"assistantMessages"
+);
+
+const message =
+document.createElement(
+"div"
+);
+
+message.className =
+"assistant-message";
+
+message.innerHTML = `
+
+<strong>You:</strong>
+
+${question}
+
+<br><br>
+
+<strong>MyLow:</strong>
+
+Review the recommended project
+system and checklist for the
+best project outcome.
+
+`;
+
+messages.appendChild(
+message);
+
+input.value = "";
 
 }
 );
@@ -2580,6 +3172,34 @@ function() {
 document
 .getElementById(
 "accountDrawer"
+)
+.classList.remove(
+"hidden"
+);
+
+}
+);
+
+}
+
+/* =====================================================
+   SAVED PROJECTS DRAWER
+===================================================== */
+
+const savedProjectsBtn =
+document.getElementById(
+"savedProjectsBtn"
+);
+
+if (savedProjectsBtn) {
+
+savedProjectsBtn.addEventListener(
+"click",
+function() {
+
+document
+.getElementById(
+"savedProjectsDrawer"
 )
 .classList.remove(
 "hidden"
@@ -2623,92 +3243,7 @@ drawer.classList.add(
 });
 
 /* =====================================================
-   ASSISTANT PANEL
-===================================================== */
-
-const assistantAskBtn =
-document.getElementById(
-"assistantAskBtn"
-);
-
-if (assistantAskBtn) {
-
-assistantAskBtn.addEventListener(
-"click",
-function() {
-
-const question =
-document.getElementById(
-"assistantQuestion"
-).value.trim();
-
-if (!question) {
-return;
-}
-
-const messages =
-document.getElementById(
-"assistantMessages"
-);
-
-const response =
-document.createElement(
-"div"
-);
-
-response.className =
-"assistant-message";
-
-response.innerHTML = `
-
-<strong>You:</strong>
-
-${question}
-
-<br><br>
-
-<strong>MyLow:</strong>
-
-Based on your project,
-review the recommended
-project system and checklist
-for best results.
-
-`;
-
-messages.appendChild(
-response
-);
-
-document.getElementById(
-"assistantQuestion"
-).value = "";
-
-}
-);
-
-}
-
-/* =====================================================
-   PROJECT PREPARATION COUNTER
-===================================================== */
-
-function updatePreparedOrderCount() {
-
-if (
-!MyLowState.preparedOrder
-) {
-return;
-}
-
-document.getElementById(
-"accountPreparedOrders"
-).textContent = "1";
-
-}
-
-/* =====================================================
-   APPLICATION STARTUP
+   INITIALIZATION
 ===================================================== */
 
 function initializeMyLow() {
@@ -2717,12 +3252,12 @@ hideLoading();
 
 updateReadiness();
 
-showToast(
-"MyLow Ready"
+console.log(
+"MyLow V4.1 Initialized"
 );
 
-console.log(
-"MyLow V4 Initialized"
+showToast(
+"MyLow Ready"
 );
 
 }
@@ -2731,46 +3266,6 @@ document.addEventListener(
 "DOMContentLoaded",
 initializeMyLow
 );
-
-/* =====================================================
-   PREPARED ORDER OVERRIDE
-===================================================== */
-
-const originalPrepareOrder =
-prepareProjectOrder;
-
-prepareProjectOrder =
-function() {
-
-originalPrepareOrder();
-
-updatePreparedOrderCount();
-
-};
-
-/* =====================================================
-   SAVE PROJECT COUNTER
-===================================================== */
-
-let savedProjectCount = 0;
-
-if (confirmSaveProjectBtn) {
-
-confirmSaveProjectBtn.addEventListener(
-"click",
-function() {
-
-savedProjectCount++;
-
-document.getElementById(
-"accountSavedProjects"
-).textContent =
-savedProjectCount;
-
-}
-);
-
-}
 
 /* =====================================================
    END OF FILE
