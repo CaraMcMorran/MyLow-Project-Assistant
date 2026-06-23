@@ -24,7 +24,7 @@ href="styles.css">
 <body>
 
 <!-- ========================================= -->
-<!-- PROTOTYPE DISCLAIMER -->
+<!-- PROTOTYPE BANNER -->
 <!-- ========================================= -->
 
 <div class="prototype-banner">
@@ -35,14 +35,10 @@ This website is an independently created
 demonstration prototype and is not affiliated
 with or connected to Lowe's Companies, Inc.
 
-Product recommendations,
-pricing,
-weather guidance,
-store maps,
-inventory,
-checkout workflows
-and project preparation services
-are visual representations only.
+Store maps, inventory, weather guidance,
+checkout workflows, project recommendations
+and pickup preparation are prototype
+demonstrations only.
 
 </div>
 
@@ -83,37 +79,76 @@ My Account
 </header>
 
 <!-- ========================================= -->
-<!-- STORE SELECTION -->
+<!-- COMPACT STORE BAR -->
 <!-- ========================================= -->
 
-<section class="store-selection-section">
+<section class="store-bar">
 
-<div class="store-selection-card">
+<div class="store-bar-content">
 
-<div class="store-selection-left">
+<div class="store-bar-left">
+
+<div class="store-label">
+
+STORE
+
+</div>
+
+<div
+id="selectedStoreDisplay">
+
+No Store Selected
+
+</div>
+
+</div>
+
+<div class="store-bar-actions">
+
+<button
+id="selectStoreBtn"
+class="secondary-btn">
+
+Select Store
+
+</button>
+
+<button
+id="changeStoreBtn"
+class="secondary-btn hidden">
+
+Change Store
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- STORE SELECTOR -->
+<!-- ========================================= -->
+
+<section
+id="storeSelectorPanel"
+class="store-selector-panel hidden">
+
+<div class="store-selector-card">
 
 <h2>
 
-Select Your Store
+Find Your Store
 
 </h2>
 
-<p>
-
-Enter your ZIP code to find nearby stores.
-Store selection powers:
-
-Store Maps • Aisle/Bay Locations •
-Pickup Preparation • Weather Planning
-
-</p>
-
-<div class="zip-search-row">
+<div class="store-search-row">
 
 <input
 type="text"
 id="zipCodeInput"
-placeholder="Enter ZIP Code">
+placeholder="ZIP Code">
 
 <button
 id="findStoresBtn"
@@ -125,17 +160,9 @@ Find Stores
 
 </div>
 
-</div>
-
 <div
 id="storeSearchResults"
-class="store-search-results hidden">
-
-<h3>
-
-Choose A Store
-
-</h3>
+class="hidden">
 
 <div
 id="storeOptionsContainer">
@@ -144,138 +171,7 @@ id="storeOptionsContainer">
 
 </div>
 
-<button
-id="selectStoreBtn"
-class="primary-btn">
-
-Use Selected Store
-
-</button>
-
 </div>
-
-</div>
-
-</section>
-
-<!-- ========================================= -->
-<!-- ACTIVE STORE CARD -->
-<!-- ========================================= -->
-
-<section
-id="activeStoreCard"
-class="active-store-card hidden">
-
-<div class="store-card-header">
-
-<div>
-
-<div class="store-card-label">
-
-SELECTED STORE
-
-</div>
-
-<h2
-id="selectedStoreName">
-
-Mooresville Lowe's
-
-</h2>
-
-</div>
-
-<button
-id="changeStoreBtn"
-class="secondary-btn">
-
-Change Store
-
-</button>
-
-</div>
-
-<div class="store-card-grid">
-
-<div class="store-detail">
-
-<label>
-
-Store Number
-
-</label>
-
-<div
-id="selectedStoreNumber">
-
-0000
-
-</div>
-
-</div>
-
-<div class="store-detail">
-
-<label>
-
-Phone
-
-</label>
-
-<div
-id="selectedStorePhone">
-
-(000) 000-0000
-
-</div>
-
-</div>
-
-<div class="store-detail">
-
-<label>
-
-Hours
-
-</label>
-
-<div
-id="selectedStoreHours">
-
-Store Hours
-
-</div>
-
-</div>
-
-<div class="store-detail full-width">
-
-<label>
-
-Address
-
-</label>
-
-<div
-id="selectedStoreAddress">
-
-Store Address
-
-</div>
-
-</div>
-
-</div>
-
-<div class="store-card-actions">
-
-<button
-id="viewStoreMapBtn"
-class="secondary-btn">
-
-View Store Map
-
-</button>
 
 </div>
 
@@ -291,7 +187,7 @@ View Store Map
 
 <h1>
 
-Tell MyLow About Your Project
+What Project Are You Working On?
 
 </h1>
 
@@ -299,13 +195,10 @@ Tell MyLow About Your Project
 
 Describe your project naturally.
 
-MyLow will identify the project,
+MyLow will build a project system,
 recommend products,
-estimate quantities,
-build a project checklist,
-calculate your budget,
-and help prepare everything needed
-to complete the project.
+calculate quantities
+and generate a complete checklist.
 
 </p>
 
@@ -314,7 +207,7 @@ to complete the project.
 <input
 id="projectSearch"
 type="text"
-placeholder="Examples: Paint my bathroom, stain my deck, paint my kitchen cabinets">
+placeholder="Paint my bathroom">
 
 <button
 id="searchBtn"
@@ -326,15 +219,17 @@ Ask MyLow
 
 </div>
 
-<div class="project-search-examples">
+<div class="project-examples">
 
-<strong>Try:</strong>
+Bathroom Paint •
 
-Paint my bathroom •
-Paint kitchen cabinets •
-Stain my deck •
-Recoat my fence •
-Paint my living room
+Kitchen Cabinets •
+
+Deck Stain •
+
+Fence Recoat •
+
+Living Room Paint
 
 </div>
 
@@ -343,24 +238,14 @@ Paint my living room
 </section>
 
 <!-- ========================================= -->
-<!-- PROJECT CONTROL BAR -->
+<!-- PROJECT SUMMARY BAR -->
 <!-- ========================================= -->
 
 <section
-id="projectControlBar"
-class="project-control-bar hidden">
+id="projectSummaryBar"
+class="project-summary-bar hidden">
 
-<div class="project-control-top">
-
-<div>
-
-<div
-id="detectedProjectBadge"
-class="project-badge">
-
-PROJECT DETECTED
-
-</div>
+<div class="project-summary-left">
 
 <h2
 id="projectTitle">
@@ -369,21 +254,832 @@ Bathroom Paint Project
 
 </h2>
 
+<div
+id="projectReadyDisplay">
+
+Project Ready:
+<span id="readinessPercent">
+
+0%
+
+</span>
+
 </div>
+
+</div>
+
+<div class="project-summary-right">
 
 <button
 id="projectWalkthroughBtn"
 class="secondary-btn">
 
-🎥 Project Walkthrough
+Project Walkthrough
 
 </button>
 
 </div>
 
-<div class="project-control-grid">
+</section>
 
-<div class="project-control-field">
+<!-- ========================================= -->
+<!-- WEATHER -->
+<!-- OUTDOOR PROJECTS ONLY -->
+<!-- ========================================= -->
+
+<section
+id="weatherSection"
+class="weather-section hidden">
+
+<div class="weather-card">
+
+<div class="weather-header">
+
+<h3>
+
+Recommended Weather Window
+
+</h3>
+
+</div>
+
+<div
+id="weatherWindowContent">
+
+Weather recommendation loads here.
+
+</div>
+
+<div class="weather-explanation">
+
+Weather recommendations are shown
+for outdoor projects because weather
+can significantly affect project success.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- MAIN WORKSPACE -->
+<!-- ========================================= -->
+
+<section
+id="workspace"
+class="workspace hidden">
+
+<!-- ========================================= -->
+<!-- STICKY READINESS -->
+<!-- ========================================= -->
+
+<div
+id="stickyReadiness"
+class="sticky-readiness">
+
+<div class="readiness-label">
+
+PROJECT READY
+
+</div>
+
+<div
+id="stickyReadinessPercent">
+
+0%
+
+</div>
+
+<div class="readiness-progress">
+
+<div
+id="readinessBar"
+class="readiness-progress-bar">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="workspace-layout">
+
+<!-- ========================================= -->
+<!-- LEFT COLUMN -->
+<!-- ========================================= -->
+
+<div class="workspace-left">
+
+<!-- ========================================= -->
+<!-- RECOMMENDED PROJECT SYSTEM -->
+<!-- ========================================= -->
+
+<div class="project-system-card">
+
+<div class="project-system-header">
+
+<div>
+
+<div class="section-label">
+
+RECOMMENDED PROJECT SYSTEM
+
+</div>
+
+<h2>
+
+Everything You Need To Start This Project
+
+</h2>
+
+<p>
+
+Products selected to work together
+for your specific project.
+
+</p>
+
+</div>
+
+<div class="recommendation-tier-selector">
+
+<button
+class="tier-btn active"
+data-tier="best">
+
+Best
+
+</button>
+
+<button
+class="tier-btn"
+data-tier="better">
+
+Better
+
+</button>
+
+<button
+class="tier-btn"
+data-tier="good">
+
+Good
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- PRIMARY + COMPANION SYSTEM -->
+<!-- ========================================= -->
+
+<div class="project-system-body">
+
+<!-- PRIMARY PRODUCT -->
+
+<div class="system-product">
+
+<div class="system-product-image">
+
+<img
+id="primaryProductImage"
+class="product-image"
+src=""
+alt="Primary Product">
+
+</div>
+
+<div class="system-product-content">
+
+<div class="system-product-top">
+
+<div
+id="primaryProductLabel"
+class="product-category-label">
+
+Recommended Product
+
+</div>
+
+<div
+class="tooltip-trigger"
+data-tooltip="primaryWhy">
+
+?
+
+</div>
+
+</div>
+
+<div
+id="primaryWhy"
+class="tooltip-content hidden">
+
+Recommended because it provides
+the best performance for the
+detected project type.
+
+</div>
+
+<h3
+id="primaryProductName">
+
+HGTV HOME Infinity Paint
+
+</h3>
+
+<div
+id="primaryProductPrice"
+class="product-price">
+
+$68.98
+
+</div>
+
+<div
+id="primaryProductLocation"
+class="product-location">
+
+📍 Aisle 12 • Bay 04
+
+</div>
+
+<div class="system-product-actions">
+
+<button
+class="map-link-btn"
+data-map-item="primary">
+
+View Store Map
+
+</button>
+
+<button
+class="change-product-btn"
+data-product-type="primary">
+
+Change Product
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SYSTEM PLUS -->
+
+<div class="project-system-plus">
+
++
+
+</div>
+
+<!-- COMPANION PRODUCT -->
+
+<div class="system-product">
+
+<div class="system-product-image">
+
+<img
+id="companionProductImage"
+class="product-image"
+src=""
+alt="Companion Product">
+
+</div>
+
+<div class="system-product-content">
+
+<div class="system-product-top">
+
+<div
+id="companionProductLabel"
+class="product-category-label">
+
+Companion Product
+
+</div>
+
+<div
+class="tooltip-trigger"
+data-tooltip="companionWhy">
+
+?
+
+</div>
+
+</div>
+
+<div
+id="companionWhy"
+class="tooltip-content hidden">
+
+Recommended because it works
+with the primary product to
+improve project success.
+
+</div>
+
+<h3
+id="companionProductName">
+
+KILZ Primer
+
+</h3>
+
+<div
+id="companionProductPrice"
+class="product-price">
+
+$29.98
+
+</div>
+
+<div
+id="companionProductLocation"
+class="product-location">
+
+📍 Aisle 12 • Bay 06
+
+</div>
+
+<div class="system-product-actions">
+
+<button
+class="map-link-btn"
+data-map-item="companion">
+
+View Store Map
+
+</button>
+
+<button
+class="change-product-btn"
+data-product-type="companion">
+
+Change Product
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- BUDGET CARD -->
+<!-- ========================================= -->
+
+<div class="system-budget-card">
+
+<div class="budget-main">
+
+<div class="budget-header">
+
+<div class="section-label">
+
+PROJECT BUDGET
+
+</div>
+
+<div
+class="tooltip-trigger"
+data-tooltip="budgetWhy">
+
+?
+
+</div>
+
+</div>
+
+<div
+id="systemBudgetTotal"
+class="system-budget-total">
+
+$286
+
+</div>
+
+<div
+id="budgetWhy"
+class="tooltip-content hidden">
+
+Budget includes recommended
+products and checklist items.
+
+Project details may change
+the estimate.
+
+</div>
+
+</div>
+
+<div class="budget-side">
+
+<div class="budget-stat">
+
+<label>
+
+Estimated Paint Needed
+
+</label>
+
+<div class="budget-stat-value">
+
+<span
+id="estimatedPaintQty">
+
+2 Gallons
+
+</span>
+
+<div
+class="tooltip-trigger small-tooltip"
+data-tooltip="quantityWhy">
+
+?
+
+</div>
+
+</div>
+
+</div>
+
+<div
+id="quantityWhy"
+class="tooltip-content hidden">
+
+Based on room size,
+surface type,
+coverage rates
+and two coat application.
+
+</div>
+
+<div class="budget-stat">
+
+<label>
+
+Coverage
+
+</label>
+
+<div
+id="coverageEstimate">
+
+700 Sq Ft
+
+</div>
+
+</div>
+
+<div class="budget-stat">
+
+<label>
+
+Difficulty
+
+</label>
+
+<div
+id="projectDifficulty">
+
+Beginner Friendly
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- PROJECT SYSTEM ACTIONS -->
+<!-- ========================================= -->
+
+<div class="project-system-actions">
+
+<button
+id="addPrimaryProductBtn"
+class="primary-btn">
+
+Add Recommended Product
+
+</button>
+
+<button
+id="addCompanionProductBtn"
+class="primary-btn">
+
+Add Companion Product
+
+</button>
+
+<button
+id="changeSystemBtn"
+class="secondary-btn">
+
+Choose Different System
+
+</button>
+
+<button
+id="coverageCalculatorBtn"
+class="secondary-btn">
+
+Coverage Calculator
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- RIGHT COLUMN -->
+<!-- ========================================= -->
+
+<div class="workspace-right">
+
+<!-- ========================================= -->
+<!-- PROJECT CHECKLIST -->
+<!-- ========================================= -->
+
+<div class="project-checklist-card">
+
+<div class="checklist-header">
+
+<div>
+
+<div class="section-label">
+
+PROJECT CHECKLIST
+
+</div>
+
+<h2>
+
+Everything Needed To Complete This Project
+
+</h2>
+
+<p>
+
+Mark items as added to cart
+or already owned.
+
+</p>
+
+</div>
+
+<div
+id="checklistCompletionCount"
+class="checklist-counter">
+
+0 / 0
+
+</div>
+
+</div>
+
+<div
+id="projectChecklistItems">
+
+<!-- Dynamic Checklist Rendering -->
+
+</div>
+
+<!-- ========================================= -->
+<!-- CHECKLIST ITEMS CONTAINER -->
+<!-- ========================================= -->
+
+<div class="checklist-items-container">
+
+<!-- Dynamic Checklist Items Render Here -->
+
+<div class="checklist-item">
+
+<div class="checklist-item-left">
+
+<div class="checklist-product-image">
+
+<img
+class="checklist-image"
+src=""
+alt="Product">
+
+</div>
+
+<div class="checklist-product-info">
+
+<div class="checklist-item-top">
+
+<h3>
+
+HGTV HOME Infinity Paint
+
+</h3>
+
+<div
+class="tooltip-trigger"
+data-tooltip="paintItemWhy">
+
+?
+
+</div>
+
+</div>
+
+<div
+id="paintItemWhy"
+class="tooltip-content hidden">
+
+Recommended for bathroom environments,
+high moisture resistance and washable finish.
+
+</div>
+
+<div class="checklist-price">
+
+$68.98
+
+</div>
+
+<div class="checklist-location-row">
+
+<button
+class="location-btn">
+
+📍 Aisle 12 • Bay 04
+
+</button>
+
+<button
+class="map-btn"
+data-aisle="12"
+data-bay="04">
+
+View Map
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="checklist-item-right">
+
+<div class="quantity-controls">
+
+<button
+class="qty-btn decrease-btn">
+
+−
+
+</button>
+
+<div class="qty-value">
+
+2
+
+</div>
+
+<button
+class="qty-btn increase-btn">
+
++
+
+</button>
+
+</div>
+
+<div class="checklist-actions">
+
+<button
+class="primary-btn add-item-btn">
+
+Add To Cart
+
+</button>
+
+<button
+class="secondary-btn already-have-btn">
+
+Already Have
+
+</button>
+
+<button
+class="secondary-btn change-item-btn">
+
+Change
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- CHECKLIST SUMMARY -->
+<!-- ========================================= -->
+
+<div class="checklist-footer">
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Project Completion
+
+</label>
+
+<div
+id="checklistCompletionPercent">
+
+0%
+
+</div>
+
+</div>
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Items Complete
+
+</label>
+
+<div
+id="itemsAddedCount">
+
+0
+
+</div>
+
+</div>
+
+<div class="checklist-summary-stat">
+
+<label>
+
+Estimated Total
+
+</label>
+
+<div
+id="checklistEstimatedTotal">
+
+$0.00
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- END PROJECT CHECKLIST CARD -->
+
+<!-- ========================================= -->
+<!-- PROJECT DETAILS -->
+<!-- COLLAPSED BY DEFAULT -->
+<!-- ========================================= -->
+
+<div class="collapsible-card">
+
+<button
+id="projectDetailsToggle"
+class="collapse-toggle">
+
+Project Details ▼
+
+</button>
+
+<div
+id="projectDetailsContent"
+class="collapse-content hidden">
+
+<div class="project-details-grid">
+
+<div class="project-detail-field">
 
 <label>
 
@@ -439,7 +1135,7 @@ Exterior
 
 </div>
 
-<div class="project-control-field">
+<div class="project-detail-field">
 
 <label>
 
@@ -457,13 +1153,13 @@ Drywall
 
 <option>
 
-Wood
+Previously Painted
 
 </option>
 
 <option>
 
-Previously Painted
+Wood
 
 </option>
 
@@ -473,17 +1169,11 @@ Composite
 
 </option>
 
-<option>
-
-Concrete
-
-</option>
-
 </select>
 
 </div>
 
-<div class="project-control-field">
+<div class="project-detail-field">
 
 <label>
 
@@ -515,7 +1205,7 @@ Needs Repair
 
 </div>
 
-<div class="project-control-field">
+<div class="project-detail-field">
 
 <label>
 
@@ -546,50 +1236,6 @@ Flat
 <option>
 
 Semi-Gloss
-
-</option>
-
-<option>
-
-Gloss
-
-</option>
-
-</select>
-
-</div>
-
-<div class="project-control-field">
-
-<label>
-
-Project Size
-
-</label>
-
-<select id="projectSize">
-
-<option>
-
-Small
-
-</option>
-
-<option>
-
-Medium
-
-</option>
-
-<option>
-
-Large
-
-</option>
-
-<option>
-
-Extra Large
 
 </option>
 
@@ -626,607 +1272,68 @@ Update Recommendations
 
 </div>
 
-</section>
-
-<!-- ========================================= -->
-<!-- MAIN WORKSPACE -->
-<!-- ========================================= -->
-
-<section
-id="workspace"
-class="workspace hidden">
-
-<div class="workspace-layout">
-
-<!-- ========================================= -->
-<!-- STICKY PROJECT READY -->
-<!-- ========================================= -->
-
-<div
-id="stickyReadiness"
-class="sticky-readiness">
-
-<div class="readiness-label">
-
-PROJECT READY
-
-</div>
-
-<div
-id="readinessPercent">
-
-0%
-
-</div>
-
-<div class="readiness-progress">
-
-<div
-id="readinessBar"
-class="readiness-progress-bar">
-
-</div>
-
 </div>
 
 </div>
 
 <!-- ========================================= -->
-<!-- LEFT COLUMN -->
+<!-- SHOPPING ROUTE -->
+<!-- COLLAPSED BY DEFAULT -->
 <!-- ========================================= -->
 
-<div class="workspace-left">
-
-<!-- ========================================= -->
-<!-- RECOMMENDED PROJECT SYSTEM -->
-<!-- ========================================= -->
-
-<div class="project-system-card">
-
-<div class="project-system-header">
-
-<div>
-
-<div class="section-label">
-
-RECOMMENDED PROJECT SYSTEM
-
-</div>
-
-<h2>
-
-Everything You Need To Start This Project
-
-</h2>
-
-<p>
-
-MyLow selected products designed to work
-together based on your project.
-
-</p>
-
-</div>
-
-<div class="recommendation-tier-selector">
+<div class="collapsible-card">
 
 <button
-class="tier-btn active"
-data-tier="best">
+id="shoppingRouteToggle"
+class="collapse-toggle">
 
-BEST
+Shopping Route ▼
 
 </button>
 
-<button
-class="tier-btn"
-data-tier="better">
-
-BETTER
-
-</button>
-
-<button
-class="tier-btn"
-data-tier="good">
-
-GOOD
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- PROJECT SYSTEM CONTENT -->
-<!-- ========================================= -->
-
-<div class="project-system-body">
-
-<!-- PRIMARY PRODUCT -->
-
-<div class="system-product">
-
-<div class="system-product-image">
-
-<img
-id="primaryProductImage"
-class="product-image"
-src=""
-alt="Primary Product">
-
-</div>
-
-<div class="system-product-content">
-
 <div
-id="primaryProductLabel"
-class="product-category-label">
+id="shoppingRouteContent"
+class="collapse-content hidden">
 
-Recommended Product
+<div class="shopping-route-card">
 
-</div>
-
-<h3
-id="primaryProductName">
-
-HGTV HOME Infinity Paint
-
-</h3>
-
-<div
-id="primaryProductPrice"
-class="product-price">
-
-$68.98
-
-</div>
-
-<div
-id="primaryProductLocation"
-class="product-location">
-
-📍 Aisle 12 • Bay 04
-
-</div>
-
-<button
-class="map-link-btn"
-data-map-item="primary">
-
-View On Store Map
-
-</button>
-
-</div>
-
-</div>
-
-<!-- PLUS ICON -->
-
-<div class="project-system-plus">
-
-+
-
-</div>
-
-<!-- COMPANION PRODUCT -->
-
-<div class="system-product">
-
-<div class="system-product-image">
-
-<img
-id="companionProductImage"
-class="product-image"
-src=""
-alt="Companion Product">
-
-</div>
-
-<div class="system-product-content">
-
-<div
-id="companionProductLabel"
-class="product-category-label">
-
-Companion Product
-
-</div>
-
-<h3
-id="companionProductName">
-
-ProBlock Primer
-
-</h3>
-
-<div
-id="companionProductPrice"
-class="product-price">
-
-$29.98
-
-</div>
-
-<div
-id="companionProductLocation"
-class="product-location">
-
-📍 Aisle 12 • Bay 06
-
-</div>
-
-<button
-class="map-link-btn"
-data-map-item="companion">
-
-View On Store Map
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- WHY THIS SYSTEM -->
-<!-- ========================================= -->
-
-<div class="system-explanation-card">
+<div class="route-header">
 
 <h3>
 
-Why We Recommend This System
+Recommended Shopping Route
 
 </h3>
-
-<div
-id="systemExplanation">
-
-This project system was selected because:
-
-• Satin finishes perform well in bathrooms
-
-• Primer improves adhesion and durability
-
-• Products are designed to work together
-
-• Recommended for DIY customers
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- SYSTEM BUDGET -->
-<!-- ========================================= -->
-
-<div class="system-budget-card">
-
-<div class="budget-left">
-
-<div class="section-label">
-
-PROJECT BUDGET
-
-</div>
-
-<div
-id="systemBudgetTotal"
-class="system-budget-total">
-
-$286.00
-
-</div>
-
-<div
-id="budgetDescription"
-class="budget-description">
-
-Estimated cost based on project size,
-recommended products and quantities.
-
-</div>
-
-</div>
-
-<div class="budget-right">
-
-<div class="budget-stat">
-
-<label>
-
-Paint Needed
-
-</label>
-
-<div
-id="estimatedPaintQty">
-
-2 Gallons
-
-</div>
-
-</div>
-
-<div class="budget-stat">
-
-<label>
-
-Coverage
-
-</label>
-
-<div
-id="coverageEstimate">
-
-700 Sq Ft
-
-</div>
-
-</div>
-
-<div class="budget-stat">
-
-<label>
-
-Project Difficulty
-
-</label>
-
-<div
-id="projectDifficulty">
-
-Beginner Friendly
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- SYSTEM ACTIONS -->
-<!-- ========================================= -->
-
-<div class="project-system-actions">
-
-<button
-id="addPrimaryProductBtn"
-class="primary-btn">
-
-Add Recommended Product
-
-</button>
-
-<button
-id="addCompanionProductBtn"
-class="primary-btn">
-
-Add Companion Product
-
-</button>
-
-<button
-id="changeSystemBtn"
-class="secondary-btn">
-
-Choose Different Products
-
-</button>
-
-<button
-id="coverageCalculatorBtn"
-class="secondary-btn">
-
-Coverage Calculator
-
-</button>
-
-</div>
-
-<!-- ========================================= -->
-<!-- WEATHER WINDOW -->
-<!-- OUTDOOR PROJECTS ONLY -->
-<!-- ========================================= -->
-
-<div
-id="weatherRecommendationCard"
-class="weather-recommendation-card hidden">
-
-<div class="weather-header">
-
-<div class="section-label">
-
-RECOMMENDED WEATHER WINDOW
-
-</div>
-
-<h3>
-
-Best Time To Start This Project
-
-</h3>
-
-</div>
-
-<div
-id="weatherWindowContent">
-
-Weather recommendation
-will appear here.
-
-</div>
-
-</div>
-
-</div>
-
-<!-- END LEFT COLUMN -->
-
-</div>
-
-<!-- ========================================= -->
-<!-- RIGHT COLUMN -->
-<!-- PROJECT CHECKLIST -->
-<!-- ========================================= -->
-
-<div class="workspace-right">
-
-<div class="project-checklist-card">
-
-<div class="checklist-header">
-
-<div>
-
-<div class="section-label">
-
-PROJECT CHECKLIST
-
-</div>
-
-<h2>
-
-Everything Needed To Complete This Project
-
-</h2>
 
 <p>
 
-Use this checklist to make sure
-nothing is missed.
+Optimized path through the store.
 
 </p>
 
 </div>
 
 <div
-id="checklistCompletionCount"
-class="checklist-counter">
+id="shoppingRouteList">
 
-0 / 0
+<div class="route-stop">
 
-</div>
-
-</div>
-
-<div
-id="projectChecklistItems">
-
-<!-- Dynamic Checklist Items Render Here -->
+1. Paint Department
+— Aisle 12
 
 </div>
 
-<!-- ========================================= -->
-<!-- CHECKLIST ITEM TEMPLATE AREA -->
-<!-- ========================================= -->
+<div class="route-stop">
 
-<div class="checklist-items-container">
-
-<!-- CHECKLIST ITEMS GENERATED BY JAVASCRIPT -->
-
-<div class="checklist-item">
-
-<div class="checklist-item-left">
-
-<div class="checklist-product-image">
-
-<img
-class="checklist-image"
-src=""
-alt="Product">
+2. Roller & Brush Department
+— Aisle 13
 
 </div>
 
-<div class="checklist-product-info">
+<div class="route-stop">
 
-<div class="checklist-category">
-
-PROJECT ITEM
-
-</div>
-
-<h3>
-
-HGTV HOME Infinity Paint
-
-</h3>
-
-<div class="checklist-price">
-
-$68.98
-
-</div>
-
-<div class="checklist-location-row">
-
-<button
-class="location-btn">
-
-📍 Aisle 12 • Bay 04
-
-</button>
-
-<button
-class="map-btn">
-
-View Map
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="checklist-item-right">
-
-<div class="quantity-controls">
-
-<button
-class="qty-btn decrease-btn">
-
-−
-
-</button>
-
-<div class="qty-value">
-
-2
-
-</div>
-
-<button
-class="qty-btn increase-btn">
-
-+
-
-</button>
-
-</div>
-
-<div class="checklist-actions">
-
-<button
-class="primary-btn">
-
-Add To Cart
-
-</button>
-
-<button
-class="secondary-btn">
-
-Remove
-
-</button>
+3. Surface Preparation
+— Aisle 15
 
 </div>
 
@@ -1236,109 +1343,33 @@ Remove
 
 </div>
 
-<!-- END CHECKLIST ITEMS -->
-
 </div>
-
-<!-- ========================================= -->
-<!-- CHECKLIST FOOTER -->
-<!-- ========================================= -->
-
-<div class="checklist-footer">
-
-<div class="checklist-summary-stat">
-
-<label>
-
-Checklist Completion
-
-</label>
-
-<div
-id="checklistCompletionPercent">
-
-0%
-
-</div>
-
-</div>
-
-<div class="checklist-summary-stat">
-
-<label>
-
-Items Added
-
-</label>
-
-<div
-id="itemsAddedCount">
-
-0
-
-</div>
-
-</div>
-
-<div class="checklist-summary-stat">
-
-<label>
-
-Estimated Total
-
-</label>
-
-<div
-id="checklistEstimatedTotal">
-
-$0.00
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- END PROJECT CHECKLIST CARD -->
-
-</div>
-
-<!-- END WORKSPACE RIGHT -->
-
-</div>
-
-<!-- END WORKSPACE LAYOUT -->
-
-</section>
 
 <!-- ========================================= -->
 <!-- ADDITIONAL SHOPPING -->
+<!-- COLLAPSED BY DEFAULT -->
 <!-- ========================================= -->
 
-<section
-id="additionalShoppingSection"
-class="additional-shopping-section">
+<div class="collapsible-card">
+
+<button
+id="additionalShoppingToggle"
+class="collapse-toggle">
+
+Is There Anything Else You Need Today? ▼
+
+</button>
+
+<div
+id="additionalShoppingContent"
+class="collapse-content hidden">
 
 <div class="additional-shopping-card">
 
-<div class="section-label">
-
-ADDITIONAL SHOPPING
-
-</div>
-
-<h2>
-
-Is There Anything Else You Need Today?
-
-</h2>
-
 <p>
 
-Search for additional products without
-losing your current project plan.
+Search for additional products
+without losing your current project.
 
 </p>
 
@@ -1347,7 +1378,7 @@ losing your current project plan.
 <input
 type="text"
 id="additionalShoppingSearch"
-placeholder="Light bulbs, air filters, storage bins, mulch...">
+placeholder="Light bulbs, air filters, storage bins...">
 
 <button
 id="additionalShoppingBtn"
@@ -1361,7 +1392,7 @@ Search
 
 <div
 id="additionalShoppingResults"
-class="additional-shopping-results hidden">
+class="hidden">
 
 <!-- Dynamic Results -->
 
@@ -1369,10 +1400,20 @@ class="additional-shopping-results hidden">
 
 </div>
 
+</div>
+
+</div>
+
+<!-- END RIGHT COLUMN -->
+
+</div>
+
+<!-- END WORKSPACE LAYOUT -->
+
 </section>
 
 <!-- ========================================= -->
-<!-- PROJECT PREPARATION EXPERIENCE -->
+<!-- PROJECT PREPARATION SERVICE -->
 <!-- ========================================= -->
 
 <section
@@ -1427,7 +1468,7 @@ Products Gathered
 
 <div class="benefit-text">
 
-Everything selected and organized.
+Recommended items prepared and ready.
 
 </div>
 
@@ -1443,7 +1484,7 @@ Quantities Verified
 
 <div class="benefit-text">
 
-Review recommendations before pickup.
+Review quantities before pickup.
 
 </div>
 
@@ -1459,7 +1500,7 @@ Faster Store Experience
 
 <div class="benefit-text">
 
-Less time shopping in-store.
+Spend less time shopping in store.
 
 </div>
 
@@ -1473,8 +1514,6 @@ Currently Included In Prototype
 
 </div>
 
-<div class="preparation-actions">
-
 <button
 id="prepareProjectBtn"
 class="primary-btn large-btn">
@@ -1482,8 +1521,6 @@ class="primary-btn large-btn">
 Prepare My Project Order
 
 </button>
-
-</div>
 
 </div>
 
@@ -1550,6 +1587,23 @@ id="cartCount">
 
 <label>
 
+Already Have
+
+</label>
+
+<div
+id="alreadyOwnedCount">
+
+0
+
+</div>
+
+</div>
+
+<div class="cart-summary-stat">
+
+<label>
+
 Estimated Total
 
 </label>
@@ -1575,23 +1629,6 @@ Store
 id="cartStoreName">
 
 No Store Selected
-
-</div>
-
-</div>
-
-<div class="cart-summary-stat">
-
-<label>
-
-Project Type
-
-</label>
-
-<div
-id="cartProjectType">
-
-Not Detected
 
 </div>
 
@@ -1645,7 +1682,7 @@ STORE NAVIGATION
 
 <h2>
 
-Find This Product In Store
+Find This Product
 
 </h2>
 
@@ -1668,7 +1705,7 @@ data-close="storeMapModal">
 Store:
 <strong id="mapStoreName">
 
-Mooresville Lowe's
+Store Name
 
 </strong>
 
@@ -1691,11 +1728,15 @@ Aisle 12 • Bay 04
 
 <div class="map-placeholder">
 
-STORE MAP
+INTERACTIVE STORE MAP
 
-Future Interactive Navigation
+Prototype Route Rendering
 
-You Are Here → Product Location
+You Are Here
+↓
+Aisle
+↓
+Bay
 
 </div>
 
@@ -1705,7 +1746,7 @@ You Are Here → Product Location
 
 <h3>
 
-Directions
+Shopping Route
 
 </h3>
 
@@ -1713,25 +1754,25 @@ Directions
 
 <li>
 
-Enter through main entrance
+Enter Main Entrance
 
 </li>
 
 <li>
 
-Proceed to assigned aisle
+Proceed To Assigned Aisle
 
 </li>
 
 <li>
 
-Locate bay number
+Locate Bay Number
 
 </li>
 
 <li>
 
-Retrieve product
+Retrieve Product
 
 </li>
 
@@ -1744,32 +1785,61 @@ Retrieve product
 </div>
 
 <!-- ========================================= -->
-<!-- PRODUCT SYSTEM MODAL -->
+<!-- ITEM PRODUCT REPLACEMENT MODAL -->
+<!-- ========================================= -->
+
+<div
+id="itemReplacementModal"
+class="modal hidden">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2>
+
+Choose A Different Product
+
+</h2>
+
+<button
+class="close-modal-btn"
+data-close="itemReplacementModal">
+
+✕
+
+</button>
+
+</div>
+
+<div
+id="itemReplacementContent">
+
+Product alternatives load here.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- SYSTEM REPLACEMENT MODAL -->
 <!-- ========================================= -->
 
 <div
 id="productSystemModal"
 class="modal hidden">
 
-<div class="modal-content product-system-modal">
+<div class="modal-content">
 
 <div class="modal-header">
-
-<div>
-
-<div class="section-label">
-
-PRODUCT OPTIONS
-
-</div>
 
 <h2>
 
 Choose Your Project System
 
 </h2>
-
-</div>
 
 <button
 class="close-modal-btn"
@@ -1793,21 +1863,13 @@ BEST
 
 <h3>
 
-Premium System
+Best Results
 
 </h3>
 
-<div
-id="bestSystemProducts">
+<div id="bestSystemProducts">
 
 Products Load Here
-
-</div>
-
-<div
-id="bestSystemPrice">
-
-$0.00
 
 </div>
 
@@ -1815,7 +1877,7 @@ $0.00
 class="primary-btn system-select-btn"
 data-system="best">
 
-Select Best
+Select
 
 </button>
 
@@ -1831,21 +1893,13 @@ BETTER
 
 <h3>
 
-Balanced System
+Balanced
 
 </h3>
 
-<div
-id="betterSystemProducts">
+<div id="betterSystemProducts">
 
 Products Load Here
-
-</div>
-
-<div
-id="betterSystemPrice">
-
-$0.00
 
 </div>
 
@@ -1853,7 +1907,7 @@ $0.00
 class="primary-btn system-select-btn"
 data-system="better">
 
-Select Better
+Select
 
 </button>
 
@@ -1869,21 +1923,13 @@ GOOD
 
 <h3>
 
-Budget System
+Budget Friendly
 
 </h3>
 
-<div
-id="goodSystemProducts">
+<div id="goodSystemProducts">
 
 Products Load Here
-
-</div>
-
-<div
-id="goodSystemPrice">
-
-$0.00
 
 </div>
 
@@ -1891,7 +1937,7 @@ $0.00
 class="primary-btn system-select-btn"
 data-system="good">
 
-Select Good
+Select
 
 </button>
 
@@ -1917,7 +1963,7 @@ class="modal hidden">
 
 <h2>
 
-Project Coverage Calculator
+Coverage Calculator
 
 </h2>
 
@@ -1961,7 +2007,7 @@ Calculate
 <div
 id="coverageResults">
 
-Estimated quantities appear here.
+Coverage results appear here.
 
 </div>
 
@@ -2000,8 +2046,7 @@ data-close="projectWalkthroughModal">
 <div
 id="walkthroughContent">
 
-Project walkthrough steps
-load dynamically.
+Walkthrough content loads here.
 
 </div>
 
@@ -2126,8 +2171,8 @@ Project Assistant
 
 <p>
 
-Project planning, product recommendations,
-store navigation and project preparation
+Project planning, recommendations,
+shopping routes and store navigation
 in one experience.
 
 </p>
@@ -2165,7 +2210,7 @@ Notification Message
 </div>
 
 <!-- ========================================= -->
-<!-- GLOBAL LOADING OVERLAY -->
+<!-- LOADING OVERLAY -->
 <!-- ========================================= -->
 
 <div
@@ -2180,7 +2225,7 @@ class="loading-overlay hidden">
 
 <h2>
 
-MyLow Is Building Your Project Plan
+Building Your Project Plan
 
 </h2>
 
@@ -2195,7 +2240,7 @@ Analyzing project requirements...
 </div>
 
 <!-- ========================================= -->
-<!-- MYLOW ASSISTANT PANEL -->
+<!-- MYLOW ASSISTANT -->
 <!-- ========================================= -->
 
 <div
@@ -2220,7 +2265,7 @@ MyLow Assistant
 
 <p>
 
-Project Guidance & Recommendations
+Project Guidance
 
 </p>
 
@@ -2240,9 +2285,9 @@ Examples:
 
 How much paint do I need?
 
-How do I prep the walls?
-
 What sheen should I use?
+
+How do I prep the walls?
 
 </div>
 
@@ -2345,7 +2390,7 @@ Preferred Store
 <div
 id="accountStore">
 
-Not Selected
+No Store Selected
 
 </div>
 
@@ -2390,7 +2435,7 @@ id="accountPreparedOrders">
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE STORE DATA -->
+<!-- FUTURE STORE CACHE -->
 <!-- ========================================= -->
 
 <div
@@ -2410,25 +2455,7 @@ class="hidden">
 </div>
 
 <!-- ========================================= -->
-<!-- FUTURE MAP DATA -->
-<!-- ========================================= -->
-
-<div
-id="mapDataCache"
-class="hidden">
-
-<div id="selectedAisle"></div>
-
-<div id="selectedBay"></div>
-
-<div id="selectedDepartment"></div>
-
-<div id="selectedProduct"></div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- FUTURE WEATHER DATA -->
+<!-- FUTURE WEATHER CACHE -->
 <!-- ========================================= -->
 
 <div
@@ -2446,6 +2473,24 @@ class="hidden">
 </div>
 
 <!-- ========================================= -->
+<!-- FUTURE MAP CACHE -->
+<!-- ========================================= -->
+
+<div
+id="mapDataCache"
+class="hidden">
+
+<div id="selectedAisle"></div>
+
+<div id="selectedBay"></div>
+
+<div id="selectedDepartment"></div>
+
+<div id="selectedProduct"></div>
+
+</div>
+
+<!-- ========================================= -->
 <!-- FUTURE PRODUCT CACHE -->
 <!-- ========================================= -->
 
@@ -2453,15 +2498,15 @@ class="hidden">
 id="productDataCache"
 class="hidden">
 
-<div id="activeProject"></div>
+<div id="activeProjectType"></div>
 
-<div id="activeTier"></div>
+<div id="activeRecommendationTier"></div>
 
 <div id="activePrimaryProduct"></div>
 
 <div id="activeCompanionProduct"></div>
 
-<div id="activeChecklist"></div>
+<div id="activeChecklistData"></div>
 
 </div>
 
@@ -2480,6 +2525,24 @@ class="hidden">
 <div id="preparedOrderStore"></div>
 
 <div id="preparedOrderTotal"></div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- FUTURE PROJECT INTELLIGENCE CACHE -->
+<!-- ========================================= -->
+
+<div
+id="projectIntelligenceCache"
+class="hidden">
+
+<div id="detectedIntent"></div>
+
+<div id="recommendedSystem"></div>
+
+<div id="recommendedChecklist"></div>
+
+<div id="shoppingRouteData"></div>
 
 </div>
 
