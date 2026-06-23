@@ -3503,3 +3503,16 @@ outline:none;
 /* =====================================================
    END OF FILE
 ===================================================== */
+.workspace-layout{
+    display:grid !important;
+    grid-template-columns:55% 45% !important;
+    gap:28px !important;
+}
+
+.workspace-left{
+    border:3px solid red;
+}
+
+.workspace-right{
+    border:3px solid blue;
+}
