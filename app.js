@@ -1850,10 +1850,16 @@ const complete =
 MyLowState.cart.length +
 MyLowState.ownedItems.length;
 
-const percent =
+let percent = 0;
+
+if (total > 0) {
+
+percent =
 Math.round(
 (complete / total) * 100
 );
+
+}
 
 MyLowState.readiness =
 percent;
