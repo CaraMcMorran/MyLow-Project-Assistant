@@ -3505,14 +3505,15 @@ outline:none;
 ===================================================== */
 .workspace-layout{
     display:grid !important;
-    grid-template-columns:55% 45% !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    align-items:start !important;
     gap:28px !important;
 }
 
 .workspace-left{
-    border:3px solid red;
+    grid-column:1 !important;
 }
 
 .workspace-right{
-    border:3px solid blue;
+    grid-column:2 !important;
 }
