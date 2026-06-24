@@ -1854,7 +1854,7 @@ let percent = 0;
 
 if (total > 0) {
 
-percent =
+const percent =
 Math.round(
 (complete / total) * 100
 );
