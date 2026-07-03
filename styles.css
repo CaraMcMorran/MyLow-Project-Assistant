@@ -3175,6 +3175,46 @@ animation:fadeIn .3s ease;
 }
 
 /* =====================================================
+   DEFAULT DESKTOP WORKSPACE
+===================================================== */
+
+.workspace-layout{
+
+display:grid;
+
+grid-template-columns:56% 44%;
+
+gap:32px;
+
+align-items:start;
+
+}
+
+.workspace-left{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+min-width:0;
+
+}
+
+.workspace-right{
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+
+min-width:0;
+
+}
+
+/* =====================================================
    TABLET
 ===================================================== */
 
